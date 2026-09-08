@@ -1,5 +1,7 @@
 import postgres from 'postgres';
+/** @type {import('postgres').Sql | undefined} */
 let client;
+/** @returns {import('postgres').Sql} */
 export function getSql() {
   if (!client) {
     const url = process.env.DATABASE_URL || process.env.POSTGRES_URL;
