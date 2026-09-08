@@ -178,4 +178,29 @@ test('report API preserves estimates, supports retries, rejects cross-origin and
   expect(cross.status()).toBe(400);
   const maintenance = await request.post('/api/maintenance');
   expect(maintenance.status()).toBe(401);
+  expect((await request.get('/api/maintenance')).status()).toBe(401);
+});
+
+test('PostgreSQL stores one record per retry and authenticated cleanup removes only expired records', async ({ request }) => {
+  const { default: postgres } = await import('postgres');
+  const sql = postgres(process.env.DATABASE_URL!, { max: 1 });
+  const person = lead();
+  const expiredId = randomUUID();
+  try {
+    const payload = { lead: person, calculator };
+    expect((await request.post('/api/report', { data: payload })).status()).toBe(200);
+    expect((await request.post('/api/report', { data: payload })).status()).toBe(200);
+    const records = await sql`SELECT payload, email_status, callback_status FROM leads WHERE id = ${person.requestId}`;
+    expect(records).toHaveLength(1);
+    expect(JSON.parse(records[0].payload).lead.marketingEmail).toBe(false);
+    expect(records[0].email_status).toBe('not-configured');
+    expect(records[0].callback_status).toBe('not-requested');
+    await sql`INSERT INTO leads (id, kind, payload, created_at, expires_at, consent_version)
+      VALUES (${expiredId}, 'test', '{}', 0, 1, 'test')`;
+    expect((await request.get('/api/maintenance', { headers: { Authorization: 'Bearer ' + process.env.CRON_SECRET } })).status()).toBe(200);
+    expect(await sql`SELECT id FROM leads WHERE id = ${expiredId}`).toHaveLength(0);
+    expect(await sql`SELECT id FROM leads WHERE id = ${person.requestId}`).toHaveLength(1);
+  } finally {
+    await sql.end();
+  }
 });

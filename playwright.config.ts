@@ -6,8 +6,7 @@ export default defineConfig({
   use: { baseURL: 'http://127.0.0.1:4173', trace: 'retain-on-failure' },
   reporter: [['list'], ['html', { open: 'never' }]],
   webServer: {
-    command:
-      'node node_modules/wrangler/bin/wrangler.js dev --config dist/server/wrangler.json --port 4173 --ip 127.0.0.1',
+    command: 'node node_modules/next/dist/bin/next start --port 4173 --hostname 127.0.0.1',
     url: 'http://127.0.0.1:4173',
     reuseExistingServer: !process.env.CI,
     timeout: 120000,

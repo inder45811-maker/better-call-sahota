@@ -1,14 +1,24 @@
-import { json, runtime } from '@/lib/server';
+import { json, runtime, purgeExpired } from '@/lib/server';
 export async function POST(request: Request) {
-  const e = runtime();
-  if (
-    !e.MAINTENANCE_TOKEN ||
-    request.headers.get('authorization') !== 'Bearer ' + e.MAINTENANCE_TOKEN
-  )
+  const secret = runtime().MAINTENANCE_TOKEN;
+  if (!secret || request.headers.get('authorization') !== 'Bearer ' + secret)
     return json({ error: 'Unauthorised' }, 401);
-  await e.DB.batch([
-    e.DB.prepare('DELETE FROM leads WHERE expires_at < ?').bind(Date.now()),
-    e.DB.prepare('DELETE FROM rate_limits WHERE expires_at < ?').bind(Date.now()),
-  ]);
-  return json({ purged: true });
+  try {
+    await purgeExpired();
+    return json({ purged: true });
+  } catch {
+    return json({ error: 'Cleanup could not be completed.' }, 503);
+  }
+}
+// Vercel cron sends an authenticated GET. It is disabled until CRON_SECRET is configured.
+export async function GET(request: Request) {
+  const secret = runtime().CRON_SECRET;
+  if (!secret || request.headers.get('authorization') !== 'Bearer ' + secret)
+    return json({ error: 'Unauthorised' }, 401);
+  try {
+    await purgeExpired();
+    return json({ purged: true });
+  } catch {
+    return json({ error: 'Cleanup could not be completed.' }, 503);
+  }
 }

@@ -1,12 +1,12 @@
 # Better Call Sim
 
-A responsive financial, estate and property-planning website built from the supplied brief. Vinext/React, Tailwind, Base UI components, a Cloudflare Worker and D1-backed enquiries. The GitHub repository name is `better-call-sahota`; the customer-facing brand follows the brief: **Better Call Sim**.
+A responsive financial, estate and property-planning website built from the supplied brief. Next.js/React, Tailwind, Base UI components and PostgreSQL-backed enquiries, prepared for Vercel. The GitHub repository name is `better-call-sahota`; the customer-facing brand follows the brief: **Better Call Sim**.
 
 ## Run and check
 
-Use Node.js 24 and npm. Run `npm ci`, then `npm run dev`. Apply the generated D1 migrations to the local database before testing form submissions. `npm run typecheck` checks TypeScript; `npm test` checks the calculator and lead validation; `npm run build` creates the Worker and browser assets. `npm run test:browser` checks the built site using Playwright and a local Wrangler server on port 4173.
+Use Node.js 24 and npm. Run `npm ci`, copy `.env.example` to `.env.local`, and set a PostgreSQL connection URL. Apply migrations with `node --env-file=.env.local scripts/migrate-postgres.mjs`, then run `npm run dev`. `npm run typecheck` checks TypeScript; `npm test` checks the calculator and lead validation; `npm run build` creates the production Next.js application. `npm run test:browser` checks the built site using Playwright and Next.js on port 4173.
 
-GitHub Actions runs installation, type checking, unit tests, Drizzle migration generation, the production build and browser tests. Its artifact contains the built site, migrations, screenshots, a sample PDF and browser test results. No email credentials are supplied in CI, so tests never send real emails.
+GitHub Actions runs type checking, unit tests, PostgreSQL migration checks, the production build and browser tests against a disposable PostgreSQL service. Its artifact contains screenshots, a sample PDF and browser test results. No email credentials are supplied in CI, so tests never send real emails.
 
 ## Content and branding
 
@@ -20,18 +20,22 @@ The user supplied `https://www.instagram.com/bettercallsimuk/` and three screens
 
 ## Enquiries and reports
 
-`POST /api/enquiry` stores an appointment request, not a confirmed booking. `POST /api/report` validates the calculator on the server, stores the request and returns a branded PDF directly. Report URLs are not public and PDFs are not stored in browser storage. There is no public lead-listing endpoint. D1 data access is restricted to the platform’s authorised operators.
+`POST /api/enquiry` stores an appointment request, not a confirmed booking. `POST /api/report` validates the calculator on the server, stores the request and returns a branded PDF directly. Report URLs are not public and PDFs are not stored in browser storage. There is no public lead-listing endpoint. PostgreSQL access uses a server-only connection string. Without a configured database, forms return an honest unavailable response and retain the visitor's answers.
 
 Both routes validate input, reject cross-origin submissions, enforce a request size limit, rate-limit hashed IP buckets and use a unique request ID to handle retries. Successful submissions accurately disclose whether email is connected. Failed submission states retain the visitor’s entries. Any message to an adviser is server-side only.
 
 Unchanged retries reuse their request identity; corrected contact details, consent or calculator answers receive a new identity. Report and callback notifications have independent delivery states and idempotency keys. A failed report delivery can be retried from the result screen, and the attachment is deterministic for the saved request.
 
-Configure the keys in `.env.example` as hosted secrets through Sites when the client has selected and authorised the email setup:
+Configure the keys in `.env.example` in Vercel's project environment variables:
+
+- `DATABASE_URL`: the selected PostgreSQL provider's pooled connection string; `POSTGRES_URL` is also supported.
+- `NEXT_PUBLIC_SITE_URL`: the verified deployment origin used for canonical links and sitemap URLs.
 
 - `RESEND_API_KEY` and `REPORT_FROM_EMAIL`: requested report delivery from a verified sending domain.
 - `ENQUIRY_TO_EMAIL`: adviser notification destination.
 - `RETENTION_DAYS`: defaults to 90; the client must justify and approve this setting.
 - `MAINTENANCE_TOKEN`: strong secret for a scheduled `POST /api/maintenance` call with `Authorization: Bearer ...`.
+- `CRON_SECRET`: a separate strong secret for Vercel's daily authenticated `GET /api/maintenance` job.
 
 Expired records are deleted opportunistically on submissions and through the protected maintenance endpoint. Configure a regular purge job before public launch. Marketing email permission is separate from report fulfilment and callback requests, with the exact wording/version retained. No marketing automation, analytics or optional tracking is enabled.
 
@@ -51,6 +55,6 @@ Telephone and WhatsApp controls use the number displayed in the supplied posts. 
 
 ## Hosting
 
-The scaffold's affected runtime dependencies have been updated. The remaining moderate audit finding is in Drizzle Kit's development-only esbuild transformer chain; its inspected use is transform/transformSync, while the advisory concerns the esbuild development server. Keep it out of the deployed Worker and reassess when Drizzle provides a compatible update. Do not apply npm audit's suggested breaking Drizzle downgrade.
+The affected runtime dependencies have been updated. The remaining moderate audit finding is in Drizzle Kit's development-only esbuild transformer chain; its inspected use is transform/transformSync, while the advisory concerns the esbuild development server. Keep it out of production functions and reassess when Drizzle provides a compatible update. Do not apply npm audit's suggested breaking Drizzle downgrade.
 
-`.openai/hosting.json` records the existing Sites project and the logical D1 binding. Keep this ID when iterating. Source credentials are never stored in the repository. Production packaging must include the Worker, browser assets, logical hosting metadata and generated migrations. A public deployment is a separate action from the private review preview.
+See `VERCEL.md` for deployment. The current application uses standard Next.js server functions and PostgreSQL. The earlier Sites preview's project metadata is retained in `deployment/sites/hosting.json`, and its SQLite migrations remain under `drizzle/` as historical records. Do not apply those SQLite files to PostgreSQL. The Vercel migration directory is `drizzle-postgres/`. No database contents have been copied from the old preview.

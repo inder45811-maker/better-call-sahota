@@ -2,7 +2,7 @@ export const site = {
   name: 'Better Call Sim',
   adviser: 'Simran Sahota',
   instagram: 'https://www.instagram.com/bettercallsimuk/',
-  origin: 'https://better-call-sim.indi678678.chatgpt.site',
+  origin: (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, ''),
   preview: true,
   // Replace only with client-verified details. Do not add example numbers.
   phone: '+44 7711 902299',
