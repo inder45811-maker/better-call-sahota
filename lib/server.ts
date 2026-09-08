@@ -1,5 +1,6 @@
 import { getSql } from '../db';
 import { CONSENT_VERSION } from './validation';
+import { isAllowedOrigin } from './request-origin';
 type RuntimeEnv = {
   RESEND_API_KEY?: string;
   REPORT_FROM_EMAIL?: string;
@@ -21,7 +22,12 @@ export function json(data: unknown, status = 200) {
 }
 export async function readBody(request: Request) {
   const origin = request.headers.get('origin');
-  if (origin && origin !== new URL(request.url).origin)
+  if (!isAllowedOrigin(
+    request.url,
+    origin,
+    process.env.NEXT_PUBLIC_SITE_URL,
+    process.env.VERCEL === '1' ? process.env.VERCEL_URL : undefined,
+  ))
     throw new Error('This request must be submitted from this website.');
   if (!request.headers.get('content-type')?.startsWith('application/json'))
     throw new Error('Please submit the form as JSON.');
