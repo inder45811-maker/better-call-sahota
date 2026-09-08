@@ -6,11 +6,24 @@
     "shortTitle": "Wills",
     "description": "Put your wishes into words, choose who inherits, and give the people closest to you a clearer path when it matters.",
     "intro": "A will brings important decisions together: who should receive your estate, who should handle it, and who you would want to care for young children. Whether you are starting from scratch or revisiting an old document, the starting point is the life and family you have today.",
-    "helps": ["Name the people and causes you want to benefit.", "Choose executors and consider guardians for young children.", "Review your wishes after a change in family or finances."],
-    "considerations": ["Your will needs to meet the legal requirements where it applies; rules differ across the UK.", "Some assets pass outside a will, so ownership and beneficiary arrangements need checking too."],
+    "helps": [
+      "Name the people and causes you want to benefit.",
+      "Choose executors and consider guardians for young children.",
+      "Review your wishes after a change in family or finances."
+    ],
+    "considerations": [
+      "Your will needs to meet the legal requirements where it applies; rules differ across the UK.",
+      "Some assets pass outside a will, so ownership and beneficiary arrangements need checking too."
+    ],
     "faqs": [
-      {"q": "What happens if I do not have a will?", "a": "The intestacy rules decide who inherits. They may not reflect your wishes or provide for everyone you consider family."},
-      {"q": "When should I review my will?", "a": "Revisit it after significant changes such as marriage, separation, a birth or a property purchase, and periodically even when life feels settled."}
+      {
+        "q": "What happens if I do not have a will?",
+        "a": "The intestacy rules decide who inherits. They may not reflect your wishes or provide for everyone you consider family."
+      },
+      {
+        "q": "When should I review my will?",
+        "a": "Revisit it after significant changes such as marriage, separation, a birth or a property purchase, and periodically even when life feels settled."
+      }
     ],
     "related": ["trusts", "lasting-powers-of-attorney"]
   },
@@ -21,11 +34,24 @@
     "shortTitle": "Trusts",
     "description": "Explore how assets could be held and managed for others, with clear responsibilities and a structure that reflects your family's circumstances.",
     "intro": "A trust is a legal arrangement in which trustees hold and manage assets for beneficiaries. It can be useful where timing, vulnerability or family circumstances need thought. The right conversation starts with what you want to achieve, then considers whether a trust, or a simpler arrangement, fits that purpose.",
-    "helps": ["Consider how and when beneficiaries receive support.", "Plan for children or people who need help managing money.", "Understand the responsibilities involved in choosing trustees."],
-    "considerations": ["Trusts can involve registration, administration and tax charges, depending on their type and circumstances.", "A trust does not automatically remove assets from tax, care assessments or legal claims."],
+    "helps": [
+      "Consider how and when beneficiaries receive support.",
+      "Plan for children or people who need help managing money.",
+      "Understand the responsibilities involved in choosing trustees."
+    ],
+    "considerations": [
+      "Trusts can involve registration, administration and tax charges, depending on their type and circumstances.",
+      "A trust does not automatically remove assets from tax, care assessments or legal claims."
+    ],
     "faqs": [
-      {"q": "Do I need substantial wealth to consider a trust?", "a": "The purpose matters as much as the value. Suitability depends on who needs support, the assets involved and whether the ongoing obligations are proportionate."},
-      {"q": "Can I change a trust later?", "a": "That depends on its terms and legal structure. Some decisions are difficult or impossible to reverse, so those limits need explaining before anything is signed."}
+      {
+        "q": "Do I need substantial wealth to consider a trust?",
+        "a": "The purpose matters as much as the value. Suitability depends on who needs support, the assets involved and whether the ongoing obligations are proportionate."
+      },
+      {
+        "q": "Can I change a trust later?",
+        "a": "That depends on its terms and legal structure. Some decisions are difficult or impossible to reverse, so those limits need explaining before anything is signed."
+      }
     ],
     "related": ["wills", "bloodline-protection"]
   },
@@ -36,11 +62,24 @@
     "shortTitle": "Powers of Attorney",
     "description": "Choose trusted people to make decisions if you need support, and record the guidance you would want them to follow.",
     "intro": "A lasting power of attorney, or LPA, lets you appoint someone to help make decisions or act on your behalf. In England and Wales, separate LPAs cover property and financial affairs, and health and welfare. Making these arrangements while you have capacity gives you a say in who may act.",
-    "helps": ["Choose attorneys and consider replacements.", "Think through financial, health and care preferences.", "Understand the signing and registration process."],
-    "considerations": ["You must have the required mental capacity when making an LPA, and it must be registered before use.", "This information concerns England and Wales; Scotland and Northern Ireland have different arrangements."],
+    "helps": [
+      "Choose attorneys and consider replacements.",
+      "Think through financial, health and care preferences.",
+      "Understand the signing and registration process."
+    ],
+    "considerations": [
+      "You must have the required mental capacity when making an LPA, and it must be registered before use.",
+      "This information concerns England and Wales; Scotland and Northern Ireland have different arrangements."
+    ],
     "faqs": [
-      {"q": "Can my partner automatically make decisions for me?", "a": "Being married or in a civil partnership does not automatically give someone authority to manage all your finances or make health decisions on your behalf."},
-      {"q": "When can an attorney act?", "a": "A registered financial LPA can be used with your permission while you have capacity. A health and welfare LPA applies only when you cannot make the relevant decision."}
+      {
+        "q": "Can my partner automatically make decisions for me?",
+        "a": "Being married or in a civil partnership does not automatically give someone authority to manage all your finances or make health decisions on your behalf."
+      },
+      {
+        "q": "When can an attorney act?",
+        "a": "A registered financial LPA can be used with your permission while you have capacity. A health and welfare LPA applies only when you cannot make the relevant decision."
+      }
     ],
     "related": ["wills", "care-planning"]
   },
@@ -51,11 +90,24 @@
     "shortTitle": "Inheritance Tax",
     "description": "Understand how inheritance tax may affect your estate and explore sensible planning choices alongside your own financial needs and family priorities.",
     "intro": "Inheritance tax planning begins with a clear picture of what you own, what you owe and who you want to benefit. Allowances, exemptions and the treatment of gifts can all matter. Any approach should leave room for your own life, changing circumstances and the possibility that tax rules will change.",
-    "helps": ["Build an overview of your estate and previous gifts.", "Explore relevant allowances and exemptions with appropriate advice.", "Consider inheritance alongside retirement and family support."],
-    "considerations": ["Tax treatment depends on individual circumstances and the rules in force at the relevant time.", "Giving assets away can reduce your control and financial flexibility, and may have other tax consequences."],
+    "helps": [
+      "Build an overview of your estate and previous gifts.",
+      "Explore relevant allowances and exemptions with appropriate advice.",
+      "Consider inheritance alongside retirement and family support."
+    ],
+    "considerations": [
+      "Tax treatment depends on individual circumstances and the rules in force at the relevant time.",
+      "Giving assets away can reduce your control and financial flexibility, and may have other tax consequences."
+    ],
     "faqs": [
-      {"q": "Does making a gift remove it from my estate?", "a": "Not always. The type of gift, its timing and whether you continue to benefit from it can affect how it is treated."},
-      {"q": "Is a trust always the answer?", "a": "No. Trusts have their own tax and administrative rules. Planning should compare suitable options against your circumstances rather than assume one structure is best."}
+      {
+        "q": "Does making a gift remove it from my estate?",
+        "a": "Not always. The type of gift, its timing and whether you continue to benefit from it can affect how it is treated."
+      },
+      {
+        "q": "Is a trust always the answer?",
+        "a": "No. Trusts have their own tax and administrative rules. Planning should compare suitable options against your circumstances rather than assume one structure is best."
+      }
     ],
     "related": ["trusts", "life-assurance"]
   },
@@ -66,11 +118,24 @@
     "shortTitle": "Bloodline Protection",
     "description": "Think carefully about how an inheritance could support future generations, with room for changing relationships, individual needs and the people you choose.",
     "intro": "Families change, and an outright gift may not always match your longer term wishes. Bloodline protection is a planning term for exploring how an inheritance could be directed towards chosen family members or descendants. Wills and trusts may form part of that conversation, alongside fairness, flexibility and practical responsibilities.",
-    "helps": ["Clarify who you want your estate to support over time.", "Explore the needs of blended families and future generations.", "Compare outright gifts with more structured arrangements."],
-    "considerations": ["This is a planning objective, not a guarantee against divorce, insolvency, tax or other legal claims.", "Restrictions may limit a beneficiary's freedom and create lasting work for trustees."],
+    "helps": [
+      "Clarify who you want your estate to support over time.",
+      "Explore the needs of blended families and future generations.",
+      "Compare outright gifts with more structured arrangements."
+    ],
+    "considerations": [
+      "This is a planning objective, not a guarantee against divorce, insolvency, tax or other legal claims.",
+      "Restrictions may limit a beneficiary's freedom and create lasting work for trustees."
+    ],
     "faqs": [
-      {"q": "Is bloodline protection a particular product?", "a": "No. It describes an aim. The legal arrangements, if any, should follow your wishes and circumstances rather than a standard package."},
-      {"q": "Can planning include stepchildren or other loved ones?", "a": "Your wishes can include the people you choose. Clear definitions and legal drafting matter, particularly where family relationships are complex."}
+      {
+        "q": "Is bloodline protection a particular product?",
+        "a": "No. It describes an aim. The legal arrangements, if any, should follow your wishes and circumstances rather than a standard package."
+      },
+      {
+        "q": "Can planning include stepchildren or other loved ones?",
+        "a": "Your wishes can include the people you choose. Clear definitions and legal drafting matter, particularly where family relationships are complex."
+      }
     ],
     "related": ["wills", "trusts"]
   },
@@ -81,11 +146,24 @@
     "shortTitle": "Business Succession",
     "description": "Plan for the future of the business you have built, bringing ownership, leadership and your family's needs into one considered conversation.",
     "intro": "Stepping back from a business can involve much more than handing over the keys. A succession plan considers who will own it, who will run it and how the transition could work financially. It can also prepare for an unexpected absence, helping make important decisions before a difficult moment arrives.",
-    "helps": ["Set out your priorities for retirement, sale or family succession.", "Identify people, documents and decisions needed for continuity.", "Connect business ownership with your wider estate plans."],
-    "considerations": ["Wills, ownership agreements and company documents need to work together, with legal and tax input where appropriate.", "Business value, available funding and the willingness of successors can change over time."],
+    "helps": [
+      "Set out your priorities for retirement, sale or family succession.",
+      "Identify people, documents and decisions needed for continuity.",
+      "Connect business ownership with your wider estate plans."
+    ],
+    "considerations": [
+      "Wills, ownership agreements and company documents need to work together, with legal and tax input where appropriate.",
+      "Business value, available funding and the willingness of successors can change over time."
+    ],
     "faqs": [
-      {"q": "When is it worth starting a succession plan?", "a": "Early conversations give you more time to clarify wishes, develop successors and understand funding needs. The plan can evolve as the business does."},
-      {"q": "Can my will deal with everything?", "a": "A will is one part of the picture. The business structure, ownership agreements and practical arrangements for leadership also need to be considered."}
+      {
+        "q": "When is it worth starting a succession plan?",
+        "a": "Early conversations give you more time to clarify wishes, develop successors and understand funding needs. The plan can evolve as the business does."
+      },
+      {
+        "q": "Can my will deal with everything?",
+        "a": "A will is one part of the picture. The business structure, ownership agreements and practical arrangements for leadership also need to be considered."
+      }
     ],
     "related": ["business-protection", "wills"]
   },
@@ -96,11 +174,24 @@
     "shortTitle": "Care Planning",
     "description": "Make space for future care choices, understand the funding questions and put practical arrangements around the support you may one day need.",
     "intro": "Care planning starts with the life you want to lead and the support that might help you keep doing so. It brings together preferences, decision making and an understanding of potential costs. Whether care feels distant or is needed soon, a clear picture can make family conversations more manageable.",
-    "helps": ["Record preferences for support at home or elsewhere.", "Understand needs assessments and potential funding routes.", "Review finances and authority to make future decisions."],
-    "considerations": ["Care funding and assessment rules vary across the UK and depend on personal circumstances.", "Giving away assets to avoid care charges can be challenged; a trust or gift does not guarantee protection."],
+    "helps": [
+      "Record preferences for support at home or elsewhere.",
+      "Understand needs assessments and potential funding routes.",
+      "Review finances and authority to make future decisions."
+    ],
+    "considerations": [
+      "Care funding and assessment rules vary across the UK and depend on personal circumstances.",
+      "Giving away assets to avoid care charges can be challenged; a trust or gift does not guarantee protection."
+    ],
     "faqs": [
-      {"q": "Where does a care conversation begin?", "a": "Start with the support required. A local authority needs assessment can help identify this, including when someone expects to fund their own care."},
-      {"q": "Will my home have to be sold?", "a": "Not necessarily. The care setting, who lives in the home and relevant funding rules can affect its treatment. Individual assessment is essential."}
+      {
+        "q": "Where does a care conversation begin?",
+        "a": "Start with the support required. A local authority needs assessment can help identify this, including when someone expects to fund their own care."
+      },
+      {
+        "q": "Will my home have to be sold?",
+        "a": "Not necessarily. The care setting, who lives in the home and relevant funding rules can affect its treatment. Individual assessment is essential."
+      }
     ],
     "related": ["lasting-powers-of-attorney", "equity-release"]
   },
@@ -111,11 +202,24 @@
     "shortTitle": "Investments",
     "description": "Give your money a purpose, with investment choices shaped around your goals, your timescale and how much uncertainty you can comfortably accept.",
     "intro": "Investing is a way to put money towards longer term goals, whether that means future income, a family milestone or greater flexibility later in life. A considered approach begins with your financial foundations, then looks at the risks, costs and choices that fit the life you are planning for.",
-    "helps": ["Connect your money to clear and realistic goals.", "Explore how timescale and capacity for loss affect choices.", "Review how investments fit alongside cash and other assets."],
-    "considerations": ["Investments can fall as well as rise, and you may get back less than you invest.", "Charges, inflation and tax can affect returns; money needed soon may need a different approach."],
+    "helps": [
+      "Connect your money to clear and realistic goals.",
+      "Explore how timescale and capacity for loss affect choices.",
+      "Review how investments fit alongside cash and other assets."
+    ],
+    "considerations": [
+      "Investments can fall as well as rise, and you may get back less than you invest.",
+      "Charges, inflation and tax can affect returns; money needed soon may need a different approach."
+    ],
     "faqs": [
-      {"q": "How much risk should I take?", "a": "It depends on your goals, timescale, financial position and ability to absorb losses, as well as how you feel about uncertainty."},
-      {"q": "Why spread investments across different assets?", "a": "Diversification can reduce reliance on any single investment. It cannot eliminate market risk or ensure a positive return."}
+      {
+        "q": "How much risk should I take?",
+        "a": "It depends on your goals, timescale, financial position and ability to absorb losses, as well as how you feel about uncertainty."
+      },
+      {
+        "q": "Why spread investments across different assets?",
+        "a": "Diversification can reduce reliance on any single investment. It cannot eliminate market risk or ensure a positive return."
+      }
     ],
     "related": ["isas", "investment-bonds"]
   },
@@ -126,11 +230,24 @@
     "shortTitle": "Pensions",
     "description": "Bring your retirement plans into focus by understanding the pensions you have, the income you may need and the choices ahead.",
     "intro": "Retirement rarely looks the same for everyone. You may want to stop work, reduce your hours or leave more room for something new. Understanding your pensions, other income and likely spending creates a useful starting point for decisions about saving now and drawing an income in the future.",
-    "helps": ["Make sense of existing workplace and personal pensions.", "Explore retirement income needs and possible shortfalls.", "Understand choices as you approach taking pension benefits."],
-    "considerations": ["Pension access and tax rules depend on circumstances and can change; invested pension values can fall.", "Transferring or combining pensions can mean losing valuable benefits and requires careful assessment."],
+    "helps": [
+      "Make sense of existing workplace and personal pensions.",
+      "Explore retirement income needs and possible shortfalls.",
+      "Understand choices as you approach taking pension benefits."
+    ],
+    "considerations": [
+      "Pension access and tax rules depend on circumstances and can change; invested pension values can fall.",
+      "Transferring or combining pensions can mean losing valuable benefits and requires careful assessment."
+    ],
     "faqs": [
-      {"q": "Should I combine my pensions?", "a": "Not automatically. Compare charges, investments, guarantees, protections and exit terms before deciding whether any transfer is suitable."},
-      {"q": "Do all pensions provide income in the same way?", "a": "No. A defined benefit scheme promises benefits under its rules; a defined contribution pension builds a pot whose value and withdrawal choices affect future income."}
+      {
+        "q": "Should I combine my pensions?",
+        "a": "Not automatically. Compare charges, investments, guarantees, protections and exit terms before deciding whether any transfer is suitable."
+      },
+      {
+        "q": "Do all pensions provide income in the same way?",
+        "a": "No. A defined benefit scheme promises benefits under its rules; a defined contribution pension builds a pot whose value and withdrawal choices affect future income."
+      }
     ],
     "related": ["investments", "isas"]
   },
@@ -141,11 +258,24 @@
     "shortTitle": "ISAs",
     "description": "Understand how an ISA could support your saving or investing plans, with a choice that reflects when you will need the money.",
     "intro": "An Individual Savings Account, or ISA, is a way to hold eligible savings or investments with tax advantages under UK rules. Cash and stocks and shares ISAs serve different needs. Choosing between them starts with your goal, your access requirements and whether taking investment risk is appropriate for you.",
-    "helps": ["Compare cash savings with investing for longer term goals.", "Understand ISA allowances, eligibility and transfer arrangements.", "Coordinate ISAs with pensions and other savings."],
-    "considerations": ["Tax treatment and allowances depend on current rules and individual circumstances.", "A stocks and shares ISA can lose value; access restrictions and withdrawal rules vary by ISA type."],
+    "helps": [
+      "Compare cash savings with investing for longer term goals.",
+      "Understand ISA allowances, eligibility and transfer arrangements.",
+      "Coordinate ISAs with pensions and other savings."
+    ],
+    "considerations": [
+      "Tax treatment and allowances depend on current rules and individual circumstances.",
+      "A stocks and shares ISA can lose value; access restrictions and withdrawal rules vary by ISA type."
+    ],
     "faqs": [
-      {"q": "Is an ISA an investment in itself?", "a": "No. It is an account structure. The cash or investments held inside it determine the returns, risks and access features."},
-      {"q": "Can I move an ISA to another provider?", "a": "ISA transfers are possible, subject to the providers and account terms. Use the receiving provider's transfer process to help preserve the relevant tax treatment."}
+      {
+        "q": "Is an ISA an investment in itself?",
+        "a": "No. It is an account structure. The cash or investments held inside it determine the returns, risks and access features."
+      },
+      {
+        "q": "Can I move an ISA to another provider?",
+        "a": "ISA transfers are possible, subject to the providers and account terms. Use the receiving provider's transfer process to help preserve the relevant tax treatment."
+      }
     ],
     "related": ["investments", "pensions"]
   },
@@ -156,11 +286,24 @@
     "shortTitle": "Investment Bonds",
     "description": "Explore whether an investment bond has a place in your wider plans, with a clear view of access, charges, risk and tax.",
     "intro": "An investment bond is a life insurance based investment arrangement, usually funded with a lump sum and invested in funds. Its tax and withdrawal rules differ from those of an ISA or a pension. Understanding those differences is essential before deciding whether this structure fits your longer term plans.",
-    "helps": ["Understand how the policy and underlying investments work.", "Consider withdrawal needs alongside other sources of income.", "Compare the structure with other investment options."],
-    "considerations": ["The investment value can fall, and product charges or early withdrawal costs may apply.", "Tax deferred withdrawals are not the same as tax free income; later tax charges may arise."],
+    "helps": [
+      "Understand how the policy and underlying investments work.",
+      "Consider withdrawal needs alongside other sources of income.",
+      "Compare the structure with other investment options."
+    ],
+    "considerations": [
+      "The investment value can fall, and product charges or early withdrawal costs may apply.",
+      "Tax deferred withdrawals are not the same as tax free income; later tax charges may arise."
+    ],
     "faqs": [
-      {"q": "Is this the same as a government or corporate bond?", "a": "No. Here, investment bond means an insurance based investment product. Government and corporate bonds are loans to their issuers."},
-      {"q": "Can I take money out?", "a": "Access depends on the policy. Withdrawals can affect investment value and tax, so both the method and timing need careful consideration."}
+      {
+        "q": "Is this the same as a government or corporate bond?",
+        "a": "No. Here, investment bond means an insurance based investment product. Government and corporate bonds are loans to their issuers."
+      },
+      {
+        "q": "Can I take money out?",
+        "a": "Access depends on the policy. Withdrawals can affect investment value and tax, so both the method and timing need careful consideration."
+      }
     ],
     "related": ["investments", "inheritance-tax-planning"]
   },
@@ -171,11 +314,24 @@
     "shortTitle": "Life Assurance",
     "description": "Consider how life cover could support the people who depend on you, with protection shaped around commitments, family needs and your budget.",
     "intro": "Life cover can provide money to chosen beneficiaries or an estate when the insured person dies, subject to the policy terms. It may help address a mortgage, ongoing family costs or other commitments. The useful starting point is who relies on you and what support they would need.",
-    "helps": ["Review family needs and existing workplace or personal cover.", "Compare cover for a fixed period with whole of life options.", "Consider ownership and who should receive any payment."],
-    "considerations": ["Cover depends on underwriting, accurate application information, exclusions and premiums being maintained.", "Policy terms and any trust arrangement affect how benefits are paid and their potential tax treatment."],
+    "helps": [
+      "Review family needs and existing workplace or personal cover.",
+      "Compare cover for a fixed period with whole of life options.",
+      "Consider ownership and who should receive any payment."
+    ],
+    "considerations": [
+      "Cover depends on underwriting, accurate application information, exclusions and premiums being maintained.",
+      "Policy terms and any trust arrangement affect how benefits are paid and their potential tax treatment."
+    ],
     "faqs": [
-      {"q": "How much cover might be appropriate?", "a": "Consider debts, everyday spending, childcare and other support needs, then account for savings and existing benefits. The amount should also be affordable."},
-      {"q": "Does life cover replace income if I am ill?", "a": "Life cover principally provides a death benefit. Income protection and critical illness cover address different needs and have their own terms."}
+      {
+        "q": "How much cover might be appropriate?",
+        "a": "Consider debts, everyday spending, childcare and other support needs, then account for savings and existing benefits. The amount should also be affordable."
+      },
+      {
+        "q": "Does life cover replace income if I am ill?",
+        "a": "Life cover principally provides a death benefit. Income protection and critical illness cover address different needs and have their own terms."
+      }
     ],
     "related": ["income-protection", "mortgages"]
   },
@@ -186,11 +342,24 @@
     "shortTitle": "Income Protection",
     "description": "Explore cover that could replace part of your earnings if illness or injury prevents you working, helping support everyday commitments.",
     "intro": "Your income supports much of daily life, from household bills to the plans you are making for later. Income protection can provide regular payments if illness or injury stops you working, subject to policy terms. The right level and timing of cover depend on your work, sick pay and savings.",
-    "helps": ["Assess how long existing sick pay and savings could last.", "Compare waiting periods, benefit periods and policy definitions.", "Consider protection needs for employed or self employed work."],
-    "considerations": ["Insurers apply eligibility, medical and occupation criteria; exclusions and maximum benefits vary.", "Payments usually begin after a waiting period, and cover generally does not include redundancy."],
+    "helps": [
+      "Assess how long existing sick pay and savings could last.",
+      "Compare waiting periods, benefit periods and policy definitions.",
+      "Consider protection needs for employed or self employed work."
+    ],
+    "considerations": [
+      "Insurers apply eligibility, medical and occupation criteria; exclusions and maximum benefits vary.",
+      "Payments usually begin after a waiting period, and cover generally does not include redundancy."
+    ],
     "faqs": [
-      {"q": "What is a deferred period?", "a": "It is the agreed time between becoming unable to work and benefits starting, subject to the claim meeting the policy conditions."},
-      {"q": "Is it the same as critical illness cover?", "a": "No. Income protection usually pays regular benefits for qualifying incapacity. Critical illness cover typically pays a lump sum for specified conditions."}
+      {
+        "q": "What is a deferred period?",
+        "a": "It is the agreed time between becoming unable to work and benefits starting, subject to the claim meeting the policy conditions."
+      },
+      {
+        "q": "Is it the same as critical illness cover?",
+        "a": "No. Income protection usually pays regular benefits for qualifying incapacity. Critical illness cover typically pays a lump sum for specified conditions."
+      }
     ],
     "related": ["life-assurance", "business-protection"]
   },
@@ -201,11 +370,24 @@
     "shortTitle": "Business Protection",
     "description": "Identify the people and commitments your business depends on, and explore insurance that could help it manage an unexpected loss.",
     "intro": "A business can depend heavily on a small number of people. If an owner or key colleague dies or becomes seriously ill, the financial effect can reach staff, customers and family. Business protection explores how suitable insurance and supporting agreements could provide funds when the business needs to adapt.",
-    "helps": ["Identify key people and the financial effect of their loss.", "Explore cover for business loans or ownership transitions.", "Connect protection arrangements with succession plans."],
-    "considerations": ["The insured events, policy ownership and beneficiaries must fit the intended business purpose.", "Underwriting, exclusions and tax treatment vary; legal agreements may be needed alongside insurance."],
+    "helps": [
+      "Identify key people and the financial effect of their loss.",
+      "Explore cover for business loans or ownership transitions.",
+      "Connect protection arrangements with succession plans."
+    ],
+    "considerations": [
+      "The insured events, policy ownership and beneficiaries must fit the intended business purpose.",
+      "Underwriting, exclusions and tax treatment vary; legal agreements may be needed alongside insurance."
+    ],
     "faqs": [
-      {"q": "What is key person cover?", "a": "It is insurance intended to help a business meet the financial impact of losing an important individual through an event covered by the policy."},
-      {"q": "Can insurance help with a shareholder's death?", "a": "Suitable cover can provide funds towards an ownership transfer. The policy and any shareholder agreement need to be considered together."}
+      {
+        "q": "What is key person cover?",
+        "a": "It is insurance intended to help a business meet the financial impact of losing an important individual through an event covered by the policy."
+      },
+      {
+        "q": "Can insurance help with a shareholder's death?",
+        "a": "Suitable cover can provide funds towards an ownership transfer. The policy and any shareholder agreement need to be considered together."
+      }
     ],
     "related": ["business-succession", "income-protection"]
   },
@@ -216,11 +398,24 @@
     "shortTitle": "Mortgages",
     "description": "Understand your borrowing options and the costs around them, whether you are buying your first home or preparing for your next move.",
     "intro": "A mortgage is part of a much bigger decision about where and how you want to live. Looking at your deposit, income, regular spending and future plans helps establish a useful budget. From there, you can consider repayment options, rate types and the overall cost of borrowing.",
-    "helps": ["Understand affordability and prepare for an application.", "Compare fixed and variable rates alongside product costs.", "Plan borrowing around a first purchase or home move."],
-    "considerations": ["Your home may be repossessed if you do not keep up repayments on your mortgage.", "An agreement in principle is not a mortgage offer; lending remains subject to assessment and property checks."],
+    "helps": [
+      "Understand affordability and prepare for an application.",
+      "Compare fixed and variable rates alongside product costs.",
+      "Plan borrowing around a first purchase or home move."
+    ],
+    "considerations": [
+      "Your home may be repossessed if you do not keep up repayments on your mortgage.",
+      "An agreement in principle is not a mortgage offer; lending remains subject to assessment and property checks."
+    ],
     "faqs": [
-      {"q": "What affects how much I can borrow?", "a": "Lenders assess factors including income, outgoings, credit history, deposit and the property. Each lender has its own criteria."},
-      {"q": "Is the lowest rate always the best option?", "a": "No. Fees, incentives, repayment flexibility, early repayment charges and your expected time in the property can all affect the overall value."}
+      {
+        "q": "What affects how much I can borrow?",
+        "a": "Lenders assess factors including income, outgoings, credit history, deposit and the property. Each lender has its own criteria."
+      },
+      {
+        "q": "Is the lowest rate always the best option?",
+        "a": "No. Fees, incentives, repayment flexibility, early repayment charges and your expected time in the property can all affect the overall value."
+      }
     ],
     "related": ["life-assurance", "remortgages"]
   },
@@ -231,11 +426,24 @@
     "shortTitle": "Remortgages",
     "description": "Review your mortgage as your deal or circumstances change, comparing the full cost of switching with the options your current lender offers.",
     "intro": "A mortgage that suited you a few years ago may deserve another look today. Remortgaging means moving your borrowing to a different lender while keeping the property. A review can also consider staying with your current lender, changing your term or features, and the practical costs of each option.",
-    "helps": ["Prepare before an existing mortgage deal ends.", "Compare a lender switch with a product transfer.", "Review borrowing against changes in income or property value."],
-    "considerations": ["Switching can involve early repayment charges and other costs; a lower rate does not guarantee savings.", "Your home may be repossessed if you do not keep up repayments on your mortgage."],
+    "helps": [
+      "Prepare before an existing mortgage deal ends.",
+      "Compare a lender switch with a product transfer.",
+      "Review borrowing against changes in income or property value."
+    ],
+    "considerations": [
+      "Switching can involve early repayment charges and other costs; a lower rate does not guarantee savings.",
+      "Your home may be repossessed if you do not keep up repayments on your mortgage."
+    ],
     "faqs": [
-      {"q": "When should I start reviewing my deal?", "a": "Several months before the current rate ends can allow time to compare options and handle the application. Timing depends on lender offers and existing terms."},
-      {"q": "What is a product transfer?", "a": "It is a move to another mortgage product with your existing lender. The available choices and assessment requirements depend on the lender and any changes requested."}
+      {
+        "q": "When should I start reviewing my deal?",
+        "a": "Several months before the current rate ends can allow time to compare options and handle the application. Timing depends on lender offers and existing terms."
+      },
+      {
+        "q": "What is a product transfer?",
+        "a": "It is a move to another mortgage product with your existing lender. The available choices and assessment requirements depend on the lender and any changes requested."
+      }
     ],
     "related": ["mortgages", "second-charges"]
   },
@@ -246,11 +454,24 @@
     "shortTitle": "Buy-to-Let",
     "description": "Explore borrowing for a rental property with a clear understanding of lender requirements, ongoing costs and the responsibilities that come with letting.",
     "intro": "Whether you are becoming a landlord for the first time or reviewing an existing property, rental borrowing needs its own financial plan. Lenders consider the property and rental income alongside other criteria. It is equally useful to think about maintenance, empty periods and how the loan will eventually be repaid.",
-    "helps": ["Understand deposit and rental assessment requirements.", "Review borrowing for a purchase or existing rental property.", "Consider cash flow, ownership and repayment plans together."],
-    "considerations": ["Rental income and property values can fall; allow for costs and periods without a tenant.", "Your property may be repossessed if you do not keep up repayments. Regulatory protection varies by arrangement."],
+    "helps": [
+      "Understand deposit and rental assessment requirements.",
+      "Review borrowing for a purchase or existing rental property.",
+      "Consider cash flow, ownership and repayment plans together."
+    ],
+    "considerations": [
+      "Rental income and property values can fall; allow for costs and periods without a tenant.",
+      "Your property may be repossessed if you do not keep up repayments. Regulatory protection varies by arrangement."
+    ],
     "faqs": [
-      {"q": "Can I rent out a home with a residential mortgage?", "a": "Speak to your lender before letting it. You may need consent to let or a different mortgage, depending on the circumstances and lender terms."},
-      {"q": "What happens with an interest only mortgage?", "a": "Regular payments cover interest, while the borrowed capital remains due. You need a credible plan to repay it at the end of the term."}
+      {
+        "q": "Can I rent out a home with a residential mortgage?",
+        "a": "Speak to your lender before letting it. You may need consent to let or a different mortgage, depending on the circumstances and lender terms."
+      },
+      {
+        "q": "What happens with an interest only mortgage?",
+        "a": "Regular payments cover interest, while the borrowed capital remains due. You need a credible plan to repay it at the end of the term."
+      }
     ],
     "related": ["remortgages", "bridging"]
   },
@@ -261,11 +482,24 @@
     "shortTitle": "Bridging",
     "description": "Consider short term property borrowing for a defined gap, with close attention to the total cost and a realistic repayment plan.",
     "intro": "Bridging finance is short term borrowing secured against property, often considered where purchase and sale timings do not line up. Its suitability rests on more than speed. A clear purpose, realistic timescale and credible exit, such as a sale or longer term finance, are central to the decision.",
-    "helps": ["Assess a temporary funding need and possible alternatives.", "Understand how interest and fees affect the final repayment.", "Examine the exit plan and what happens if it is delayed."],
-    "considerations": ["Bridging can be expensive, and delays may increase costs or put the secured property at risk.", "Regulation depends on the arrangement; refinancing or selling on time cannot be guaranteed."],
+    "helps": [
+      "Assess a temporary funding need and possible alternatives.",
+      "Understand how interest and fees affect the final repayment.",
+      "Examine the exit plan and what happens if it is delayed."
+    ],
+    "considerations": [
+      "Bridging can be expensive, and delays may increase costs or put the secured property at risk.",
+      "Regulation depends on the arrangement; refinancing or selling on time cannot be guaranteed."
+    ],
     "faqs": [
-      {"q": "What is an exit strategy?", "a": "It is the planned source of money to repay the loan, supported by realistic evidence and timing. A fallback matters if that plan changes."},
-      {"q": "Can interest be added to the loan?", "a": "Some arrangements allow this. It increases the amount due at repayment, so the full cost and available equity need careful assessment."}
+      {
+        "q": "What is an exit strategy?",
+        "a": "It is the planned source of money to repay the loan, supported by realistic evidence and timing. A fallback matters if that plan changes."
+      },
+      {
+        "q": "Can interest be added to the loan?",
+        "a": "Some arrangements allow this. It increases the amount due at repayment, so the full cost and available equity need careful assessment."
+      }
     ],
     "related": ["mortgages", "buy-to-let"]
   },
@@ -276,11 +510,24 @@
     "shortTitle": "Second Charges",
     "description": "Explore additional borrowing secured on your home while keeping an existing mortgage, with the combined repayments and overall cost clearly in view.",
     "intro": "A second charge mortgage is a separate loan secured against a property that already has a mortgage. It may be considered when you need additional funds and want to retain your current mortgage. Comparing it with a further advance, remortgage or other options helps establish whether it fits your circumstances.",
-    "helps": ["Compare additional borrowing routes and their total costs.", "Assess affordability across existing and proposed repayments.", "Understand how the extra loan affects your home equity."],
-    "considerations": ["Your home may be repossessed if you do not keep up repayments on loans secured against it.", "Consolidating debts may extend repayment and increase total interest, while turning unsecured borrowing into a risk to your home."],
+    "helps": [
+      "Compare additional borrowing routes and their total costs.",
+      "Assess affordability across existing and proposed repayments.",
+      "Understand how the extra loan affects your home equity."
+    ],
+    "considerations": [
+      "Your home may be repossessed if you do not keep up repayments on loans secured against it.",
+      "Consolidating debts may extend repayment and increase total interest, while turning unsecured borrowing into a risk to your home."
+    ],
     "faqs": [
-      {"q": "Does this replace my first mortgage?", "a": "No. It sits alongside it, with separate terms and repayments. Both commitments need to be included in your affordability assessment."},
-      {"q": "Is it always cheaper than remortgaging?", "a": "No. Compare rates, fees, existing early repayment charges and the total cost over the relevant period before making a decision."}
+      {
+        "q": "Does this replace my first mortgage?",
+        "a": "No. It sits alongside it, with separate terms and repayments. Both commitments need to be included in your affordability assessment."
+      },
+      {
+        "q": "Is it always cheaper than remortgaging?",
+        "a": "No. Compare rates, fees, existing early repayment charges and the total cost over the relevant period before making a decision."
+      }
     ],
     "related": ["remortgages", "mortgages"]
   },
@@ -291,11 +538,24 @@
     "shortTitle": "Equity Release",
     "description": "Understand ways to access housing wealth in later life, with careful consideration of future needs, family wishes and the alternatives available.",
     "intro": "Equity release can let eligible homeowners access some of the value in their home while continuing to live there. Lifetime mortgages and home reversion plans work differently, and each has lasting implications. Exploring the alternatives and your likely future needs is an essential part of any specialist advice conversation.",
-    "helps": ["Understand the differences between later life borrowing options.", "Consider housing wealth alongside income, savings and benefits.", "Discuss the effect on inheritance and future care choices."],
-    "considerations": ["Equity release reduces the value of your estate and may affect entitlement to means tested benefits.", "Interest can build up on a lifetime mortgage, and early repayment or moving home may involve restrictions or costs."],
+    "helps": [
+      "Understand the differences between later life borrowing options.",
+      "Consider housing wealth alongside income, savings and benefits.",
+      "Discuss the effect on inheritance and future care choices."
+    ],
+    "considerations": [
+      "Equity release reduces the value of your estate and may affect entitlement to means tested benefits.",
+      "Interest can build up on a lifetime mortgage, and early repayment or moving home may involve restrictions or costs."
+    ],
     "faqs": [
-      {"q": "Are there alternatives to equity release?", "a": "Depending on your circumstances, alternatives may include using other assets, adjusting spending, downsizing or considering other borrowing. Each needs its own assessment."},
-      {"q": "Should family be part of the conversation?", "a": "The decision is yours. Involving people you trust can help everyone understand your wishes and the effect on your home and estate."}
+      {
+        "q": "Are there alternatives to equity release?",
+        "a": "Depending on your circumstances, alternatives may include using other assets, adjusting spending, downsizing or considering other borrowing. Each needs its own assessment."
+      },
+      {
+        "q": "Should family be part of the conversation?",
+        "a": "The decision is yours. Involving people you trust can help everyone understand your wishes and the effect on your home and estate."
+      }
     ],
     "related": ["care-planning", "pensions"]
   }

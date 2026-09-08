@@ -1,10 +1,137 @@
 export const stories = [
- {slug:'a-growing-family', category:'FAMILY & LEGACY',title:'A new chapter. A clearer plan.',description:'How a growing family might connect a new home, life cover and their first wills.',theme:'family',situation:'A couple have bought a home and are welcoming their first child. Their attention is on day-to-day life, but they want to understand what would happen if one of them could no longer provide an income.',priorities:['Review the mortgage alongside household income.','Consider who would care for their child.','Record wishes and decision-making arrangements.'],approach:'A coordinated conversation could bring mortgage commitments, suitable protection, wills and powers of attorney into view. Each recommendation would depend on their budget, circumstances and the appropriate provider’s advice.',outcome:'The aim is a clear list of priorities and responsibilities. This illustration does not report an actual client outcome or promise that a particular product will be suitable.',related:'/estate-planning'},
- {slug:'approaching-retirement',category:'RETIREMENT & WEALTH',title:'More time for what matters.',description:'Connecting retirement income, family support and the legacy you would like to leave.',theme:'retirement',situation:'Someone approaching retirement wants to spend more time with family. They have several pensions, some savings and a home, but no single view of how those pieces could support their next chapter.',priorities:['Understand future income and expenditure.','Consider investment risk and access to savings.','Review beneficiaries and estate-planning documents.'],approach:'The starting point is an overview of existing arrangements, benefits, charges and needs. Any change to pensions or investments would require a suitable regulated advice process; consolidating is not automatically the right option.',outcome:'The aim is an informed retirement conversation that accounts for the person’s own needs alongside family wishes. This is a hypothetical planning example, not a financial projection.',related:'/financial-advice/pensions'},
- {slug:'the-business-owner',category:'BUSINESS & SUCCESSION',title:'You’ve built something. Plan what’s next.',description:'Looking at the business, the people behind it and the family who depend on it.',theme:'business',situation:'A business owner is thinking about stepping back over time. Family members and a co-owner have different roles, and the existing business agreements have not been considered alongside the owner’s will.',priorities:['Clarify ownership and succession intentions.','Review agreements alongside estate documents.','Consider financial protection and business continuity.'],approach:'A coordinated review can identify which questions belong with financial, legal and tax specialists. The suitability of business protection, ownership changes or succession arrangements depends on the business and the individuals involved.',outcome:'The aim is to make responsibilities and the next conversations clearer. This is an illustration, not an account of work undertaken for a real client.',related:'/estate-planning/business-succession'},
+  {
+    slug: 'a-growing-family',
+    category: 'FAMILY & LEGACY',
+    title: 'A new chapter. A clearer plan.',
+    description: 'How a growing family might connect a new home, life cover and their first wills.',
+    theme: 'family',
+    situation:
+      'A couple have bought a home and are welcoming their first child. Their attention is on day-to-day life, but they want to understand what would happen if one of them could no longer provide an income.',
+    priorities: [
+      'Review the mortgage alongside household income.',
+      'Consider who would care for their child.',
+      'Record wishes and decision-making arrangements.',
+    ],
+    approach:
+      'A coordinated conversation could bring mortgage commitments, suitable protection, wills and powers of attorney into view. Each recommendation would depend on their budget, circumstances and the appropriate provider’s advice.',
+    outcome:
+      'The aim is a clear list of priorities and responsibilities. This illustration does not report an actual client outcome or promise that a particular product will be suitable.',
+    related: '/estate-planning',
+  },
+  {
+    slug: 'approaching-retirement',
+    category: 'RETIREMENT & WEALTH',
+    title: 'More time for what matters.',
+    description:
+      'Connecting retirement income, family support and the legacy you would like to leave.',
+    theme: 'retirement',
+    situation:
+      'Someone approaching retirement wants to spend more time with family. They have several pensions, some savings and a home, but no single view of how those pieces could support their next chapter.',
+    priorities: [
+      'Understand future income and expenditure.',
+      'Consider investment risk and access to savings.',
+      'Review beneficiaries and estate-planning documents.',
+    ],
+    approach:
+      'The starting point is an overview of existing arrangements, benefits, charges and needs. Any change to pensions or investments would require a suitable regulated advice process; consolidating is not automatically the right option.',
+    outcome:
+      'The aim is an informed retirement conversation that accounts for the person’s own needs alongside family wishes. This is a hypothetical planning example, not a financial projection.',
+    related: '/financial-advice/pensions',
+  },
+  {
+    slug: 'the-business-owner',
+    category: 'BUSINESS & SUCCESSION',
+    title: 'You’ve built something. Plan what’s next.',
+    description: 'Looking at the business, the people behind it and the family who depend on it.',
+    theme: 'business',
+    situation:
+      'A business owner is thinking about stepping back over time. Family members and a co-owner have different roles, and the existing business agreements have not been considered alongside the owner’s will.',
+    priorities: [
+      'Clarify ownership and succession intentions.',
+      'Review agreements alongside estate documents.',
+      'Consider financial protection and business continuity.',
+    ],
+    approach:
+      'A coordinated review can identify which questions belong with financial, legal and tax specialists. The suitability of business protection, ownership changes or succession arrangements depends on the business and the individuals involved.',
+    outcome:
+      'The aim is to make responsibilities and the next conversations clearer. This is an illustration, not an account of work undertaken for a real client.',
+    related: '/estate-planning/business-succession',
+  },
 ];
 export const articles = [
- {slug:'wills-and-lpas',category:'ESTATE PLANNING',title:'A will and an LPA: why they do different jobs.',description:'One records wishes after death. The other can help with decisions during life.',readTime:'4 min read',theme:'estate',paragraphs:[['Two documents, two different moments','A will records how you want your estate to be dealt with after death and names executors. A lasting power of attorney is an arrangement for decisions during your lifetime. Making one does not replace the need to consider the other.'],['Who can make decisions?','In England and Wales, separate LPAs cover property and financial affairs, and health and welfare. They must be made while you have the required capacity and registered before use. Other UK jurisdictions have different arrangements.'],['A practical starting point','Think about the people you trust, the responsibilities involved and any existing documents. Keep a list of questions to discuss with the relevant professional. Marriage, a new child, moving home or a change in health may be a useful prompt to revisit your plans.']],source:'https://www.gov.uk/power-of-attorney',sourceName:'GOV.UK: Lasting powers of attorney',related:'/estate-planning/lasting-powers-of-attorney'},
- {slug:'pension-review-checklist',category:'FINANCIAL ADVICE',title:'Five things to gather before a pension review.',description:'A little preparation can make the bigger picture easier to see.',readTime:'3 min read',theme:'pensions',paragraphs:[['Start with what you already have','Gather recent statements for workplace and personal pensions, details of contributions and any retirement dates you have in mind. Include the paperwork for any guaranteed benefits rather than assuming all pensions work in the same way.'],['Bring your goals into the conversation','Think about your expected household spending, other savings and any financial support you hope to give family. A State Pension forecast can be useful alongside your private arrangements.'],['Take time with any proposed change','Charges, investment risk, tax and benefits may all affect a decision. Moving or combining pensions is not automatically beneficial. A regulated adviser should explain the implications and whether any proposed action is suitable.']],source:'https://www.moneyhelper.org.uk/en/pensions-and-retirement',sourceName:'MoneyHelper: Pensions and retirement',related:'/financial-advice/pensions'},
- {slug:'before-you-remortgage',category:'PROPERTY FINANCE',title:'Coming to the end of your mortgage deal?',description:'The questions to consider before your next property-finance decision.',readTime:'4 min read',theme:'property',paragraphs:[['Check the dates and terms','Look at when your current deal ends, the remaining balance, the rate you may move onto and any early repayment charge. Those details help frame the conversation about staying with your lender or exploring alternatives.'],['Look beyond the headline rate','Fees, the term, affordability and the overall cost matter. A lower monthly payment may involve a longer repayment period and more interest over time. The right comparison uses your actual circumstances.'],['Give yourself room to consider options','Gather income documents and information about regular commitments before a review. Approval and the available terms depend on lender criteria and your circumstances. Your home may be repossessed if you do not keep up repayments on your mortgage.']],source:'https://www.moneyhelper.org.uk/en/homes/buying-a-home/a-guide-to-remortgaging',sourceName:'MoneyHelper: A guide to remortgaging',related:'/property-finance/remortgages'},
+  {
+    slug: 'wills-and-lpas',
+    category: 'ESTATE PLANNING',
+    title: 'A will and an LPA: why they do different jobs.',
+    description: 'One records wishes after death. The other can help with decisions during life.',
+    readTime: '4 min read',
+    theme: 'estate',
+    paragraphs: [
+      [
+        'Two documents, two different moments',
+        'A will records how you want your estate to be dealt with after death and names executors. A lasting power of attorney is an arrangement for decisions during your lifetime. Making one does not replace the need to consider the other.',
+      ],
+      [
+        'Who can make decisions?',
+        'In England and Wales, separate LPAs cover property and financial affairs, and health and welfare. They must be made while you have the required capacity and registered before use. Other UK jurisdictions have different arrangements.',
+      ],
+      [
+        'A practical starting point',
+        'Think about the people you trust, the responsibilities involved and any existing documents. Keep a list of questions to discuss with the relevant professional. Marriage, a new child, moving home or a change in health may be a useful prompt to revisit your plans.',
+      ],
+    ],
+    source: 'https://www.gov.uk/power-of-attorney',
+    sourceName: 'GOV.UK: Lasting powers of attorney',
+    related: '/estate-planning/lasting-powers-of-attorney',
+  },
+  {
+    slug: 'pension-review-checklist',
+    category: 'FINANCIAL ADVICE',
+    title: 'Five things to gather before a pension review.',
+    description: 'A little preparation can make the bigger picture easier to see.',
+    readTime: '3 min read',
+    theme: 'pensions',
+    paragraphs: [
+      [
+        'Start with what you already have',
+        'Gather recent statements for workplace and personal pensions, details of contributions and any retirement dates you have in mind. Include the paperwork for any guaranteed benefits rather than assuming all pensions work in the same way.',
+      ],
+      [
+        'Bring your goals into the conversation',
+        'Think about your expected household spending, other savings and any financial support you hope to give family. A State Pension forecast can be useful alongside your private arrangements.',
+      ],
+      [
+        'Take time with any proposed change',
+        'Charges, investment risk, tax and benefits may all affect a decision. Moving or combining pensions is not automatically beneficial. A regulated adviser should explain the implications and whether any proposed action is suitable.',
+      ],
+    ],
+    source: 'https://www.moneyhelper.org.uk/en/pensions-and-retirement',
+    sourceName: 'MoneyHelper: Pensions and retirement',
+    related: '/financial-advice/pensions',
+  },
+  {
+    slug: 'before-you-remortgage',
+    category: 'PROPERTY FINANCE',
+    title: 'Coming to the end of your mortgage deal?',
+    description: 'The questions to consider before your next property-finance decision.',
+    readTime: '4 min read',
+    theme: 'property',
+    paragraphs: [
+      [
+        'Check the dates and terms',
+        'Look at when your current deal ends, the remaining balance, the rate you may move onto and any early repayment charge. Those details help frame the conversation about staying with your lender or exploring alternatives.',
+      ],
+      [
+        'Look beyond the headline rate',
+        'Fees, the term, affordability and the overall cost matter. A lower monthly payment may involve a longer repayment period and more interest over time. The right comparison uses your actual circumstances.',
+      ],
+      [
+        'Give yourself room to consider options',
+        'Gather income documents and information about regular commitments before a review. Approval and the available terms depend on lender criteria and your circumstances. Your home may be repossessed if you do not keep up repayments on your mortgage.',
+      ],
+    ],
+    source: 'https://www.moneyhelper.org.uk/en/homes/buying-a-home/a-guide-to-remortgaging',
+    sourceName: 'MoneyHelper: A guide to remortgaging',
+    related: '/property-finance/remortgages',
+  },
 ];

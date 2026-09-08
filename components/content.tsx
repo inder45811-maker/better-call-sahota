@@ -1,11 +1,201 @@
 import Link from 'next/link';
-import {ArrowUpRight,ArrowRight,BookOpen,ShieldCheck,Sprout,House,HeartHandshake,Layers3} from 'lucide-react';
-import {REVIEW_CTA,stages} from '@/lib/site';
-import {articles,stories} from '@/lib/editorial';
-export function ReviewButton(){return <Link className="button" href="/book-review">{REVIEW_CTA}<ArrowUpRight size={18}/></Link>}
-export function PageIntro({eyebrow,title,description,breadcrumb}:{eyebrow:string;title:string;description?:string;breadcrumb?:{label:string;href:string}}){return <section className="page-intro container"><div className="breadcrumbs"><Link href="/">Home</Link><span>/</span>{breadcrumb&&<><Link href={breadcrumb.href}>{breadcrumb.label}</Link><span>/</span></>}<span>{eyebrow}</span></div><p className="eyebrow">{eyebrow}</p><h1>{title.split('\n').map((line,i)=><span key={line}>{i>0?<><br/><em>{line}</em></>:line}</span>)}</h1>{description&&<p className="page-description">{description}</p>}</section>}
-export function ArticleCards(){return <div className="article-grid">{articles.map((a,i)=><Link href={'/insights/'+a.slug} key={a.slug} className={'article-card article-'+a.theme}><div className="article-cover"><span>{['MAKE YOUR\nWISHES CLEAR.','YOUR NEXT\nCHAPTER.','ROOM FOR\nWHAT’S NEXT.'][i].split('\n').map(t=><span key={t}>{t}<br/></span>)}</span><div className="cover-symbol">{i===0?<ShieldCheck size={62} strokeWidth={.8}/>:i===1?<Sprout size={62} strokeWidth={.8}/>:<House size={62} strokeWidth={.8}/>}</div><span className="cover-label">THE BIGGER PICTURE / 0{i+1}</span></div><div className="article-meta"><span>{a.category}</span><span>{a.readTime}</span></div><h3>{a.title}</h3><p>{a.description}</p><span className="text-link">Read the guide <ArrowUpRight size={16}/></span></Link>)}</div>}
-export function StoryCards(){return <div className="story-grid">{stories.map((s,i)=><Link href={'/case-studies/'+s.slug} key={s.slug} className="story-card"><div className="story-icon">{i===0?<HeartHandshake size={30} strokeWidth={1.2}/>:i===1?<Sprout size={30} strokeWidth={1.2}/>:<Layers3 size={30} strokeWidth={1.2}/>}<span>ILLUSTRATIVE SCENARIO</span></div><p className="story-category">{s.category}</p><h3>{s.title}</h3><p>{s.description}</p><span className="text-link">See the bigger picture <ArrowUpRight size={16}/></span></Link>)}</div>}
-export function ReviewJourney(){return <div className="review-journey">{[{title:'A conversation about you',text:'Share what matters, what’s changing and the questions on your mind.'},{title:'A look at the bigger picture',text:'Explore how your finances, property and estate plans fit together.'},{title:'Clear next steps',text:'Agree what needs attention, who can help and the scope of any further work.'}].map((step,i)=><div key={step.title}><span className="journey-number">0{i+1}</span><h3>{step.title}</h3><p>{step.text}</p></div>)}</div>}
-export function RelatedPillars(){return <div className="small-pillar-links">{[['Estate Planning','/estate-planning'],['Financial Advice','/financial-advice'],['Property Finance','/property-finance']].map(([title,href])=><Link href={href} key={href}>{title}<ArrowUpRight size={18}/></Link>)}</div>}
-export function StaticStages(){return <div className="stage-explainer">{stages.map((s,i)=><section key={s.name}><span className="journey-number">0{i+1}</span><div><p className="eyebrow">{s.name}</p><h2>{s.verb}</h2><p>{s.text}</p><div className="stage-page-links">{s.links.map(l=><Link href={l.href} key={l.href}>{l.label}<ArrowRight size={16}/></Link>)}</div></div></section>)}</div>}
+import {
+  ArrowUpRight,
+  ArrowRight,
+  BookOpen,
+  ShieldCheck,
+  Sprout,
+  House,
+  HeartHandshake,
+  Layers3,
+} from 'lucide-react';
+import { REVIEW_CTA, stages } from '@/lib/site';
+import { articles, stories } from '@/lib/editorial';
+export function ReviewButton() {
+  return (
+    <Link className="button" href="/book-review">
+      {REVIEW_CTA}
+      <ArrowUpRight size={18} />
+    </Link>
+  );
+}
+export function PageIntro({
+  eyebrow,
+  title,
+  description,
+  breadcrumb,
+}: {
+  eyebrow: string;
+  title: string;
+  description?: string;
+  breadcrumb?: { label: string; href: string };
+}) {
+  return (
+    <section className="page-intro container">
+      <div className="breadcrumbs">
+        <Link href="/">Home</Link>
+        <span>/</span>
+        {breadcrumb && (
+          <>
+            <Link href={breadcrumb.href}>{breadcrumb.label}</Link>
+            <span>/</span>
+          </>
+        )}
+        <span>{eyebrow}</span>
+      </div>
+      <p className="eyebrow">{eyebrow}</p>
+      <h1>
+        {title.split('\n').map((line, i) => (
+          <span key={line}>
+            {i > 0 ? (
+              <>
+                <br />
+                <em>{line}</em>
+              </>
+            ) : (
+              line
+            )}
+          </span>
+        ))}
+      </h1>
+      {description && <p className="page-description">{description}</p>}
+    </section>
+  );
+}
+export function ArticleCards() {
+  return (
+    <div className="article-grid">
+      {articles.map((a, i) => (
+        <Link
+          href={'/insights/' + a.slug}
+          key={a.slug}
+          className={'article-card article-' + a.theme}
+        >
+          <div className="article-cover">
+            <span>
+              {['MAKE YOUR\nWISHES CLEAR.', 'YOUR NEXT\nCHAPTER.', 'ROOM FOR\nWHAT’S NEXT.'][i]
+                .split('\n')
+                .map((t) => (
+                  <span key={t}>
+                    {t}
+                    <br />
+                  </span>
+                ))}
+            </span>
+            <div className="cover-symbol">
+              {i === 0 ? (
+                <ShieldCheck size={62} strokeWidth={0.8} />
+              ) : i === 1 ? (
+                <Sprout size={62} strokeWidth={0.8} />
+              ) : (
+                <House size={62} strokeWidth={0.8} />
+              )}
+            </div>
+            <span className="cover-label">THE BIGGER PICTURE / 0{i + 1}</span>
+          </div>
+          <div className="article-meta">
+            <span>{a.category}</span>
+            <span>{a.readTime}</span>
+          </div>
+          <h3>{a.title}</h3>
+          <p>{a.description}</p>
+          <span className="text-link">
+            Read the guide <ArrowUpRight size={16} />
+          </span>
+        </Link>
+      ))}
+    </div>
+  );
+}
+export function StoryCards() {
+  return (
+    <div className="story-grid">
+      {stories.map((s, i) => (
+        <Link href={'/case-studies/' + s.slug} key={s.slug} className="story-card">
+          <div className="story-icon">
+            {i === 0 ? (
+              <HeartHandshake size={30} strokeWidth={1.2} />
+            ) : i === 1 ? (
+              <Sprout size={30} strokeWidth={1.2} />
+            ) : (
+              <Layers3 size={30} strokeWidth={1.2} />
+            )}
+            <span>ILLUSTRATIVE SCENARIO</span>
+          </div>
+          <p className="story-category">{s.category}</p>
+          <h3>{s.title}</h3>
+          <p>{s.description}</p>
+          <span className="text-link">
+            See the bigger picture <ArrowUpRight size={16} />
+          </span>
+        </Link>
+      ))}
+    </div>
+  );
+}
+export function ReviewJourney() {
+  return (
+    <div className="review-journey">
+      {[
+        {
+          title: 'A conversation about you',
+          text: 'Share what matters, what’s changing and the questions on your mind.',
+        },
+        {
+          title: 'A look at the bigger picture',
+          text: 'Explore how your finances, property and estate plans fit together.',
+        },
+        {
+          title: 'Clear next steps',
+          text: 'Agree what needs attention, who can help and the scope of any further work.',
+        },
+      ].map((step, i) => (
+        <div key={step.title}>
+          <span className="journey-number">0{i + 1}</span>
+          <h3>{step.title}</h3>
+          <p>{step.text}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+export function RelatedPillars() {
+  return (
+    <div className="small-pillar-links">
+      {[
+        ['Estate Planning', '/estate-planning'],
+        ['Financial Advice', '/financial-advice'],
+        ['Property Finance', '/property-finance'],
+      ].map(([title, href]) => (
+        <Link href={href} key={href}>
+          {title}
+          <ArrowUpRight size={18} />
+        </Link>
+      ))}
+    </div>
+  );
+}
+export function StaticStages() {
+  return (
+    <div className="stage-explainer">
+      {stages.map((s, i) => (
+        <section key={s.name}>
+          <span className="journey-number">0{i + 1}</span>
+          <div>
+            <p className="eyebrow">{s.name}</p>
+            <h2>{s.verb}</h2>
+            <p>{s.text}</p>
+            <div className="stage-page-links">
+              {s.links.map((l) => (
+                <Link href={l.href} key={l.href}>
+                  {l.label}
+                  <ArrowRight size={16} />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      ))}
+    </div>
+  );
+}

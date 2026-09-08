@@ -1,0 +1,1 @@
+ALTER TABLE `leads` ADD `callback_status` text DEFAULT 'pending' NOT NULL;
