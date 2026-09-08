@@ -1,7 +1,7 @@
 import { PDFDocument,StandardFonts,rgb } from 'pdf-lib';
 import { formatMoney,type IhtResult } from './iht';
 export async function makeReport(name:string,result:IhtResult,createdAt:number){
- const pdf=await PDFDocument.create();pdf.setTitle('Your illustrative inheritance-tax report');pdf.setAuthor('Better Call Sim');pdf.setCreationDate(new Date(createdAt));
+ const pdf=await PDFDocument.create();pdf.setTitle('Your illustrative inheritance-tax report');pdf.setAuthor('Better Call Sim');pdf.setCreationDate(new Date(createdAt));pdf.setModificationDate(new Date(createdAt));
  const body=await pdf.embedFont(StandardFonts.Helvetica),bold=await pdf.embedFont(StandardFonts.HelveticaBold),serif=await pdf.embedFont(StandardFonts.TimesRoman);
  const navy=rgb(.08,.18,.23),grey=rgb(.33,.39,.4),gold=rgb(.6,.47,.26);
  let page=pdf.addPage([595,842]),y=784;

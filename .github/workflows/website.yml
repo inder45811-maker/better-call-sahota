@@ -32,6 +32,8 @@ jobs:
           done
       - run: npx playwright install --with-deps chromium
       - run: npm run test:browser
+      - name: Package validated site
+        run: bash scripts/package-site.sh "$PWD" artifacts/site.tar.gz
       - uses: actions/upload-artifact@v4
         if: always()
         with:

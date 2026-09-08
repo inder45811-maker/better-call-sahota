@@ -27,9 +27,9 @@ export async function saveLead(id:string,kind:string,payload:unknown){
  const days=Math.min(365,Math.max(1,Number(runtime().RETENTION_DAYS)||90));
  // INSERT first handles simultaneous retries without duplicate records.
  await db.prepare('INSERT OR IGNORE INTO leads (id, kind, payload, created_at, expires_at, email_status, consent_version) VALUES (?, ?, ?, ?, ?, ?, ?)').bind(id,kind,serialised,now,now+days*86400000,'pending',CONSENT_VERSION).run();
- const existing=await db.prepare('SELECT payload, created_at, email_status FROM leads WHERE id = ?').bind(id).first<{payload:string;created_at:number;email_status:string}>();
+ const existing=await db.prepare('SELECT payload, created_at, email_status, callback_status FROM leads WHERE id = ?').bind(id).first<{payload:string;created_at:number;email_status:string;callback_status:string}>();
  if(!existing||existing.payload!==serialised)throw new Error('This form has already been used with different answers. Please start a new request.');
- return {createdAt:existing.created_at,emailStatus:existing.email_status};
+ return {createdAt:existing.created_at,emailStatus:existing.email_status,callbackStatus:existing.callback_status};
 }
 export async function emailMessage(id:string,to:string,subject:string,text:string,attachment?:{filename:string;content:string}){
  const e=runtime();
@@ -40,3 +40,4 @@ export async function emailMessage(id:string,to:string,subject:string,text:strin
  }catch{return 'failed';}
 }
 export async function updateDelivery(id:string,status:string){await runtime().DB.prepare('UPDATE leads SET email_status = ? WHERE id = ?').bind(status,id).run();}
+export async function updateCallbackDelivery(id:string,status:string){await runtime().DB.prepare('UPDATE leads SET callback_status = ? WHERE id = ?').bind(status,id).run();}

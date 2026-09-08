@@ -24,6 +24,8 @@ The user supplied `https://www.instagram.com/bettercallsimuk/`. Its contents wer
 
 Both routes validate input, reject cross-origin submissions, enforce a request size limit, rate-limit hashed IP buckets and use a unique request ID to handle retries. Successful submissions accurately disclose whether email is connected. Failed submission states retain the visitor’s entries. Any message to an adviser is server-side only.
 
+Unchanged retries reuse their request identity; corrected contact details, consent or calculator answers receive a new identity. Report and callback notifications have independent delivery states and idempotency keys. A failed report delivery can be retried from the result screen, and the attachment is deterministic for the saved request.
+
 Configure the keys in `.env.example` as hosted secrets through Sites when the client has selected and authorised the email setup:
 
 - `RESEND_API_KEY` and `REPORT_FROM_EMAIL`: requested report delivery from a verified sending domain.
@@ -48,5 +50,7 @@ This site remains a private preview with search indexing disabled. Complete the 
 Telephone/WhatsApp controls lead to the contact page while numbers are unverified, rather than using invented numbers. The supplied Instagram profile works as an external contact route. Authentic adviser video assets must be supplied with captions/transcripts before embedding; the current video feature links to Instagram. The three planning scenarios are explicitly fictional illustrations and can be replaced by consented genuine case studies.
 
 ## Hosting
+
+The scaffold's affected runtime dependencies have been updated. The remaining moderate audit finding is in Drizzle Kit's development-only esbuild transformer chain; its inspected use is transform/transformSync, while the advisory concerns the esbuild development server. Keep it out of the deployed Worker and reassess when Drizzle provides a compatible update. Do not apply npm audit's suggested breaking Drizzle downgrade.
 
 `.openai/hosting.json` records the existing Sites project and the logical D1 binding. Keep this ID when iterating. Source credentials are never stored in the repository. Production packaging must include the Worker, browser assets, logical hosting metadata and generated migrations. A public deployment is a separate action from the private review preview.

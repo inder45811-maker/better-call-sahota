@@ -1,7 +1,7 @@
 import {test,expect} from '@playwright/test';
 import {randomUUID} from 'node:crypto';
 import {writeFile,mkdir} from 'node:fs/promises';
-import services from '../../lib/services.json';
+import services from '../../lib/services.json' with {type:'json'};
 const calculator={date:'2026-09-08',scenario:'individual',residence:'straightforward-uk',beneficiaries:'others',home:0,homeMortgage:0,savings:500000,investments:0,otherAssets:0,debts:0,pensions:0,qualifyingHome:'no',transferNrb:'0',transferRnrb:'0',pensionTreatment:'none',complexity:'none'};
 const lead=()=>({requestId:randomUUID(),name:'Preview Visitor',email:'preview@example.com',phone:'',interest:'IHT report',contactMethod:'email',message:'',marketingEmail:false,callback:false,website:''});
 test('desktop and mobile homepage render without overflow and primary paths work',async({page})=>{
@@ -32,7 +32,8 @@ test('calculator can be completed from its visible controls and downloads a PDF'
 });
 test('report API preserves estimates, supports retries, rejects cross-origin and handles complex scenarios',async({request})=>{
  const person=lead();const response=await request.post('/api/report',{data:{lead:person,calculator}});expect(response.status()).toBe(200);const result=await response.json();expect(result.result.tax).toBe(70000);expect(Buffer.from(result.pdf,'base64').subarray(0,5).toString()).toBe('%PDF-');expect(result.delivery).toBe('not-configured');
- const retry=await request.post('/api/report',{data:{lead:person,calculator}});expect(retry.status()).toBe(200);expect((await retry.json()).reference).toBe(result.reference);
+ const retry=await request.post('/api/report',{data:{lead:person,calculator}});expect(retry.status()).toBe(200);const retried=await retry.json();expect(retried.reference).toBe(result.reference);expect(retried.pdf).toBe(result.pdf);
+ const callback=await request.post('/api/report',{data:{lead:{...lead(),callback:true,contactMethod:'phone',phone:'07700 900123'},calculator}});expect(callback.status()).toBe(200);expect((await callback.json()).callbackDelivery).toBe('not-configured');
  const complex=await request.post('/api/report',{data:{lead:lead(),calculator:{...calculator,complexity:'yes'}}});expect(complex.status()).toBe(200);expect((await complex.json()).result.tax).toBe(null);
  const invalid=await request.post('/api/report',{data:{lead:lead(),calculator:{...calculator,savings:-1}}});expect(invalid.status()).toBe(400);
  const cross=await request.post('/api/enquiry',{headers:{Origin:'https://other.example'},data:lead()});expect(cross.status()).toBe(400);
