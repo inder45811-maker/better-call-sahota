@@ -1,26 +1,30 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import {
   ArrowUpRight,
-  ArrowRight,
-  Sprout,
   ShieldCheck,
   House,
-  FileText,
+  TrendingUp,
+  Phone,
+  Check,
   Play,
-  Camera as Instagram,
+  Camera,
 } from 'lucide-react';
 import { PlanningStages } from '@/components/planning-stages';
 import { ArticleCards, StoryCards, ReviewJourney, ReviewButton } from '@/components/content';
+import { ContactLink } from '@/components/site-shell';
 import { Faq } from '@/components/faq';
 import { homeFaqs, site } from '@/lib/site';
 
 export default function Home() {
   return (
-    <>
-      <main id="main">
-        <section className="hero container">
-          <div className="hero-copy">
-            <p className="eyebrow">A LITTLE CLARITY. A BIGGER PICTURE.</p>
+    <main id="main">
+      <section className="bcs-hero">
+        <div className="container bcs-hero-grid">
+          <div className="bcs-hero-copy">
+            <p className="eyebrow">
+              <span className="status-dot" />
+              THE BIG PICTURE. PERSONALLY PLANNED.
+            </p>
             <h1>
               Your wealth.
               <br />
@@ -30,297 +34,333 @@ export default function Home() {
               <br />
               <em>One plan.</em>
             </h1>
-            <p className="hero-description">
-              Life is connected. Your planning should be too. Bring your finances, property
-              decisions and estate planning together around what matters to you.
-            </p>
-            <Link className="button" href="/book-review">
-              Book Your Financial &amp; Estate Review <ArrowUpRight size={18} />
-            </Link>
-            <a className="text-link" href="#services">
-              Explore how I can help <ArrowRight size={16} />
-            </a>
-          </div>
-          <div className="hero-visual">
-            <div
-              className="hero-photo"
-              role="img"
-              aria-label="A light-filled contemporary home opening onto a green courtyard"
-            />
-            <div className="photo-caption">
-              <span className="tiny-rule" /> FOR THE LIFE YOU&apos;RE BUILDING.
-              <br />
-              <span className="caption-second">And the people you&apos;re building it for.</span>
-            </div>
-            <div className="hero-note">
-              <span className="note-symbol">
-                <Sprout size={25} />
-              </span>
-              <div>
-                <p>A joined-up approach.</p>
-                <span>From your first steps to your lasting legacy.</span>
-              </div>
-            </div>
-            <div className="hero-aside">THOUGHTFULLY PLANNED. PERSONALLY GUIDED.</div>
-          </div>
-        </section>
-        <section className="approach-strip">
-          <div className="container approach-inner">
-            <span>ONE BIGGER PICTURE</span>
-            <p>Your goals at the centre.</p>
-            <p>Clear, practical conversations.</p>
-            <p>Planning that connects.</p>
-          </div>
-        </section>
-        <section id="services" className="section container">
-          <div className="section-heading">
-            <div>
-              <p className="eyebrow">HOW I CAN HELP</p>
-              <h2>
-                Different needs.
-                <br />
-                <em>One clear direction.</em>
-              </h2>
-            </div>
             <p>
-              From the home you buy to the wealth you pass on, see how the pieces of your plan fit
-              together.
+              Your finances, your property and your family’s future. Bring it all together with a
+              Financial &amp; Estate Review.
             </p>
-          </div>
-          <div className="pillar-grid">
-            {[
-              {
-                title: 'Estate Planning',
-                icon: ShieldCheck,
-                desc: 'Make your wishes clear and plan for the people who matter most.',
-                services: 'Wills · Trusts · LPAs · Inheritance Tax',
-                url: '/estate-planning',
-              },
-              {
-                title: 'Financial Advice',
-                icon: Sprout,
-                desc: 'Give your money a purpose, through every chapter of your life.',
-                services: 'Investments · Pensions · Protection',
-                url: '/financial-advice',
-              },
-              {
-                title: 'Property Finance',
-                icon: House,
-                desc: 'Find the right starting point for your next property decision.',
-                services: 'Mortgages · Remortgages · Equity Release',
-                url: '/property-finance',
-              },
-            ].map((p, i) => (
-              <Link key={p.title} className="pillar-card" href={p.url}>
-                <div className="pillar-top">
-                  <p.icon size={31} strokeWidth={1.3} />
-                  <span>0{i + 1}</span>
-                </div>
-                <h3>{p.title}</h3>
-                <p>{p.desc}</p>
-                <span className="pillar-services">{p.services}</span>
-                <span className="pillar-link">
-                  Explore {p.title.toLowerCase()} <ArrowUpRight size={19} />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </section>
-        <section className="plan-section section" id="the-plan">
-          <div className="container">
-            <div className="section-heading">
-              <div>
-                <p className="eyebrow">A PLAN THAT MOVES WITH YOU</p>
-                <h2>
-                  Every chapter.
-                  <br />
-                  <em>Connected.</em>
-                </h2>
-              </div>
-              <p>
-                You don’t live your life in separate boxes. Your financial and estate planning
-                shouldn’t either.
-              </p>
+            <ReviewButton />
+            <div className="hero-secondary">
+              <ContactLink type="whatsapp">Let’s talk on WhatsApp</ContactLink>
+              <span>No jargon. A real conversation.</span>
             </div>
-            <PlanningStages />
           </div>
-        </section>
-        <section className="section container personal-section">
-          <div className="personal-image">
+          <div className="bcs-hero-visual">
+            <span className="hero-watermark" aria-hidden="true">
+              BETTER
+              <br />
+              CALL SIM.
+            </span>
+            <div className="hero-gold-line" aria-hidden="true" />
             <img
-              src="/images/legacy.jpg"
-              width="800"
-              height="1100"
-              loading="lazy"
-              alt="A mature tree overlooking peaceful rolling fields in Devon"
+              className="sim-hero-portrait"
+              src="/brand/simran-sahota.png"
+              alt="Simran Sahota, the person behind Better Call Sim"
+              width="700"
+              height="850"
+              fetchPriority="high"
             />
-            <div className="image-quote">
-              The best place to start?
-              <br />
-              <em>What matters to you.</em>
-            </div>
-          </div>
-          <div className="personal-copy">
-            <p className="eyebrow">A PERSONAL APPROACH</p>
-            <h2>
-              Big decisions.
-              <br />
-              <em>A real conversation.</em>
-            </h2>
-            <p>
-              It might be a new home. A growing family. The business you’ve built. Or simply a
-              feeling that it’s time to get things in order.
-            </p>
-            <p>
-              Better Call Sim brings these conversations together, so you can start with your life
-              and work towards a clearer plan.
-            </p>
-            <div className="adviser-signoff">
-              <span className="small-monogram">S.</span>
+            <div className="sim-nameplate">
               <div>
-                <strong>Sim</strong>
-                <span>The person behind Better Call Sim</span>
+                <span>YOUR PLAN STARTS WITH A PERSON.</span>
+                <strong>SIMRAN SAHOTA</strong>
               </div>
+              <Link href="/meet-sim" aria-label="Meet Simran Sahota">
+                <ArrowUpRight size={27} />
+              </Link>
             </div>
-            <Link href="/meet-sim" className="text-link">
-              Get to know Sim <ArrowUpRight size={17} />
-            </Link>
+            <div className="hero-personal-note">
+              <Phone size={18} />
+              <span>
+                BIG DECISIONS?
+                <br />
+                <b>BETTER CALL SIM.</b>
+              </span>
+            </div>
           </div>
-        </section>
-        <section className="calculator-feature container">
-          <div className="calculator-feature-copy">
-            <p className="eyebrow">A LITTLE INSIGHT GOES A LONG WAY</p>
+        </div>
+      </section>
+      <div className="bcs-marquee" aria-label="Build, grow, protect, pass on">
+        <div className="container">
+          <span>BUILD</span>
+          <ArrowUpRight />
+          <span>GROW</span>
+          <ArrowUpRight />
+          <span>PROTECT</span>
+          <ArrowUpRight />
+          <span>PASS ON</span>
+        </div>
+      </div>
+      <section className="section container" id="services">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">THREE AREAS. ONE BIGGER PICTURE.</p>
             <h2>
-              What could inheritance tax
+              Life doesn’t come
               <br />
-              <em>mean for your family?</em>
+              <em>in separate boxes.</em>
+            </h2>
+          </div>
+          <p>
+            Neither should your planning. Connect the decisions you make today with the future you
+            want to build.
+          </p>
+        </div>
+        <div className="bcs-services">
+          {[
+            {
+              n: '01',
+              title: 'Estate Planning',
+              icon: ShieldCheck,
+              tag: 'LOOK AFTER WHAT MATTERS.',
+              desc: 'Make your wishes clear. Plan for the people and the legacy you leave behind.',
+              items: [
+                'Wills & Trusts',
+                'LPAs & Inheritance Tax',
+                'Bloodline, Business & Care Planning',
+              ],
+              url: '/estate-planning',
+            },
+            {
+              n: '02',
+              title: 'Financial Advice',
+              icon: TrendingUp,
+              tag: 'GIVE YOUR MONEY A PURPOSE.',
+              desc: 'Connect your investments, retirement plans and protection with your life.',
+              items: [
+                'Investments, ISAs & Bonds',
+                'Pensions & Life Assurance',
+                'Income & Business Protection',
+              ],
+              url: '/financial-advice',
+            },
+            {
+              n: '03',
+              title: 'Property Finance',
+              icon: House,
+              tag: 'MAKE YOUR NEXT MOVE COUNT.',
+              desc: 'From your first property to your next investment, explore the way forward.',
+              items: [
+                'Mortgages & Remortgages',
+                'Buy-to-Let & Bridging',
+                'Second Charges & Equity Release',
+              ],
+              url: '/property-finance',
+            },
+          ].map((p) => (
+            <Link className="bcs-service-card" href={p.url} key={p.n}>
+              <div className="bcs-service-top">
+                <p.icon size={35} strokeWidth={1.3} />
+                <span>{p.n}</span>
+              </div>
+              <p className="bcs-card-kicker">{p.tag}</p>
+              <h3>{p.title}</h3>
+              <p>{p.desc}</p>
+              <ul>
+                {p.items.map((item) => (
+                  <li key={item}>
+                    <Check size={14} />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <span className="bcs-card-link">
+                Explore {p.title.toLowerCase()}
+                <ArrowUpRight size={22} />
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
+      <section className="bcs-personal">
+        <div className="container bcs-personal-grid">
+          <div>
+            <p className="eyebrow">THE PERSON BEHIND THE PLAN</p>
+            <h2>
+              Big on clarity.
+              <br />
+              <em>Personal by design.</em>
             </h2>
             <p>
-              Get an illustrative view of your estate, understand the assumptions and take a useful
-              starting point into your next conversation.
+              A new home. A growing family. A business you’ve worked hard to build. You don’t need a
+              stack of disconnected conversations. You need somewhere to start.
             </p>
-            <Link href="/iht-calculator" className="button button-light">
-              Estimate Your IHT Position <ArrowUpRight size={18} />
+            <p>
+              I’m Simran Sahota. Better Call Sim brings financial, property and estate-planning
+              conversations together around you.
+            </p>
+            <Link className="text-link" href="/meet-sim">
+              Meet Sim <ArrowUpRight size={19} />
             </Link>
-            <span className="calculator-feature-note">
-              Name and email requested for your report. Illustration only.
+          </div>
+          <div className="bcs-personal-statement">
+            <span>
+              YOUR GOALS.
+              <br />
+              YOUR PEOPLE.
+              <br />
+              <b>LET’S TALK.</b>
+            </span>
+            <div>
+              <img
+                src="/brand/better-call-sim-logo.png"
+                alt="Better Call Sim"
+                width="230"
+                height="100"
+              />
+              <a
+                href={site.instagram}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Visit Sim on Instagram"
+              >
+                <Camera size={24} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="section container bcs-plan" id="the-plan">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">THE BETTER CALL SIM APPROACH</p>
+            <h2>
+              A plan for now.
+              <br />
+              <em>And what’s next.</em>
+            </h2>
+          </div>
+          <p>Four connected stages. Start where you are, and keep your whole life in view.</p>
+        </div>
+        <PlanningStages />
+      </section>
+      <section className="bcs-iht">
+        <div className="container bcs-iht-grid">
+          <div>
+            <p className="eyebrow">KNOW WHERE YOU STAND</p>
+            <h2>
+              Do you have an
+              <br />
+              <em>
+                inheritance tax
+                <br />
+                question?
+              </em>
+            </h2>
+            <p>
+              Get an illustrative view of your estate and a personalised report showing the
+              assumptions and questions worth exploring.
+            </p>
+            <Link href="/iht-calculator" className="button">
+              Get My IHT Illustration <ArrowUpRight size={20} />
+            </Link>
+            <span className="bcs-small">
+              Name and email requested. Illustration only, not personal advice.
             </span>
           </div>
-          <div className="report-preview" aria-label="Report contents">
-            <div className="report-preview-head">
+          <div className="bcs-tax-visual">
+            <span className="tax-label">THE STANDARD IHT RATE</span>
+            <strong>
+              40<span>%</span>
+            </strong>
+            <p>
+              can apply to the taxable part of an estate.
+              <br />
+              Your allowances and circumstances matter.
+            </p>
+            <div className="tax-visual-footer">
+              <ShieldCheck size={23} />
               <span>
-                better call <b>sim.</b>
+                Understand the picture.
+                <br />
+                <b>Then plan the next step.</b>
               </span>
-              <FileText size={20} />
-            </div>
-            <p className="eyebrow">YOUR IHT ILLUSTRATION</p>
-            <h3>
-              Your estate.
-              <br />A clearer picture.
-            </h3>
-            <div className="report-line">
-              <span>Your estate overview</span>
-              <span>01</span>
-            </div>
-            <div className="report-line">
-              <span>Allowances & assumptions</span>
-              <span>02</span>
-            </div>
-            <div className="report-line">
-              <span>Questions to explore</span>
-              <span>03</span>
-            </div>
-            <div className="report-preview-bottom">
-              <span>Prepared around your answers</span>
-              <ArrowUpRight size={18} />
             </div>
           </div>
-        </section>
-        <section className="section container">
-          <div className="section-heading">
-            <div>
-              <p className="eyebrow">PUTTING THE PIECES TOGETHER</p>
-              <h2>
-                Life rarely fits
-                <br />
-                <em>into one category.</em>
-              </h2>
-            </div>
-            <div>
-              <p className="heading-note">
-                Explore three illustrative planning scenarios. These are examples, not actual client
-                case studies.
-              </p>
-              <Link href="/case-studies" className="text-link">
-                Explore the scenarios <ArrowUpRight size={16} />
-              </Link>
-            </div>
+        </div>
+      </section>
+      <section className="section container">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">PLANNING IN THE REAL WORLD</p>
+            <h2>
+              Different lives.
+              <br />
+              <em>Connected decisions.</em>
+            </h2>
           </div>
-          <StoryCards />
-        </section>
-        <section className="review-section section">
-          <div className="container">
-            <div className="center-heading">
-              <p className="eyebrow">YOUR FINANCIAL & ESTATE REVIEW</p>
-              <h2>
-                Clarity starts
-                <br />
-                <em>with a conversation.</em>
-              </h2>
-              <p>A simple way to bring the bigger picture into focus.</p>
-            </div>
-            <ReviewJourney />
-            <div className="center-action">
-              <ReviewButton />
-              <p>Scope, format and any fee confirmed before you proceed.</p>
-            </div>
-          </div>
-        </section>
-        <section className="section container">
-          <div className="section-heading">
-            <div>
-              <p className="eyebrow">A LITTLE KNOWLEDGE. MORE CONFIDENCE.</p>
-              <h2>
-                The bigger picture,
-                <br />
-                <em>made clearer.</em>
-              </h2>
-            </div>
-            <Link className="text-link" href="/insights">
-              All insights <ArrowUpRight size={17} />
+          <div>
+            <p className="heading-note">
+              Three hypothetical scenarios showing how the pieces fit together. These are
+              illustrations, not client results.
+            </p>
+            <Link className="text-link" href="/case-studies">
+              Explore the scenarios <ArrowUpRight size={18} />
             </Link>
           </div>
-          <ArticleCards />
-          <div className="instagram-feature">
-            <div className="instagram-icon">
-              <Instagram size={29} />
-            </div>
-            <div>
-              <h3>More conversations with Sim.</h3>
-              <p>Explore Sim’s posts and videos on Instagram.</p>
-            </div>
-            <a href={site.instagram} target="_blank" rel="noreferrer" className="text-link">
-              Visit @bettercallsimuk <ArrowUpRight size={18} />
-            </a>
+        </div>
+        <StoryCards />
+      </section>
+      <section className="bcs-review section">
+        <div className="container">
+          <div className="center-heading">
+            <p className="eyebrow">YOUR FINANCIAL &amp; ESTATE REVIEW</p>
+            <h2>
+              Let’s make the
+              <br />
+              <em>first move simple.</em>
+            </h2>
           </div>
-        </section>
-        <section className="faq-section section">
-          <div className="container faq-layout">
-            <div>
-              <p className="eyebrow">GOOD QUESTIONS DESERVE CLEAR ANSWERS</p>
-              <h2>
-                A few things
-                <br />
-                <em>you might be wondering.</em>
-              </h2>
-              <Link href="/contact" className="text-link">
-                Have another question? Let’s talk <ArrowUpRight size={17} />
-              </Link>
-            </div>
-            <Faq items={homeFaqs} />
+          <ReviewJourney />
+          <div className="center-action">
+            <ReviewButton />
+            <p>The scope, format and any fee are agreed before you proceed.</p>
           </div>
-        </section>
-      </main>
-    </>
+        </div>
+      </section>
+      <section className="section container">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">STRAIGHT-TALKING INSIGHTS</p>
+            <h2>
+              Big topics.
+              <br />
+              <em>Made clearer.</em>
+            </h2>
+          </div>
+          <Link className="text-link" href="/insights">
+            Explore the guides <ArrowUpRight size={18} />
+          </Link>
+        </div>
+        <ArticleCards />
+        <a className="bcs-social-banner" href={site.instagram} target="_blank" rel="noreferrer">
+          <span className="bcs-play">
+            <Play size={23} fill="currentColor" />
+          </span>
+          <div>
+            <h3>More from Better Call Sim.</h3>
+            <p>Explore Sim’s educational posts and videos on Instagram.</p>
+          </div>
+          <span>
+            @bettercallsimuk <ArrowUpRight size={23} />
+          </span>
+        </a>
+      </section>
+      <section className="faq-section section">
+        <div className="container faq-layout">
+          <div>
+            <p className="eyebrow">LET’S CLEAR A FEW THINGS UP</p>
+            <h2>
+              Good questions.
+              <br />
+              <em>Clear answers.</em>
+            </h2>
+            <Link href="/contact" className="text-link">
+              Ask Sim a question <ArrowUpRight size={18} />
+            </Link>
+          </div>
+          <Faq items={homeFaqs} />
+        </div>
+      </section>
+    </main>
   );
 }

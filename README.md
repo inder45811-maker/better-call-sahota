@@ -16,7 +16,7 @@ GitHub Actions runs installation, type checking, unit tests, Drizzle migration g
 - `lib/legal.ts`: preview policy wording and provider-specific regulatory information.
 - `app/globals.css`: shared theme and responsive design.
 
-The user supplied `https://www.instagram.com/bettercallsimuk/`. Its contents were not accessible during the build. Only that link has been used; no name, portrait, experience, credentials or contact number was inferred. Photos are contextual images, not Sim’s property or client assets. See `CONTENT-SOURCES.md` and `ASSET-SOURCES.md`.
+The user supplied `https://www.instagram.com/bettercallsimuk/` and three screenshots of the profile and posts. The revised design follows that black/navy and yellow visual identity. Those screenshots identify Simran Sahota, display 07711 902299 and link to `https://calendly.com/estateplanningexpertise`. The site uses those supplied contact details and a short proposed biography without invented qualifications. The logo and portrait are cleaned preview reconstructions; replace them with original high-resolution assets when available. See `CONTENT-SOURCES.md` and `ASSET-SOURCES.md`.
 
 ## Enquiries and reports
 
@@ -47,7 +47,7 @@ The PDF and on-screen amounts use the same server result. No projected savings, 
 
 This site remains a private preview with search indexing disabled. Complete the client inputs in `LAUNCH-CHECKLIST.md` before changing `site.preview` or requesting public deployment. In particular, verify the actual financial/property providers and permissions, estate-planning provider and jurisdiction, legal identity, direct contact details, biography and any credentials. Do not add an FCA or STEP badge on assumption.
 
-Telephone/WhatsApp controls lead to the contact page while numbers are unverified, rather than using invented numbers. The supplied Instagram profile works as an external contact route. Authentic adviser video assets must be supplied with captions/transcripts before embedding; the current video feature links to Instagram. The three planning scenarios are explicitly fictional illustrations and can be replaced by consented genuine case studies.
+Telephone and WhatsApp controls use the number displayed in the supplied posts. The review page also links to the Calendly profile shown in the supplied bio. Authentic adviser video assets must be supplied with captions/transcripts before embedding; the current video feature links to Instagram. The three planning scenarios are explicitly fictional illustrations and can be replaced by consented genuine case studies.
 
 ## Hosting
 

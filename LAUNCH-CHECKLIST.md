@@ -1,8 +1,8 @@
 # Client details required before public launch
 
 - [ ] Confirm the brand name and approve the design/copy.
-- [ ] Supply Sim’s full professional name, approved biography, authentic portrait and any verified qualifications.
-- [ ] Confirm phone, WhatsApp, email, service areas, business hours and any office address.
+- [ ] Approve the proposed biography for Simran Sahota and supply the original portrait/logo plus any verified qualifications.
+- [ ] Confirm the phone/WhatsApp number and Calendly link transcribed from the supplied screenshots; supply email, service areas, business hours and any office address.
 - [ ] Confirm the actual legal entity and estate-planning provider/jurisdiction.
 - [ ] Supply the regulated provider, FCA number/permissions and any AR/principal or introducer wording; approve page-specific risks and complaints routes.
 - [ ] Confirm review scope, meeting formats, duration and cost, and connect any approved booking calendar.

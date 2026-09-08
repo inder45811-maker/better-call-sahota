@@ -1,20 +1,21 @@
 export const site = {
   name: 'Better Call Sim',
-  adviser: 'Sim',
+  adviser: 'Simran Sahota',
   instagram: 'https://www.instagram.com/bettercallsimuk/',
-  origin: 'https://better-call-sim.secret-gnome-9852.chatgpt.site',
+  origin: 'https://better-call-sim.indi678678.chatgpt.site',
   preview: true,
   // Replace only with client-verified details. Do not add example numbers.
-  phone: '',
-  whatsapp: '',
+  phone: '+44 7711 902299',
+  whatsapp: '+44 7711 902299',
   email: '',
   legalEntity: '',
   regulatedProvider: '',
   fcaReference: '',
   principal: '',
-  adviserPortrait: '',
-  adviserStory: '',
-  bookingUrl: '',
+  adviserPortrait: '/brand/simran-sahota.png',
+  adviserStory:
+    'I’m Simran Sahota, the person behind Better Call Sim. My approach starts with a conversation about your family, your priorities and what you want to put in place. This website brings those estate-planning conversations together with the financial and property questions that often sit alongside them.',
+  bookingUrl: 'https://calendly.com/estateplanningexpertise',
 };
 export const REVIEW_CTA = 'Book Your Financial & Estate Review';
 export const pillars = [

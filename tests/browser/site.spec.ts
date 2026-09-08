@@ -45,16 +45,15 @@ test('desktop and mobile homepage render without overflow and primary paths work
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.evaluate(() => document.fonts.ready);
   expect(await page.locator('h1').evaluate((el) => getComputedStyle(el).fontFamily)).toContain(
-    'Cormorant Garamond',
+    'Anton',
   );
-  expect(await page.evaluate(() => document.fonts.check('400 32px "Cormorant Garamond"'))).toBe(
-    true,
-  );
+  expect(await page.evaluate(() => document.fonts.check('400 32px "Anton"'))).toBe(true);
   await page.screenshot({ path: 'artifacts/home-desktop.png', fullPage: true });
   await page.screenshot({ path: 'artifacts/home-desktop-viewport.png' });
   await page.getByRole('button', { name: 'How I Help', exact: true }).click();
   await page.getByRole('menuitem', { name: 'Estate Planning' }).click();
   await expect(page).toHaveURL(/estate-planning$/);
+  await page.screenshot({ path: 'artifacts/estate-planning-desktop.png', fullPage: true });
   await page.setViewportSize({ width: 360, height: 800 });
   await page.goto('/');
   await expect(page.getByRole('button', { name: 'Open navigation' })).toBeVisible();
@@ -69,6 +68,7 @@ test('desktop and mobile homepage render without overflow and primary paths work
     .getByRole('link', { name: 'IHT calculator' })
     .click();
   await expect(page).toHaveURL(/iht-calculator$/);
+  await page.screenshot({ path: 'artifacts/calculator-mobile-start.png', fullPage: true });
   expect(errors).toEqual([]);
 });
 test('all service routes and requested content pages respond with meaningful headings', async ({

@@ -318,6 +318,11 @@ export default async function ContentPage({ params }: PageProps) {
             </ul>
             <div className="booking-expectation">
               <p className="eyebrow">WHAT HAPPENS NEXT</p>
+              {site.bookingUrl && (
+                <a href={site.bookingUrl} className="button" target="_blank" rel="noreferrer">
+                  Choose a time with Sim <ArrowUpRight size={18} />
+                </a>
+              )}
               <p>
                 Your request is reviewed before an appointment is agreed. The format, duration,
                 scope and any fee will be confirmed with you.
