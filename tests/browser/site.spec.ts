@@ -96,23 +96,39 @@ test('all service routes and requested content pages respond with meaningful hea
     expect((await request.get('/' + route)).status(), route).toBe(200);
   expect((await request.get('/not-a-real-page')).status()).toBe(404);
 });
-test('review form saves a request without marketing consent and never claims a confirmed appointment', async ({
-  page,
-}) => {
+test('review form reports email failure honestly and keeps entered details', async ({ page }) => {
+  await page.goto('/book-review');
+  await expect(page.locator('a[href*="calendly"]')).toHaveCount(0);
+  await page.getByLabel('Your name', { exact: true }).fill('Preview Visitor');
+  await page.getByLabel('Email address', { exact: true }).fill('preview@example.com');
+  await page.getByRole('button', { name: 'Request Your Financial & Estate Review' }).click();
+  await expect(page.getByRole('alert')).toContainText('not been sent or saved');
+  await expect(page.getByLabel('Your name', { exact: true })).toHaveValue('Preview Visitor');
+});
+test('review form shows success only after accepted delivery', async ({ page }) => {
+  await page.route('**/api/enquiry', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({ delivery: 'sent', reference: 'test1234' }),
+    }),
+  );
   await page.goto('/book-review');
   await page.getByLabel('Your name', { exact: true }).fill('Preview Visitor');
   await page.getByLabel('Email address', { exact: true }).fill('preview@example.com');
   await page.getByRole('button', { name: 'Request Your Financial & Estate Review' }).click();
-  await expect(page.getByRole('heading', { name: /Your review request/ })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /Your review request/ })).toContainText('sent');
   await expect(
-    page.getByText(
-      'This is a private preview. Adviser email notifications are not connected, so please use sample details. To contact Sim now, use the Instagram profile below.',
-    ),
+    page.getByText('An appointment is not booked automatically.', { exact: false }),
   ).toBeVisible();
 });
 test('calculator can be completed from its visible controls and downloads a PDF', async ({
   page,
 }) => {
+  const submissions: string[] = [];
+  page.on('request', (r) => {
+    if (r.method() === 'POST') submissions.push(r.url());
+  });
   await page.goto('/iht-calculator');
   async function choose(label: string, option: string) {
     await page.getByRole('combobox', { name: label, exact: true }).click();
@@ -129,8 +145,8 @@ test('calculator can be completed from its visible controls and downloads a PDF'
   await choose('Does a qualifying home pass outright to direct descendants?', 'No');
   await choose('Are there any specialist circumstances?', 'None of these apply');
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
-  await page.getByLabel('Your name', { exact: true }).fill('Preview Visitor');
-  await page.getByLabel('Email address', { exact: true }).fill('preview@example.com');
+  await expect(page.locator('input[type=email]')).toHaveCount(0);
+  await page.getByLabel('Your name (optional)', { exact: true }).fill('Preview Visitor');
   await page.getByRole('button', { name: 'Create My IHT Report' }).click();
   await expect(page.locator('.result-amount strong')).toHaveText('£70,000');
   const downloadPromise = page.waitForEvent('download');
@@ -138,69 +154,24 @@ test('calculator can be completed from its visible controls and downloads a PDF'
   const download = await downloadPromise;
   await download.saveAs('artifacts/sample-iht-report.pdf');
   await page.screenshot({ path: 'artifacts/calculator-result.png', fullPage: true });
+  expect(submissions).toEqual([]);
 });
-test('report API preserves estimates, supports retries, rejects cross-origin and handles complex scenarios', async ({
+test('email-only API rejects bad requests and retired report endpoints cannot save details', async ({
   request,
 }) => {
-  const person = lead();
-  const response = await request.post('/api/report', { data: { lead: person, calculator } });
-  expect(response.status()).toBe(200);
-  const result = await response.json();
-  expect(result.result.tax).toBe(70000);
-  expect(Buffer.from(result.pdf, 'base64').subarray(0, 5).toString()).toBe('%PDF-');
-  expect(result.delivery).toBe('not-configured');
-  const retry = await request.post('/api/report', { data: { lead: person, calculator } });
-  expect(retry.status()).toBe(200);
-  const retried = await retry.json();
-  expect(retried.reference).toBe(result.reference);
-  expect(retried.pdf).toBe(result.pdf);
-  const callback = await request.post('/api/report', {
-    data: {
-      lead: { ...lead(), callback: true, contactMethod: 'phone', phone: '07700 900123' },
-      calculator,
-    },
-  });
-  expect(callback.status()).toBe(200);
-  expect((await callback.json()).callbackDelivery).toBe('not-configured');
-  const complex = await request.post('/api/report', {
-    data: { lead: lead(), calculator: { ...calculator, complexity: 'yes' } },
-  });
-  expect(complex.status()).toBe(200);
-  expect((await complex.json()).result.tax).toBe(null);
-  const invalid = await request.post('/api/report', {
-    data: { lead: lead(), calculator: { ...calculator, savings: -1 } },
-  });
-  expect(invalid.status()).toBe(400);
   const cross = await request.post('/api/enquiry', {
     headers: { Origin: 'https://other.example' },
     data: lead(),
   });
   expect(cross.status()).toBe(400);
-  const maintenance = await request.post('/api/maintenance');
-  expect(maintenance.status()).toBe(401);
-  expect((await request.get('/api/maintenance')).status()).toBe(401);
-});
-
-test('PostgreSQL stores one record per retry and authenticated cleanup removes only expired records', async ({ request }) => {
-  const { default: postgres } = await import('postgres');
-  const sql = postgres(process.env.DATABASE_URL!, { max: 1 });
-  const person = lead();
-  const expiredId = randomUUID();
-  try {
-    const payload = { lead: person, calculator };
-    expect((await request.post('/api/report', { data: payload })).status()).toBe(200);
-    expect((await request.post('/api/report', { data: payload })).status()).toBe(200);
-    const records = await sql`SELECT payload, email_status, callback_status FROM leads WHERE id = ${person.requestId}`;
-    expect(records).toHaveLength(1);
-    expect(JSON.parse(records[0].payload).lead.marketingEmail).toBe(false);
-    expect(records[0].email_status).toBe('not-configured');
-    expect(records[0].callback_status).toBe('not-requested');
-    await sql`INSERT INTO leads (id, kind, payload, created_at, expires_at, consent_version)
-      VALUES (${expiredId}, 'test', '{}', 0, 1, 'test')`;
-    expect((await request.get('/api/maintenance', { headers: { Authorization: 'Bearer ' + process.env.CRON_SECRET } })).status()).toBe(200);
-    expect(await sql`SELECT id FROM leads WHERE id = ${expiredId}`).toHaveLength(0);
-    expect(await sql`SELECT id FROM leads WHERE id = ${person.requestId}`).toHaveLength(1);
-  } finally {
-    await sql.end();
-  }
+  expect(
+    (await request.post('/api/enquiry', { data: { ...lead(), website: 'bot' } })).status(),
+  ).toBe(400);
+  const unavailable = await request.post('/api/enquiry', { data: lead() });
+  expect(unavailable.status()).toBe(503);
+  expect((await unavailable.json()).error).toContain('not been sent or saved');
+  expect((await request.post('/api/report', { data: { calculator, lead: lead() } })).status()).toBe(
+    410,
+  );
+  expect((await request.get('/api/maintenance')).status()).toBe(410);
 });

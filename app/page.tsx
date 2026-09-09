@@ -257,7 +257,7 @@ export default function Home() {
               Get My IHT Illustration <ArrowUpRight size={20} />
             </Link>
             <span className="bcs-small">
-              Name and email requested. Illustration only, not personal advice.
+              Free browser download. No email required. Illustration only, not personal advice.
             </span>
           </div>
           <div className="bcs-tax-visual">

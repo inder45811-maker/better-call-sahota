@@ -13,7 +13,7 @@ import {
   Info,
 } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
-import { Choice, CheckField } from './form-controls';
+import { Choice } from './form-controls';
 import {
   EMPTY_IHT,
   IHT_RULES,
@@ -23,9 +23,7 @@ import {
   type IhtInput,
   type IhtResult,
 } from '@/lib/iht';
-import { MARKETING_COPY, validateLead, type LeadInput } from '@/lib/validation';
-import { identifySubmission } from '@/lib/submission';
-import { site, REVIEW_CTA } from '@/lib/site';
+import { REVIEW_CTA } from '@/lib/site';
 const opts = (entries: [string, string][]) => entries.map(([value, label]) => ({ value, label }));
 const tri = opts([
   ['yes', 'Yes'],
@@ -41,24 +39,17 @@ const transfer = opts([
 const steps = ['Your situation', 'Your assets', 'Your allowances', 'Your report'];
 type ReportResponse = {
   result: IhtResult;
-  delivery: string;
-  callbackDelivery: string;
   pdf: string;
   reference: string;
 };
-type ReportSubmission = { calculator: IhtInput; lead: LeadInput };
 export function IhtCalculator() {
   const [input, setInput] = useState<IhtInput>({ ...EMPTY_IHT }),
     [step, setStep] = useState(0),
     [busy, setBusy] = useState(false),
     [error, setError] = useState(''),
-    [callback, setCallback] = useState(false),
-    [marketing, setMarketing] = useState(false),
     [completed, setCompleted] = useState<ReportResponse | null>(null),
     [pdfUrl, setPdfUrl] = useState('');
-  const identity = useRef({ fingerprint: '', id: '' }),
-    submitted = useRef<ReportSubmission | null>(null),
-    panel = useRef<HTMLDivElement>(null);
+  const panel = useRef<HTMLDivElement>(null);
   const set = <K extends keyof IhtInput>(key: K, value: IhtInput[K]) => {
     setInput((previous) => ({
       ...previous,
@@ -149,50 +140,27 @@ export function IhtCalculator() {
       setError(err instanceof Error ? err.message : 'Check your answers.');
     }
   }
-  async function sendReport(payload: ReportSubmission) {
-    setError('');
-    setBusy(true);
-    submitted.current = payload;
-    try {
-      const response = await fetch('/api/report', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      const data = (await response.json()) as ReportResponse & { error?: string };
-      if (!response.ok) throw new Error(data.error || 'Unable to create your report.');
-      setCompleted(data);
-      setTimeout(() => panel.current?.focus(), 0);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unable to create your report.');
-    } finally {
-      setBusy(false);
-    }
-  }
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
+    setError('');
+    setBusy(true);
     try {
-      const calculator = validateIht(input),
-        lead = identifySubmission(
-          identity.current,
-          validateLead({
-            requestId: crypto.randomUUID(),
-            name: form.get('name'),
-            email: form.get('email'),
-            phone: form.get('phone') ?? '',
-            message: '',
-            website: form.get('website') ?? '',
-            interest: 'IHT report',
-            contactMethod: callback ? 'phone' : 'email',
-            callback,
-            marketingEmail: marketing,
-          }),
-          calculator,
-        );
-      await sendReport({ calculator, lead });
+      const name =
+        String(form.get('name') || '')
+          .trim()
+          .slice(0, 100) || 'Your estate';
+      const result = calculateIht(validateIht(input));
+      const { makeReport, pdfBase64 } = await import('@/lib/report');
+      const pdf = pdfBase64(await makeReport(name, result, Date.now()));
+      setCompleted({ result, pdf, reference: crypto.randomUUID().slice(0, 8) });
+      setTimeout(() => panel.current?.focus(), 0);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Please check your details.');
+      setError(
+        err instanceof Error ? err.message : 'Unable to create your report. Please try again.',
+      );
+    } finally {
+      setBusy(false);
     }
   }
   function Money({
@@ -313,39 +281,9 @@ export function IhtCalculator() {
             </button>
           </div>
           <p className="notice">
-            {completed.delivery === 'sent'
-              ? 'A copy has also been sent to the email address you provided.'
-              : completed.delivery === 'not-configured'
-                ? 'Your PDF is ready to download. Email delivery is not connected in this private preview.'
-                : 'Your PDF is ready. Email delivery failed; you can retry the same request or save the download now.'}
+            Your PDF was created in this browser. Your name and calculator answers have not been
+            sent to Sim or stored on the website. Save the download before leaving this page.
           </p>
-          {completed.callbackDelivery === 'sent' && (
-            <p className="notice">Your callback request has been sent to the adviser.</p>
-          )}
-          {completed.callbackDelivery === 'not-configured' && (
-            <p className="notice">
-              Your callback request is saved. Adviser notifications are not connected in this
-              private preview.
-            </p>
-          )}
-          {completed.callbackDelivery === 'failed' && (
-            <p className="notice">
-              Your callback request is saved, but the adviser notification could not be delivered.
-            </p>
-          )}
-          {(completed.delivery === 'failed' || completed.callbackDelivery === 'failed') && (
-            <button
-              className="button button-outline"
-              type="button"
-              disabled={busy}
-              onClick={() => {
-                if (submitted.current) void sendReport(submitted.current);
-              }}
-            >
-              {busy ? 'Retrying delivery…' : 'Retry email delivery'}
-              <ArrowRight size={17} />
-            </button>
-          )}
           {error && (
             <p className="form-error" role="alert">
               {error}
@@ -421,7 +359,7 @@ export function IhtCalculator() {
                   'This tool illustrates a limited range of straightforward UK estates. “Not sure” answers are welcome — they will be flagged in your report.',
                   'Enter only the shares belonging to the estate you are considering. Use today’s values and avoid counting an asset or debt twice.',
                   'Allowances depend on who inherits and your circumstances. Only use confirmed answers; the report will identify anything that needs review.',
-                  'Your name and email are needed to request the report. A callback and marketing updates are separate, optional choices.',
+                  'Add an optional name for your PDF. It is generated in your browser without sending your answers or contact details.',
                 ][step]
               }
             </p>
@@ -578,70 +516,20 @@ export function IhtCalculator() {
           )}
           {step === 3 && (
             <>
-              {site.preview && (
-                <p className="notice">
-                  Private preview — please use sample details. The report download works; email
-                  delivery requires the adviser’s email service.
-                </p>
-              )}
-              <div className="form-grid">
-                <div className="field">
-                  <label htmlFor="report-name">Your name</label>
-                  <input
-                    className="field-input"
-                    id="report-name"
-                    name="name"
-                    autoComplete="name"
-                    required
-                    maxLength={100}
-                    placeholder="Full name"
-                  />
-                </div>
-                <div className="field">
-                  <label htmlFor="report-email">Email address</label>
-                  <input
-                    className="field-input"
-                    id="report-email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    required
-                    maxLength={254}
-                    placeholder="you@example.com"
-                  />
-                </div>
-              </div>
-              <CheckField
-                id="callback"
-                label="I would also like Sim to contact me about a review."
-                checked={callback}
-                onChange={setCallback}
-              />
               <div className="field">
-                <label htmlFor="report-phone">Telephone {callback ? '' : '(optional)'}</label>
+                <label htmlFor="report-name">Your name (optional)</label>
                 <input
                   className="field-input"
-                  id="report-phone"
-                  name="phone"
-                  type="tel"
-                  required={callback}
-                  maxLength={30}
-                  autoComplete="tel"
+                  id="report-name"
+                  name="name"
+                  autoComplete="name"
+                  maxLength={100}
+                  placeholder="Name to show on your PDF"
                 />
               </div>
-              <CheckField
-                id="report-marketing"
-                label={MARKETING_COPY}
-                checked={marketing}
-                onChange={setMarketing}
-              />
-              <div className="honeypot" aria-hidden="true">
-                <label htmlFor="report-website">Website</label>
-                <input id="report-website" name="website" tabIndex={-1} autoComplete="off" />
-              </div>
               <p className="privacy-copy">
-                <LockKeyhole size={14} /> Your details and answers are used to prepare your report
-                and handle any requested follow-up. <Link href="/privacy">Privacy notice</Link>
+                <LockKeyhole size={14} /> Your answers stay in this browser. No email address is
+                needed. <Link href="/privacy">Privacy notice</Link>
               </p>
             </>
           )}

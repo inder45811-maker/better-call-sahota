@@ -63,28 +63,16 @@ export function EnquiryForm() {
         <h2>
           Your review request
           <br />
-          <em>has been saved.</em>
+          <em>has been sent.</em>
         </h2>
         <p>
           Reference: <strong>{result.reference}</strong>. An appointment is only confirmed once the
           details have been agreed.
         </p>
-        {result.delivery === 'not-configured' ? (
-          <p className="notice">
-            This is a private preview. Adviser email notifications are not connected, so please use
-            sample details. To contact Sim now, use the Instagram profile below.
-          </p>
-        ) : result.delivery === 'failed' ? (
-          <p className="notice">
-            Your request was saved, but the notification could not be delivered. Please contact Sim
-            directly if your enquiry is time-sensitive.
-          </p>
-        ) : (
-          <p>
-            Your request has been sent to the adviser’s inbox. Keep your reference for any
-            follow-up.
-          </p>
-        )}
+        <p>
+          Your enquiry has been accepted by the email service for delivery to Sim. An appointment is
+          not booked automatically.
+        </p>
         <a href={site.instagram} className="text-link" target="_blank" rel="noreferrer">
           Visit @bettercallsimuk <ArrowUpRight size={17} />
         </a>
@@ -106,7 +94,17 @@ export function EnquiryForm() {
         </p>
       )}
       <div ref={errorRef} tabIndex={-1} role={error ? 'alert' : undefined}>
-        {error && <p className="form-error">{error}</p>}
+        {error && (
+          <>
+            <p className="form-error">{error}</p>
+            <a
+              className="text-link"
+              href={`mailto:${site.email}?subject=Financial%20%26%20Estate%20Review`}
+            >
+              Email Sim directly: {site.email}
+            </a>
+          </>
+        )}
       </div>
       <div className="form-grid">
         <div className="field">

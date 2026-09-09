@@ -245,7 +245,7 @@ function PageContent({ path }: { path: string }) {
           </div>
           <div>
             <p className="eyebrow">A PERSONAL APPROACH</p>
-            <p className="location-line">Based in {site.location}.</p>
+            <p className="location-line">Supporting clients across the UK.</p>
             <h2>
               Start with your life.
               <br />
@@ -357,7 +357,7 @@ function PageContent({ path }: { path: string }) {
           <div>
             <Phone size={27} />
             <h2>Prefer a call?</h2>
-            <p>Sim is based in {site.location}.</p>
+            <p>Speak to Sim from anywhere in the UK.</p>
             {site.phone ? (
               <ContactLink type="phone">{site.phone}</ContactLink>
             ) : (

@@ -1,50 +1,43 @@
-import {
-  allowRequest,
-  emailMessage,
-  json,
-  readBody,
-  runtime,
-  saveLead,
-  updateDelivery,
-} from '@/lib/server';
-import { validateLead, MARKETING_COPY } from '@/lib/validation';
+import { allowRequest, emailMessage, json, readBody, runtime } from '@/lib/server';
+import { validateLead, MARKETING_COPY, CONSENT_VERSION } from '@/lib/validation';
+import { createHash } from 'node:crypto';
 export async function POST(request: Request) {
-  let raw: unknown, lead;
+  let lead;
   try {
-    raw = await readBody(request);
-    lead = validateLead(raw);
+    lead = validateLead(await readBody(request));
   } catch (error) {
     return json({ error: error instanceof Error ? error.message : 'Check your details.' }, 400);
   }
-  try {
-    if (!(await allowRequest(request)))
-      return json(
-        {
-          error: 'You have submitted several requests. Please wait 15 minutes before trying again.',
-        },
-        429,
-      );
-    const record = await saveLead(lead.requestId, 'enquiry', {
-      lead,
-      marketingWording: MARKETING_COPY,
-    });
-    const status =
-      record.emailStatus === 'sent'
-        ? 'sent'
-        : await emailMessage(
-            lead.requestId,
-            runtime().ENQUIRY_TO_EMAIL ?? '',
-            'New review request',
-            `Name: ${lead.name}\nEmail: ${lead.email}\nPreferred contact: ${lead.contactMethod}\nPhone: ${lead.phone}\nInterest: ${lead.interest}\nMessage: ${lead.message}\nMarketing email permission: ${lead.marketingEmail ? 'yes' : 'no'}`,
-          );
-    await updateDelivery(lead.requestId, status);
-    return json({ status: 'requested', delivery: status, reference: lead.requestId.slice(0, 8) });
-  } catch {
+  if (!(await allowRequest(request)))
+    return json({ error: 'Please wait 15 minutes before trying again.' }, 429);
+  const digest = createHash('sha256').update(JSON.stringify(lead)).digest('hex');
+  const status = await emailMessage(
+    lead.requestId + '-' + digest.slice(0, 24),
+    runtime().ENQUIRY_TO_EMAIL ?? '',
+    'New Better Call Sim enquiry',
+    [
+      'Name: ' + lead.name,
+      'Email: ' + lead.email,
+      'Preferred contact: ' + lead.contactMethod,
+      'Phone: ' + lead.phone,
+      'Interest: ' + lead.interest,
+      'Message: ' + lead.message,
+      'Reference: ' + lead.requestId.slice(0, 8),
+      'Marketing permission: ' + (lead.marketingEmail ? 'yes' : 'no'),
+      'Consent wording: ' + MARKETING_COPY,
+      'Consent version: ' + CONSENT_VERSION,
+    ].join('\n'),
+    lead.email,
+  );
+  if (status !== 'sent')
     return json(
       {
-        error: 'We could not complete your request. Your answers are still here; please try again.',
+        error:
+          status === 'not-configured'
+            ? 'Email enquiries are not connected yet. Your request has not been sent or saved. Please call or WhatsApp Sim.'
+            : 'Your enquiry could not be sent. It has not been saved. Please retry, call or WhatsApp Sim.',
       },
       503,
     );
-  }
+  return json({ delivery: 'sent', reference: lead.requestId.slice(0, 8) });
 }

@@ -12,7 +12,7 @@ export const legalPages: Record<
       },
       {
         title: 'Enquiries and report requests',
-        text: 'The review form collects your name, email, optional telephone, area of interest, contact preference and message. The calculator also uses and stores the answers needed to prepare your report. Submitting a form does not confirm an appointment, buy a product or subscribe you to marketing.',
+        text: 'The review form collects your name, email, optional telephone, area of interest, contact preference and message. The calculator generates a PDF locally in your browser using your answers and optional name; those details are not submitted to this website. Submitting a form does not confirm an appointment, buy a product or subscribe you to marketing.',
       },
       {
         title: 'Why information is used',
@@ -20,11 +20,11 @@ export const legalPages: Record<
       },
       {
         title: 'Storage and service providers',
-        text: 'Submissions are held in a server-side database associated with this site, with no public listing of leads or reports. The requested PDF is returned directly to your browser. When configured, an email provider delivers requested reports and adviser notifications. The final provider list, international-transfer safeguards and retention policy require business approval.',
+        text: 'Enquiries are sent directly through Resend to Sim’s configured inbox. This website does not keep a lead database or archive of submissions. Resend and the receiving email provider process enquiries to deliver them. PDF reports are generated in your browser and are not emailed automatically.',
       },
       {
         title: 'Retention and access',
-        text: 'Preview records are marked for expiry after 90 days by default; the interval is configurable. Expired records are removed on subsequent submissions or through the protected maintenance operation. The business must configure regular deletion before launch. Staff access and deletion requests should be limited to authorised personnel.',
+        text: 'Downloaded reports remain wherever you save them. Calculator answers are held in page memory and are lost when the page closes or reloads. Enquiry retention depends on the receiving mailbox and email provider; no automatic 90-day deletion is promised. The business must confirm its mailbox retention policy before launch.',
       },
       {
         title: 'Your choices and rights',

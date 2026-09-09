@@ -19,9 +19,9 @@ const fixed: Page[] = [
   {
     path: '',
     label: 'Home',
-    title: 'Estate & Financial Planning in Northolt, West London',
+    title: 'Estate & Financial Planning Across the UK',
     description:
-      'Better Call Sim is based in Northolt, West London. Explore estate planning, financial advice and property finance, and book your Financial & Estate Review.',
+      'UK-wide estate planning, financial advice and property finance with Better Call Sim. Connect your wealth, family and legacy with a Financial & Estate Review.',
     kind: 'page',
   },
   {
@@ -35,9 +35,9 @@ const fixed: Page[] = [
   {
     path: 'meet-sim',
     label: 'Meet Sim',
-    title: 'Meet Simran Sahota in Northolt, West London',
+    title: 'Meet Simran Sahota | Your UK-Wide Planning Contact',
     description:
-      'Meet Northolt-based Simran Sahota, the person behind Better Call Sim, and his approach to connecting your financial, property and estate plans.',
+      'Meet Simran Sahota, the person behind Better Call Sim, supporting planning enquiries across the UK and connecting your financial, property and estate plans.',
     kind: 'about',
   },
   {
@@ -45,15 +45,15 @@ const fixed: Page[] = [
     label: 'Book a review',
     title: 'Book Your Financial & Estate Review',
     description:
-      'Start a conversation about your wealth, family and future. Request a Financial & Estate Review or choose a time through Sim’s booking calendar.',
+      'Start a conversation about your wealth, family and future. Send Sim a Financial & Estate Review enquiry and agree a suitable time directly.',
     kind: 'page',
   },
   {
     path: 'contact',
     label: 'Contact',
-    title: 'Contact Sim in Northolt, West London',
+    title: 'Contact Sim | Planning Enquiries Across the UK',
     description:
-      'Contact Northolt-based Better Call Sim by telephone, WhatsApp or review request. Ask about estate planning, financial advice and property finance.',
+      'Contact Better Call Sim from anywhere in the UK by email, telephone, WhatsApp or review request. Discuss estate planning, financial advice and property finance.',
     kind: 'contact',
   },
   {
@@ -208,7 +208,7 @@ export function siteStructuredData() {
         logo: canonicalUrl('brand/better-call-sim-logo.png'),
         telephone: site.phone,
         sameAs: [site.instagram],
-        location: { '@type': 'Place', name: site.location },
+        areaServed: { '@type': 'Country', name: site.location },
       },
       {
         '@type': 'WebSite',

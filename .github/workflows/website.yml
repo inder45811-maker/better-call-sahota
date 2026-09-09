@@ -1,7 +1,7 @@
 name: Website checks
 on:
   push:
-    branches: [main, vercel-migration]
+    branches: [main, vercel-migration, simple-email-reports]
   pull_request:
   workflow_dispatch:
 permissions:
@@ -10,26 +10,10 @@ jobs:
   build-and-check:
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    services:
-      postgres:
-        image: postgres:17
-        env:
-          POSTGRES_USER: bcs
-          POSTGRES_PASSWORD: ci-test-only
-          POSTGRES_DB: bcs_test
-        ports: ['5432:5432']
-        options: >-
-          --health-cmd "pg_isready -U bcs -d bcs_test"
-          --health-interval 5s
-          --health-timeout 5s
-          --health-retries 10
     env:
       CI: 'true'
       NEXT_TELEMETRY_DISABLED: '1'
       NEXT_PUBLIC_SITE_URL: http://127.0.0.1:4173
-      DATABASE_URL: postgres://bcs:ci-test-only@127.0.0.1:5432/bcs_test
-      MAINTENANCE_TOKEN: ci-test-maintenance
-      CRON_SECRET: ci-test-cron
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -39,15 +23,6 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm test
-      - run: npm run db:generate
-      - name: Verify migrations are committed
-        run: |
-          git diff --exit-code -- drizzle-postgres
-          test -z "$(git ls-files --others --exclude-standard drizzle-postgres)"
-      - name: Apply migrations and verify safe retries
-        run: |
-          npm run db:migrate
-          npm run db:migrate
       - run: npm run build
       - run: npx playwright install --with-deps chromium
       - run: npm run test:browser

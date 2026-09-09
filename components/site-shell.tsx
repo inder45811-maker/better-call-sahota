@@ -187,7 +187,7 @@ export function SiteFooter() {
                 <br />
                 Your legacy. One plan.
               </p>
-              <p className="footer-location">Based in {site.location}.</p>
+              <p className="footer-location">Supporting clients across the UK.</p>
               <a href={site.instagram} target="_blank" rel="noreferrer" className="instagram-link">
                 <Instagram size={18} /> @bettercallsimuk <ArrowUpRight size={13} />
               </a>

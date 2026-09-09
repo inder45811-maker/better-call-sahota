@@ -27,3 +27,7 @@ There is no guaranteed ranking, featured answer or AI citation. Current Google g
 Browser checks inspect the server HTML of every canonical page for unique metadata, canonical URLs, structured-data validity, source text and FAQ availability. They also check preview indexing controls, sitemap coverage, redirects and 404 responses. Unit checks cover the index policy and JSON-LD escaping. Maintain source links and update dates when the underlying content changes. Add client-approved experience, case studies and video transcripts as those become available; technical metadata is not a substitute for them.
 
 Primary implementation references: [Google generative search guidance](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide), [structured data](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data), [Article](https://developers.google.com/search/docs/appearance/structured-data/article), [Organization](https://developers.google.com/search/docs/appearance/structured-data/organization), [Breadcrumb](https://developers.google.com/search/docs/appearance/structured-data/breadcrumb), [FAQ retirement](https://developers.google.com/search/updates), [OpenAI search crawler](https://developers.openai.com/api/docs/bots).
+
+## Simplified enquiry and PDF flow
+
+PDF reports are now generated in the browser without personal-data submission. Enquiries use direct email delivery, without database storage or a durable retry queue. Calendly links are disabled. Indexing remains disabled for review.
