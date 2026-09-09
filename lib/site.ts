@@ -1,6 +1,7 @@
 export const site = {
   name: 'Better Call Sim',
   adviser: 'Simran Sahota',
+  location: 'Northolt, West London',
   instagram: 'https://www.instagram.com/bettercallsimuk/',
   origin: (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, ''),
   preview: true,

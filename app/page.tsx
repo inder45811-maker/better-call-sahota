@@ -14,10 +14,13 @@ import { ArticleCards, StoryCards, ReviewJourney, ReviewButton } from '@/compone
 import { ContactLink } from '@/components/site-shell';
 import { Faq } from '@/components/faq';
 import { homeFaqs, site } from '@/lib/site';
+import { StructuredData } from '@/components/search-content';
+import { pageStructuredData } from '@/lib/seo';
 
 export default function Home() {
   return (
     <main id="main">
+      <StructuredData value={pageStructuredData('')} />
       <section className="bcs-hero">
         <div className="container bcs-hero-grid">
           <div className="bcs-hero-copy">

@@ -10,6 +10,8 @@ GitHub Actions runs type checking, unit tests, PostgreSQL migration checks, the 
 
 ## Content and branding
 
+Search metadata, structured data, source-backed explanations and Northolt/West London context are documented in `SEARCH-READINESS.md`. The private review deployment remains noindex until launch. `lib/seo.ts` is the shared page catalogue; `lib/search-content.ts` holds concise explanations and primary-source links.
+
 - `lib/site.ts`: brand, adviser biography, portrait, Instagram link, verified contact details, service pillars and preview flag.
 - `lib/services.json`: all 20 services, FAQs, considerations and cross-links.
 - `lib/editorial.ts`: educational guides and clearly labelled hypothetical planning scenarios.
