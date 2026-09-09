@@ -1,5 +1,5 @@
 import type { Metadata, MetadataRoute } from 'next';
-import services from './services.json';
+import services from './services.json' with { type: 'json' };
 import { articles, stories } from './editorial';
 import { legalPages } from './legal';
 import { site, pillars, homeFaqs } from './site';
