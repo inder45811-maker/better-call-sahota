@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import {
   ArrowUpRight,
   ArrowRight,
@@ -28,42 +28,35 @@ import services from '@/lib/services.json';
 import { pillars, site, homeFaqs } from '@/lib/site';
 import { articles, stories } from '@/lib/editorial';
 import { legalPages } from '@/lib/legal';
+import { pageMetadata, pageCatalog, pageStructuredData, getPage } from '@/lib/seo';
+import { StructuredData, QuickAnswer, ContentSources } from '@/components/search-content';
+import {
+  serviceAnswers,
+  hubAnswers,
+  calculatorAnswer,
+  articleAnswers,
+  CONTENT_UPDATED,
+  CONTENT_UPDATED_LABEL,
+} from '@/lib/search-content';
 type PageProps = { params: Promise<{ slug: string[] }> };
-function resolveTitle(path: string) {
-  return (
-    services.find((s) => s.pillar + '/' + s.slug === path)?.title ??
-    pillars.find((p) => p.slug === path)?.title ??
-    articles.find((a) => 'insights/' + a.slug === path)?.title ??
-    stories.find((s) => 'case-studies/' + s.slug === path)?.title ??
-    legalPages[path]?.title ??
-    (
-      {
-        'meet-sim': 'Meet Sim',
-        'the-plan': 'The Plan',
-        insights: 'Insights & guides',
-        videos: 'Videos',
-        'case-studies': 'Planning scenarios',
-        'book-review': 'Book Your Financial & Estate Review',
-        contact: 'Contact Sim',
-        'iht-calculator': 'Inheritance Tax Calculator',
-      } as Record<string, string>
-    )[path]
-  );
-}
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const path = (await params).slug.join('/'),
-    title = resolveTitle(path);
-  return {
-    title: title ?? 'Page not found',
-    description:
-      services.find((s) => s.pillar + '/' + s.slug === path)?.description ??
-      'Explore your financial, estate and property planning with Better Call Sim.',
-    alternates: { canonical: site.origin + '/' + path },
-    robots: { index: !site.preview, follow: !site.preview },
-  };
+  return pageMetadata((await params).slug.join('/'));
+}
+export function generateStaticParams() {
+  return pageCatalog.filter((p) => p.path).map((p) => ({ slug: p.path.split('/') }));
 }
 export default async function ContentPage({ params }: PageProps) {
   const path = (await params).slug.join('/');
+  if (path === 'videos') permanentRedirect('/insights');
+  if (!getPage(path)) notFound();
+  return (
+    <>
+      <StructuredData value={pageStructuredData(path)} />
+      <PageContent path={path} />
+    </>
+  );
+}
+function PageContent({ path }: { path: string }) {
   const pillar = pillars.find((p) => p.slug === path),
     service = services.find((s) => s.pillar + '/' + s.slug === path),
     article = articles.find((a) => 'insights/' + a.slug === path),
@@ -73,6 +66,9 @@ export default async function ContentPage({ params }: PageProps) {
     return (
       <main id="main">
         <PageIntro eyebrow={pillar.title} title={pillar.lead} description={pillar.description} />
+        <div className="container hub-answer">
+          <QuickAnswer content={hubAnswers[path]} />
+        </div>
         <section className="container hub-layout">
           <aside className="hub-aside">
             <img
@@ -109,6 +105,7 @@ export default async function ContentPage({ params }: PageProps) {
           </div>
         </section>
         <section className="container section">
+          <ContentSources sources={hubAnswers[path].sources} />
           <div className="inline-review">
             <div>
               <h2>Not sure where to begin?</h2>
@@ -131,6 +128,7 @@ export default async function ContentPage({ params }: PageProps) {
         />
         <section className="container service-detail">
           <article>
+            <QuickAnswer content={serviceAnswers[service.slug]} />
             <p className="service-intro">{service.intro}</p>
             <h2>What this can help you explore</h2>
             <ul className="check-list">
@@ -152,6 +150,7 @@ export default async function ContentPage({ params }: PageProps) {
             </div>
             <h2>Your questions, answered.</h2>
             <Faq items={service.faqs} />
+            <ContentSources sources={serviceAnswers[service.slug].sources} />
             <div className="provider-note">
               <h3>Who provides this service?</h3>
               <p>
@@ -246,6 +245,7 @@ export default async function ContentPage({ params }: PageProps) {
           </div>
           <div>
             <p className="eyebrow">A PERSONAL APPROACH</p>
+            <p className="location-line">Based in {site.location}.</p>
             <h2>
               Start with your life.
               <br />
@@ -357,6 +357,7 @@ export default async function ContentPage({ params }: PageProps) {
           <div>
             <Phone size={27} />
             <h2>Prefer a call?</h2>
+            <p>Sim is based in {site.location}.</p>
             {site.phone ? (
               <ContactLink type="phone">{site.phone}</ContactLink>
             ) : (
@@ -394,6 +395,13 @@ export default async function ContentPage({ params }: PageProps) {
         />
         <section className="container calculator-section">
           <IhtCalculator />
+        </section>
+        <section className="container calculator-explainer">
+          <QuickAnswer content={calculatorAnswer} />
+          <Link href="/estate-planning/inheritance-tax-planning" className="text-link">
+            Explore inheritance tax planning <ArrowUpRight size={17} />
+          </Link>
+          <ContentSources sources={calculatorAnswer.sources} />
         </section>
       </main>
     );
@@ -441,10 +449,25 @@ export default async function ContentPage({ params }: PageProps) {
         />
         <article className="article-body container">
           <div className="reading-meta">
-            {article.readTime} · Reviewed 8 September 2026 · Educational guide
+            Published by <Link href="/meet-sim">Better Call Sim</Link> · Updated{' '}
+            <time dateTime={CONTENT_UPDATED}>{CONTENT_UPDATED_LABEL}</time> · Educational guide
           </div>
-          {article.paragraphs.map(([title, text]) => (
-            <section key={title}>
+          <div className="article-summary">
+            <h2>In brief</h2>
+            <p>{articleAnswers[article.slug]}</p>
+          </div>
+          <nav className="article-contents" aria-label="On this page">
+            <p className="eyebrow">ON THIS PAGE</p>
+            <ul>
+              {article.paragraphs.map(([title], i) => (
+                <li key={title}>
+                  <a href={'#guide-section-' + (i + 1)}>{title}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          {article.paragraphs.map(([title, text], i) => (
+            <section key={title} id={'guide-section-' + (i + 1)}>
               <h2>{title}</h2>
               <p>{text}</p>
             </section>

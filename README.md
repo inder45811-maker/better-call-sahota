@@ -10,6 +10,8 @@ GitHub Actions runs installation, type checking, unit tests, Drizzle migration g
 
 ## Content and branding
 
+Search metadata, structured data, source-backed explanations and Northolt/West London context are documented in `SEARCH-READINESS.md`. The private preview remains noindex until launch.
+
 - `lib/site.ts`: brand, adviser biography, portrait, Instagram link, verified contact details, service pillars and preview flag.
 - `lib/services.json`: all 20 services, FAQs, considerations and cross-links.
 - `lib/editorial.ts`: educational guides and clearly labelled hypothetical planning scenarios.

@@ -11,7 +11,7 @@ export function Faq({ items }: { items: { q: string; a: string }[] }) {
       {items.map((item, i) => (
         <AccordionItem key={item.q} value={i}>
           <AccordionTrigger>{item.q}</AccordionTrigger>
-          <AccordionContent>
+          <AccordionContent keepMounted>
             <p>{item.a}</p>
           </AccordionContent>
         </AccordionItem>

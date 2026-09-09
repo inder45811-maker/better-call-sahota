@@ -32,7 +32,7 @@ export function PageIntro({
 }) {
   return (
     <section className="page-intro container">
-      <div className="breadcrumbs">
+      <nav className="breadcrumbs" aria-label="Breadcrumb">
         <Link href="/">Home</Link>
         <span>/</span>
         {breadcrumb && (
@@ -41,8 +41,8 @@ export function PageIntro({
             <span>/</span>
           </>
         )}
-        <span>{eyebrow}</span>
-      </div>
+        <span aria-current="page">{breadcrumb ? title : eyebrow}</span>
+      </nav>
       <p className="eyebrow">{eyebrow}</p>
       <h1>
         {title.split('\n').map((line, i) => (

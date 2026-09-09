@@ -1,6 +1,7 @@
 export const site = {
   name: 'Better Call Sim',
   adviser: 'Simran Sahota',
+  location: 'Northolt, West London',
   instagram: 'https://www.instagram.com/bettercallsimuk/',
   origin: 'https://better-call-sim.indi678678.chatgpt.site',
   preview: true,
