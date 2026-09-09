@@ -27,8 +27,10 @@ test('every canonical page has unique search metadata and parseable, accurate st
     expect(description?.length, route).toBeGreaterThan(40);
     expect(descriptions.has(description!), route + ' duplicate description').toBe(false);
     descriptions.add(description!);
-    expect(html, route).toContain(`rel="canonical" href="${site.origin}${route}"`);
-    expect(meta(html, 'og:url'), route).toBe(site.origin + route);
+    const canonical = html.match(/<link[^>]+rel="canonical"[^>]+href="([^"]*)"/)?.[1];
+    expect(canonical, route + ' canonical').toBeTruthy();
+    expect(new URL(canonical!).href, route).toBe(new URL(route, site.origin).href);
+    expect(new URL(meta(html, 'og:url')!).href, route).toBe(new URL(route, site.origin).href);
     expect(meta(html, 'robots'), route).toContain('noindex');
     expect(meta(html, 'twitter:title'), route).toBeTruthy();
     const graphs = jsonLd(html);
