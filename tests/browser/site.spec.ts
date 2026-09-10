@@ -102,7 +102,7 @@ test('review form reports email failure honestly and keeps entered details', asy
   await page.getByLabel('Your name', { exact: true }).fill('Preview Visitor');
   await page.getByLabel('Email address', { exact: true }).fill('preview@example.com');
   await page.getByRole('button', { name: 'Request Your Financial & Estate Review' }).click();
-  await expect(page.getByRole('alert')).toContainText('not been sent or saved');
+  await expect(page.locator('.enquiry-form').getByRole('alert')).toContainText('not been sent or saved');
   await expect(page.getByLabel('Your name', { exact: true })).toHaveValue('Preview Visitor');
 });
 test('review form shows success only after accepted delivery', async ({ page }) => {
