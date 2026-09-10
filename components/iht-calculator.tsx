@@ -50,6 +50,12 @@ export function IhtCalculator() {
     [completed, setCompleted] = useState<ReportResponse | null>(null),
     [pdfUrl, setPdfUrl] = useState('');
   const panel = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const today = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Europe/London', year: 'numeric', month: '2-digit', day: '2-digit',
+    }).format(new Date());
+    setInput((previous) => ({ ...previous, date: today }));
+  }, []);
   const set = <K extends keyof IhtInput>(key: K, value: IhtInput[K]) => {
     setInput((previous) => ({
       ...previous,

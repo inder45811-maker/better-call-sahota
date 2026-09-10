@@ -258,7 +258,7 @@ export function SiteFooter() {
           </div>
           {site.preview && (
             <p className="preview-notice">
-              Private design preview · Please use sample details. Business disclosures and direct
+              Website review version · Please use sample details. Business disclosures and direct
               contact details await verification.
             </p>
           )}
