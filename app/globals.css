@@ -4756,7 +4756,7 @@ em {
   background: #ffc400;
   color: #080d16;
 }
-.result-panel > p {
+.result-panel > p:not(.eyebrow) {
   color: #b0bfd2;
 }
 .result-amount {
