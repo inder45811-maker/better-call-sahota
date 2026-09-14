@@ -8,8 +8,8 @@ export async function makeReport(name: string, result: IhtResult, createdAt: num
   pdf.setModificationDate(new Date(createdAt));
   const body = await pdf.embedFont(StandardFonts.Helvetica),
     bold = await pdf.embedFont(StandardFonts.HelveticaBold),
-    serif = await pdf.embedFont(StandardFonts.HelveticaBold);
-  const navy = rgb(0.03, 0.05, 0.09),
+    serif = await pdf.embedFont(StandardFonts.TimesRomanBold);
+  const navy = rgb(0.03, 0.15, 0.1),
     grey = rgb(0.3, 0.34, 0.39),
     gold = rgb(0.68, 0.47, 0.02);
   let page = pdf.addPage([595, 842]),

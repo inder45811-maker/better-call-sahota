@@ -1,4 +1,5 @@
 ﻿import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight, ShieldCheck, House, TrendingUp, Check, Play, Camera } from 'lucide-react';
 import { PlanningStages } from '@/components/planning-stages';
 import { ArticleCards, StoryCards, ReviewJourney, ReviewButton } from '@/components/content';
@@ -39,12 +40,13 @@ export default function Home() {
             </div>
           </div>
           <div className="bcs-hero-visual">
-            <img
+            <Image
               className="sim-hero-portrait"
               src="/brand/simran-study.png"
               alt="Simran Sahota, the person behind Better Call Sim"
-              width="1024"
-              height="1280"
+              width={1122}
+              height={1402}
+              sizes="(max-width: 760px) 90vw, (max-width: 1600px) 510px, 555px"
               fetchPriority="high"
             />
             <div className="sim-nameplate">

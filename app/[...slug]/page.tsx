@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound, permanentRedirect } from 'next/navigation';
 import {
   ArrowUpRight,
@@ -230,7 +231,7 @@ function PageContent({ path }: { path: string }) {
         <section className="container about-layout">
           <div className="about-mark">
             {site.adviserPortrait ? (
-              <img src={site.adviserPortrait} alt="Sim" width="700" height="850" />
+              <Image src={site.adviserPortrait} alt="Simran Sahota" width={1122} height={1402} sizes="(max-width: 760px) 90vw, 600px" />
             ) : (
               <>
                 <span className="about-initial">

@@ -965,3 +965,16 @@ em {
     font-size: 41px;
   }
 }
+
+/* Shared editorial sections and compact tablet service layouts. */
+.faq-section, .bcs-social-banner { background: #0c281f; border-color: #526046; }
+.faq-layout [data-slot='accordion-item'] { border-color: #526046; }
+.faq-layout [data-slot='accordion-trigger'] { color: #f4efdf; }
+.faq-layout [data-slot='accordion-content'] { color: #c5cdbd; }
+.bcs-social-banner h3 { font-size: 30px; }
+.bcs-social-banner p { color: #c5cdbd; }
+.service-review .button { max-width: 100%; white-space: normal; text-align: center; }
+@media (min-width: 761px) and (max-width: 1000px) {
+  .service-detail { grid-template-columns: 1fr; }
+  .service-review { position: static; }
+}
