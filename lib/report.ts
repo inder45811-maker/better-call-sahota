@@ -31,19 +31,21 @@ export async function makeReport(name: string, result: IhtResult, createdAt: num
     });
   };
   const line = (text: string, size = 10, font = body, color = grey) => {
-    const words = clean(text).split(/\s+/).flatMap(word => {
-      const parts: string[] = [];
-      let part = '';
-      for (const character of word) {
-        if (part && font.widthOfTextAtSize(part + character, size) > 503) {
-          parts.push(part);
-          part = '';
+    const words = clean(text)
+      .split(/\s+/)
+      .flatMap((word) => {
+        const parts: string[] = [];
+        let part = '';
+        for (const character of word) {
+          if (part && font.widthOfTextAtSize(part + character, size) > 503) {
+            parts.push(part);
+            part = '';
+          }
+          part += character;
         }
-        part += character;
-      }
-      if (part) parts.push(part);
-      return parts;
-    });
+        if (part) parts.push(part);
+        return parts;
+      });
     let row = '';
     for (const word of words) {
       const next = row ? row + ' ' + word : word;
@@ -117,15 +119,23 @@ export async function makeReport(name: string, result: IhtResult, createdAt: num
     complexity: 'Specialist circumstances',
   };
   const answers: Record<string, string> = {
-    individual: 'Individual estate', survivor: 'Surviving spouse or civil partner',
-    'straightforward-uk': 'Straightforward UK scenario', other: 'Other residence circumstances',
-    unsure: 'Not sure', descendants: 'Direct descendants', others: 'Other people',
-    spouse: 'Spouse or civil partner', mixed: 'Mixed beneficiaries',
-    yes: 'Yes', no: 'No', none: 'None',
-    'confirmed-excluded': 'Confirmed excluded from the estate', review: 'Adviser review needed',
+    individual: 'Individual estate',
+    survivor: 'Surviving spouse or civil partner',
+    'straightforward-uk': 'Straightforward UK scenario',
+    other: 'Other residence circumstances',
+    unsure: 'Not sure',
+    descendants: 'Direct descendants',
+    others: 'Other people',
+    spouse: 'Spouse or civil partner',
+    mixed: 'Mixed beneficiaries',
+    yes: 'Yes',
+    no: 'No',
+    none: 'None',
+    'confirmed-excluded': 'Confirmed excluded from the estate',
+    review: 'Adviser review needed',
   };
   Object.entries(result.input).forEach(([key, value]) => {
-    const answer = typeof value === 'number' ? formatMoney(value) : answers[value] ?? value;
+    const answer = typeof value === 'number' ? formatMoney(value) : (answers[value] ?? value);
     line(`${labels[key] ?? key}: ${answer}`);
   });
   y -= 20;

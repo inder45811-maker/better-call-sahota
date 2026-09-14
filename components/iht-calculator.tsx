@@ -52,7 +52,10 @@ export function IhtCalculator() {
   const panel = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const today = new Intl.DateTimeFormat('en-CA', {
-      timeZone: 'Europe/London', year: 'numeric', month: '2-digit', day: '2-digit',
+      timeZone: 'Europe/London',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
     }).format(new Date());
     setInput((previous) => ({ ...previous, date: today }));
   }, []);

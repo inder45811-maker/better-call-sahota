@@ -52,9 +52,14 @@ export function EnquiryForm() {
         throw new Error('Delivery could not be confirmed. Please retry or contact Sim directly.');
       setResult(json);
     } catch (err) {
-      setError(err instanceof Error && err.name !== 'TimeoutError' && err.name !== 'TypeError' && err.name !== 'SyntaxError'
-        ? err.message
-        : 'Delivery could not be confirmed. Please retry or contact Sim directly.');
+      setError(
+        err instanceof Error &&
+          err.name !== 'TimeoutError' &&
+          err.name !== 'TypeError' &&
+          err.name !== 'SyntaxError'
+          ? err.message
+          : 'Delivery could not be confirmed. Please retry or contact Sim directly.',
+      );
       setTimeout(() => errorRef.current?.focus(), 0);
     } finally {
       setBusy(false);

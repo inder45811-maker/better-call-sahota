@@ -103,7 +103,9 @@ test('review form reports email failure honestly and keeps entered details', asy
   await page.getByLabel('Your name', { exact: true }).fill('Preview Visitor');
   await page.getByLabel('Email address', { exact: true }).fill('preview@example.com');
   await page.getByRole('button', { name: 'Request Your Financial & Estate Review' }).click();
-  await expect(page.locator('.enquiry-form').getByRole('alert')).toContainText('not been sent or saved');
+  await expect(page.locator('.enquiry-form').getByRole('alert')).toContainText(
+    'not been sent or saved',
+  );
   await expect(page.getByLabel('Your name', { exact: true })).toHaveValue('Preview Visitor');
 });
 test('review form shows success only after accepted delivery', async ({ page }) => {
@@ -159,8 +161,10 @@ test('calculator can be completed from its visible controls and downloads a PDF'
   await page.screenshot({ path: 'artifacts/calculator-result.png', fullPage: true });
   await page.addScriptTag({ path: createRequire(import.meta.url).resolve('axe-core/axe.min.js') });
   const violations = await page.evaluate(async () => {
-    const result: AxeResults = await (window as unknown as { axe: typeof import('axe-core') }).axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa'] } });
-    return result.violations.map(v => ({ id: v.id, targets: v.nodes.map(n => n.target) }));
+    const result: AxeResults = await (
+      window as unknown as { axe: typeof import('axe-core') }
+    ).axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa'] } });
+    return result.violations.map((v) => ({ id: v.id, targets: v.nodes.map((n) => n.target) }));
   });
   expect(violations).toEqual([]);
   expect(submissions).toEqual([]);
