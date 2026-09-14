@@ -3,13 +3,11 @@ import Link from 'next/link';
 import { notFound, permanentRedirect } from 'next/navigation';
 import {
   ArrowUpRight,
-  ArrowRight,
   Check,
   Info,
   Camera as Instagram,
   Phone,
   MessageCircle,
-  FileText,
 } from 'lucide-react';
 import {
   PageIntro,
@@ -25,7 +23,7 @@ import { EnquiryForm } from '@/components/enquiry-form';
 import { IhtCalculator } from '@/components/iht-calculator';
 import { ContactLink } from '@/components/site-shell';
 import services from '@/lib/services.json';
-import { pillars, site, homeFaqs } from '@/lib/site';
+import { pillars, site } from '@/lib/site';
 import { articles, stories } from '@/lib/editorial';
 import { legalPages } from '@/lib/legal';
 import { pageMetadata, pageCatalog, pageStructuredData, getPage } from '@/lib/seo';

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import {
   ArrowUpRight,
   ArrowRight,
-  BookOpen,
+
   ShieldCheck,
   Sprout,
   House,

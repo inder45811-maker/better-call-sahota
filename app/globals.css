@@ -5299,10 +5299,10 @@ em {
 .article-pensions .article-cover .cover-label { color: #ffc400; }
 .service-intro, .service-row p, .inline-review p, .provider-note p,
 .check-list li, .consideration-box p, .service-review > p:not(.eyebrow),
-.booking-expectation p, .calculator-scope > p, .calculator-scope > span,
+.booking-expectation > p:not(.eyebrow), .calculator-scope > p, .calculator-scope > span,
 .calculator-progress > span:last-child, .field > label > span {
   color: #b8c4d6;
 }
 .article-body a.button, .legal-body a.button { color: #080d16; }
 .stage-explainer > section .journey-number { color: #ffc400; }
-.stage-explainer > section > div > p { color: #b8c4d6; }
+.stage-explainer > section > div > p:not(.eyebrow) { color: #b8c4d6; }

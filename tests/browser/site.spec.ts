@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
-import { writeFile, mkdir } from 'node:fs/promises';
+import { createRequire } from 'node:module';
+import type { AxeResults } from 'axe-core';
 import services from '../../lib/services.json' with { type: 'json' };
 const calculator = {
   date: '2026-09-08',
@@ -140,7 +141,9 @@ test('calculator can be completed from its visible controls and downloads a PDF'
   );
   await choose('Who receives the estate outright?', 'Other people (no exempt beneficiaries)');
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
-  await page.getByLabel('Cash and savings', { exact: true }).fill('500000');
+  await page.getByLabel('Cash and savings', { exact: true }).pressSequentially('500000');
+  await expect(page.getByLabel('Cash and savings', { exact: true })).toHaveValue('500000');
+  await expect(page.getByLabel('Cash and savings', { exact: true })).toBeFocused();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await choose('Does a qualifying home pass outright to direct descendants?', 'No');
   await choose('Are there any specialist circumstances?', 'None of these apply');
@@ -154,6 +157,12 @@ test('calculator can be completed from its visible controls and downloads a PDF'
   const download = await downloadPromise;
   await download.saveAs('artifacts/sample-iht-report.pdf');
   await page.screenshot({ path: 'artifacts/calculator-result.png', fullPage: true });
+  await page.addScriptTag({ path: createRequire(import.meta.url).resolve('axe-core/axe.min.js') });
+  const violations = await page.evaluate(async () => {
+    const result: AxeResults = await (window as unknown as { axe: typeof import('axe-core') }).axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa'] } });
+    return result.violations.map(v => ({ id: v.id, targets: v.nodes.map(n => n.target) }));
+  });
+  expect(violations).toEqual([]);
   expect(submissions).toEqual([]);
 });
 test('email-only API rejects bad requests and retired report endpoints cannot save details', async ({
