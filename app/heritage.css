@@ -978,3 +978,8 @@ em {
   .service-detail { grid-template-columns: 1fr; }
   .service-review { position: static; }
 }
+@media (min-width: 761px) and (max-width: 900px) {
+  .site-header > nav { display: none; }
+  .mobile-menu-button { display: inline-flex; }
+  .header-actions { margin-left: auto; }
+}
