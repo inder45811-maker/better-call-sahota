@@ -46,9 +46,11 @@ test('desktop and mobile homepage render without overflow and primary paths work
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.evaluate(() => document.fonts.ready);
   expect(await page.locator('h1').evaluate((el) => getComputedStyle(el).fontFamily)).toContain(
-    'Anton',
+    'Cormorant Garamond',
   );
-  expect(await page.evaluate(() => document.fonts.check('400 32px "Anton"'))).toBe(true);
+  expect(await page.evaluate(() => document.fonts.check('600 32px "Cormorant Garamond"'))).toBe(
+    true,
+  );
   await page.screenshot({ path: 'artifacts/home-desktop.png', fullPage: true });
   await page.screenshot({ path: 'artifacts/home-desktop-viewport.png' });
   await page.getByRole('button', { name: 'How I Help', exact: true }).click();

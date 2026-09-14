@@ -1,5 +1,13 @@
 # Photography and assets
 
+## September 2026 heritage redesign
+
+The latest user-supplied references supersede the earlier poster style: deep forest green, ivory, warm brass, high-contrast serif typography and warm study imagery. Cormorant Garamond and DM Sans are served locally under the licences below.
+
+`public/brand/simran-study.png` is an AI-assisted adaptation of the supplied life-insurance post, preserving the depicted person and removing promotional text. `public/images/heritage-desk.png` is a generated editorial still life derived from the supplied green-marble trust-planning reference. Both were prepared with the built-in image-generation tool. The study is illustrative and is not evidence of a business address or actual office. Original photographs may replace these assets when available. Financial claims in the reference posts have not been imported into the website copy.
+
+## Earlier assets
+
 The revised visual direction follows the Instagram screenshots supplied by the client: black/navy, yellow/gold, condensed uppercase editorial typography and the Better Call Sim wordmark. Anton is sourced from the official Google Fonts repository; its licence is in `public/fonts/anton-OFL.txt`.
 
 `public/brand/better-call-sim-logo.png` and `public/brand/simran-sahota.png` are cleaned, AI-assisted reconstructions from those supplied screenshots, prepared with the built-in imagegen tool. They are design-preview assets; original high-resolution logo and photography should replace them when supplied. No biographical credentials were inferred from the images.

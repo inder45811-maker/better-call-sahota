@@ -1,14 +1,5 @@
 ﻿import Link from 'next/link';
-import {
-  ArrowUpRight,
-  ShieldCheck,
-  House,
-  TrendingUp,
-  Phone,
-  Check,
-  Play,
-  Camera,
-} from 'lucide-react';
+import { ArrowUpRight, ShieldCheck, House, TrendingUp, Check, Play, Camera } from 'lucide-react';
 import { PlanningStages } from '@/components/planning-stages';
 import { ArticleCards, StoryCards, ReviewJourney, ReviewButton } from '@/components/content';
 import { ContactLink } from '@/components/site-shell';
@@ -48,18 +39,12 @@ export default function Home() {
             </div>
           </div>
           <div className="bcs-hero-visual">
-            <span className="hero-watermark" aria-hidden="true">
-              BETTER
-              <br />
-              CALL SIM.
-            </span>
-            <div className="hero-gold-line" aria-hidden="true" />
             <img
               className="sim-hero-portrait"
-              src="/brand/simran-sahota.png"
+              src="/brand/simran-study.png"
               alt="Simran Sahota, the person behind Better Call Sim"
-              width="700"
-              height="850"
+              width="1024"
+              height="1280"
               fetchPriority="high"
             />
             <div className="sim-nameplate">
@@ -70,14 +55,6 @@ export default function Home() {
               <Link href="/meet-sim" aria-label="Meet Simran Sahota">
                 <ArrowUpRight size={27} />
               </Link>
-            </div>
-            <div className="hero-personal-note">
-              <Phone size={18} />
-              <span>
-                BIG DECISIONS?
-                <br />
-                <b>BETTER CALL SIM.</b>
-              </span>
             </div>
           </div>
         </div>

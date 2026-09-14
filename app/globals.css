@@ -3601,16 +3601,16 @@ h2 {
 .dark {
   --background: #080d16;
   --foreground: #f7f8fa;
-  --primary: #ffc400;
+  --primary: #dfbe78;
   --primary-foreground: #080d16;
   --secondary: #131d2c;
   --muted: #121b29;
   --muted-foreground: #acb4c2;
   --accent: #1d2838;
   --border: #2a3342;
-  --ring: #ffc400;
+  --ring: #dfbe78;
   --card: #101925;
-  --gold: #ffc400;
+  --gold: #dfbe78;
   --font-display: 'Anton';
   --serif: 'Anton', Impact, sans-serif;
   --sans: 'DM Sans', Arial, sans-serif;
@@ -3637,7 +3637,7 @@ h3 {
 }
 em {
   font-style: normal;
-  color: #ffc400;
+  color: #dfbe78;
 }
 .container {
   width: min(1240px, calc(100% - 96px));
@@ -3653,13 +3653,13 @@ em {
   color: #f2f4f7;
 }
 .eyebrow:before {
-  background: #ffc400;
+  background: #dfbe78;
   width: 24px;
 }
 .button {
-  background: #ffc400;
+  background: #dfbe78;
   color: #080d16;
-  border-color: #ffc400;
+  border-color: #dfbe78;
   border-radius: 3px;
   font-size: 14px;
   font-weight: 700;
@@ -3681,9 +3681,9 @@ em {
   color: #fff;
 }
 .button-light {
-  background: #ffc400;
+  background: #dfbe78;
   color: #080d16;
-  border-color: #ffc400;
+  border-color: #dfbe78;
 }
 .button-small {
   min-height: 46px;
@@ -3696,10 +3696,10 @@ em {
 }
 .text-link svg,
 .contact-row svg {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .text-link:hover {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .section-heading > p,
 .heading-note {
@@ -3727,7 +3727,7 @@ em {
   color: #e9edf2;
 }
 .utility svg {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .site-header {
   height: 106px;
@@ -3753,7 +3753,7 @@ em {
   font-size: 13px;
 }
 .site-header nav a:hover {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .mobile-menu-button {
   color: #fff;
@@ -3806,7 +3806,7 @@ em {
 .status-dot {
   width: 7px;
   height: 7px;
-  background: #ffc400;
+  background: #dfbe78;
   border-radius: 50%;
 }
 .bcs-hero h1 {
@@ -3839,7 +3839,7 @@ em {
   width: fit-content;
 }
 .hero-secondary a svg {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .hero-secondary > span {
   font-size: 12px;
@@ -3901,7 +3901,7 @@ em {
   padding: 19px 23px;
   background: #0b1220ee;
   border: 1px solid #3d4145;
-  border-left: 4px solid #ffc400;
+  border-left: 4px solid #dfbe78;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -3926,14 +3926,14 @@ em {
   width: 43px;
   display: grid;
   place-items: center;
-  color: #ffc400;
+  color: #dfbe78;
   border: 1px solid #525147;
 }
 .hero-personal-note {
   position: absolute;
   right: -10px;
   top: 65px;
-  background: #ffc400;
+  background: #dfbe78;
   transform: rotate(5deg);
   color: #080d16;
   padding: 14px 18px;
@@ -3951,7 +3951,7 @@ em {
   font-size: 12px;
 }
 .bcs-marquee {
-  background: #ffc400;
+  background: #dfbe78;
   color: #080d16;
   padding: 24px 0;
 }
@@ -3987,14 +3987,14 @@ em {
 }
 .bcs-service-card:hover {
   transform: translateY(-4px);
-  border-color: #ffc400;
+  border-color: #dfbe78;
 }
 .bcs-service-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 33px;
-  color: #ffc400;
+  color: #dfbe78;
 }
 .bcs-service-top > span {
   font-family: var(--serif);
@@ -4004,7 +4004,7 @@ em {
 .bcs-card-kicker {
   font-size: 9px;
   letter-spacing: 0.08em;
-  color: #ffc400;
+  color: #dfbe78;
   margin-bottom: 10px;
 }
 .bcs-service-card h3 {
@@ -4034,7 +4034,7 @@ em {
   align-items: center;
 }
 .bcs-service-card li svg {
-  color: #ffc400;
+  color: #dfbe78;
   flex-shrink: 0;
 }
 .bcs-card-link {
@@ -4046,7 +4046,7 @@ em {
   font-size: 12px;
 }
 .bcs-card-link svg {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .bcs-personal {
   background: #0e1726;
@@ -4082,7 +4082,7 @@ em {
 }
 .bcs-personal-statement b {
   font-weight: 400;
-  color: #ffc400;
+  color: #dfbe78;
 }
 .bcs-personal-statement > div {
   display: flex;
@@ -4103,7 +4103,7 @@ em {
   display: grid;
   place-items: center;
   border: 1px solid #667080;
-  color: #ffc400;
+  color: #dfbe78;
 }
 .stage-tabs {
   border-color: #344155;
@@ -4121,10 +4121,10 @@ em {
   text-transform: uppercase;
 }
 .stage.active {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .stage.active:after {
-  background: #ffc400;
+  background: #dfbe78;
   height: 3px;
 }
 .stage svg {
@@ -4135,7 +4135,7 @@ em {
   min-height: 190px;
 }
 .stage-kicker {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .stage-detail h3 {
   font-size: 25px;
@@ -4150,13 +4150,13 @@ em {
   color: #e8ebf0;
 }
 .stage-detail a svg {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .framework-note {
   font-size: 12px;
 }
 .bcs-iht {
-  background: #ffc400;
+  background: #dfbe78;
   color: #080d16;
   padding: 77px 0;
 }
@@ -4242,7 +4242,7 @@ em {
   border-color: #344054;
 }
 .story-icon {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .story-icon span {
   color: #9faabb;
@@ -4269,7 +4269,7 @@ em {
 }
 .review-journey > div > span {
   border-color: #81733e;
-  color: #ffc400;
+  color: #dfbe78;
 }
 .review-journey h3 {
   font-size: 23px;
@@ -4281,7 +4281,7 @@ em {
 .article-cover {
   min-height: 285px;
   padding: 27px;
-  background: #ffc400;
+  background: #dfbe78;
   color: #080d16;
   overflow: hidden;
 }
@@ -4305,10 +4305,10 @@ em {
   border: 1px solid #475037;
 }
 .article-navy .cover-symbol {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .article-navy .cover-label {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .article-meta {
   color: #a4b1c3;
@@ -4337,7 +4337,7 @@ em {
 .bcs-play {
   width: 58px;
   height: 58px;
-  background: #ffc400;
+  background: #dfbe78;
   color: #080d16;
   display: grid;
   place-items: center;
@@ -4356,7 +4356,7 @@ em {
   display: flex;
   align-items: center;
   gap: 18px;
-  color: #ffc400;
+  color: #dfbe78;
   font-size: 14px;
 }
 .faq-section {
@@ -4377,7 +4377,7 @@ em {
   color: #b2bdcc;
 }
 .final-cta {
-  background: #ffc400;
+  background: #dfbe78;
   color: #080d16;
   border: 0;
 }
@@ -4437,7 +4437,7 @@ em {
   border-color: #29364a;
 }
 .footer-bottom a:hover {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .preview-note {
   color: #a5afbd !important;
@@ -4460,7 +4460,7 @@ em {
   color: #8998ad;
 }
 .breadcrumbs a:hover {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .hub-aside {
   background: #111d2d;
@@ -4480,14 +4480,14 @@ em {
 }
 .service-card:hover {
   background: #172439;
-  border-color: #ffc400;
+  border-color: #dfbe78;
 }
 .service-card h2 {
   font-size: 30px;
 }
 .service-card .text-link,
 .service-card > svg {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .service-card-number {
   color: #bdac68;
@@ -4525,7 +4525,7 @@ em {
   color: #c2cad5;
 }
 .check-list svg {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .service-faq {
   border-color: #354157;
@@ -4542,10 +4542,10 @@ em {
   color: #f3f5f8;
 }
 .related-services a:hover {
-  border-color: #ffc400;
+  border-color: #dfbe78;
 }
 .related-services svg {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .service-disclosure {
   background: #131e2d;
@@ -4561,10 +4561,10 @@ em {
   object-position: center bottom;
 }
 .about-mark-letter {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .about-mark-label {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .about-layout h2 {
   font-size: 45px;
@@ -4583,16 +4583,16 @@ em {
   text-transform: uppercase;
 }
 .small-pillar-links a:hover {
-  border-color: #ffc400;
+  border-color: #dfbe78;
 }
 .small-pillar-links svg {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .plan-page .stage {
   color: #99a7bb;
 }
 .plan-page .stage.active {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .plan-page-intro,
 .article-body blockquote,
@@ -4604,7 +4604,7 @@ em {
   border-color: #514b33;
 }
 .video-instagram > svg {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .video-instagram > strong {
   font-family: var(--serif);
@@ -4617,7 +4617,7 @@ em {
   color: #9ba9bd;
 }
 .scenario-label {
-  color: #ffc400 !important;
+  color: #dfbe78 !important;
 }
 .article-body a,
 .legal-body a {
@@ -4638,7 +4638,7 @@ em {
   color: #b1bdce;
 }
 .contact-options svg {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .booking-layout > aside > p {
   color: #afbbcc;
@@ -4657,7 +4657,7 @@ em {
   box-shadow: none;
 }
 .form-heading > span {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .form-heading h2,
 .calculator-step-title h2 {
@@ -4681,7 +4681,7 @@ em {
 }
 .field-input:focus,
 .field-select:focus {
-  border-color: #ffc400;
+  border-color: #dfbe78;
 }
 .field-select [data-slot='select-value'] {
   color: #f5f7fa;
@@ -4709,7 +4709,7 @@ em {
   border: 1px solid #81424b;
 }
 .success-panel > svg {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .success-panel > p {
   color: #b8c4d6;
@@ -4730,30 +4730,30 @@ em {
   color: #c4ceda;
 }
 .calculator-progress > span:first-child {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .calculator-panel [data-slot='progress'] {
   background: #344155;
 }
 .calculator-panel [data-slot='progress-indicator'] {
-  background: #ffc400;
+  background: #dfbe78;
 }
 .currency-input {
   background: #0a1320;
   border-color: #4c596e;
 }
 .currency-input > span {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .currency-input input {
   color: #f5f7fa;
   background: transparent;
 }
 .currency-input:focus-within {
-  border-color: #ffc400;
+  border-color: #dfbe78;
 }
 .result-icon {
-  background: #ffc400;
+  background: #dfbe78;
   color: #080d16;
 }
 .result-panel > p:not(.eyebrow) {
@@ -4767,7 +4767,7 @@ em {
   color: #c6c18f;
 }
 .result-amount strong {
-  color: #ffc400;
+  color: #dfbe78;
   font-family: var(--serif);
   font-weight: 400;
 }
@@ -4801,7 +4801,7 @@ em {
   color: #b1bfd0;
 }
 .skip-link {
-  background: #ffc400;
+  background: #dfbe78;
   color: #080d16;
 }
 @media (max-width: 1100px) {
@@ -5217,7 +5217,7 @@ em {
     color: #fff;
   }
   .mobile-contact-bar a:first-child {
-    background: #ffc400;
+    background: #dfbe78;
     color: #080d16;
   }
   .mobile-contact-bar a {
@@ -5225,7 +5225,7 @@ em {
     font-size: 12px;
   }
   .mobile-contact-bar a:not(:first-child) svg {
-    color: #ffc400;
+    color: #dfbe78;
   }
   .page-intro h1 {
     font-size: 45px;
@@ -5296,7 +5296,7 @@ em {
   background: #111e30;
 }
 .bcs-service-top > span { color: #8998ad; }
-.article-pensions .article-cover .cover-label { color: #ffc400; }
+.article-pensions .article-cover .cover-label { color: #dfbe78; }
 .service-intro, .service-row p, .inline-review p, .provider-note p,
 .check-list li, .consideration-box p, .service-review > p:not(.eyebrow),
 .booking-expectation > p:not(.eyebrow), .calculator-scope > p, .calculator-scope > span,
@@ -5304,5 +5304,5 @@ em {
   color: #b8c4d6;
 }
 .article-body a.button, .legal-body a.button { color: #080d16; }
-.stage-explainer > section .journey-number { color: #ffc400; }
+.stage-explainer > section .journey-number { color: #dfbe78; }
 .stage-explainer > section > div > p:not(.eyebrow) { color: #b8c4d6; }

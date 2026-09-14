@@ -6,10 +6,11 @@ import type { AxeResults } from 'axe-core';
 const require = createRequire(import.meta.url);
 test.use({ trace: 'off' });
 
-for (const width of [320, 768, 1440]) {
+for (const width of [320, 768, 1440, 1920]) {
   test(`all pages: accessibility, images and layout at ${width}px`, async ({ page }) => {
     test.setTimeout(600000);
     await page.setViewportSize({ width, height: 900 });
+    await page.emulateMedia({ reducedMotion: 'reduce' });
     const findings: unknown[] = [];
     const errors: string[] = [];
     page.on('pageerror', (error) => errors.push(error.message));

@@ -13,7 +13,7 @@ export const site = {
   regulatedProvider: '',
   fcaReference: '',
   principal: '',
-  adviserPortrait: '/brand/simran-sahota.png',
+  adviserPortrait: '/brand/simran-study.png',
   adviserStory:
     'I’m Simran Sahota, the person behind Better Call Sim. My approach starts with a conversation about your family, your priorities and what you want to put in place. This website brings those estate-planning conversations together with the financial and property questions that often sit alongside them.',
   bookingUrl: '',

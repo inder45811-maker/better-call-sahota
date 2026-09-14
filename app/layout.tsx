@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import './search.css';
+import './heritage.css';
 import { SiteHeader, SiteFooter } from '@/components/site-shell';
 import { site } from '@/lib/site';
 import { pageMetadata, siteStructuredData } from '@/lib/seo';

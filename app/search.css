@@ -1,11 +1,11 @@
 .quick-answer {
   padding: clamp(22px, 3vw, 34px);
-  border-left: 3px solid #ffc400;
+  border-left: 3px solid #dfbe78;
   background: #101925;
   margin-bottom: 30px;
 }
 .quick-answer .eyebrow {
-  color: #ffc400;
+  color: #dfbe78;
   margin-bottom: 12px;
 }
 .quick-answer h2,
@@ -46,7 +46,7 @@
 }
 .content-sources a:hover,
 .article-contents a:hover {
-  color: #ffc400;
+  color: #dfbe78;
 }
 .content-date {
   color: #a8b4c3;
@@ -63,7 +63,7 @@
 .article-summary {
   padding: 26px;
   background: #101925;
-  border-left: 3px solid #ffc400;
+  border-left: 3px solid #dfbe78;
   margin-bottom: 28px;
 }
 .article-summary p {

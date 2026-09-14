@@ -1,7 +1,7 @@
 name: Website checks
 on:
   push:
-    branches: [main, vercel-migration, simple-email-reports, production-audit]
+    branches: [main, vercel-migration, simple-email-reports, production-audit, heritage-redesign]
   pull_request:
   workflow_dispatch:
 permissions:
