@@ -1,6 +1,6 @@
 # Search, generative and answer engine readiness
 
-Implemented 9 September 2026. Northolt, West London is the base supplied by the client. No street address, public office, opening hours, broader service area or professional credentials have been assumed.
+Implemented 9 September 2026. UK-wide positioning was requested by the owner. No street address, public office, opening hours or professional credentials have been assumed.
 
 ## Across the site
 
@@ -18,7 +18,7 @@ Before launch, set the real `NEXT_PUBLIC_SITE_URL`, verify the factual business 
 
 The live crawler policy allows public content for ordinary search crawlers and OAI-SearchBot and excludes `/api/`. Check any Vercel firewall or bot protection separately. No settings for model-training crawlers have been added or advertised as necessary for search visibility.
 
-Add owner-issued `GOOGLE_SITE_VERIFICATION` and `BING_SITE_VERIFICATION` values if HTML-tag verification is used, or verify the domain through DNS. Submit the live sitemap in Google Search Console and Bing Webmaster Tools and inspect representative URLs. Those accounts and domain ownership have not been verified by this implementation. A Google Business Profile and wider location claims need the actual business details and eligibility; Northolt residence does not establish a public walk-in office.
+Add owner-issued `GOOGLE_SITE_VERIFICATION` and `BING_SITE_VERIFICATION` values if HTML-tag verification is used, or verify the domain through DNS. Submit the live sitemap in Google Search Console and Bing Webmaster Tools and inspect representative URLs. Those accounts and domain ownership have not been verified by this implementation. A Google Business Profile and wider location claims need the actual business details and eligibility; A private residence does not establish a public walk-in office.
 
 There is no guaranteed ranking, featured answer or AI citation. Current Google guidance says SEO fundamentals remain relevant to generative results and that special AI files or schema are not required. Google retired FAQ rich results in May 2026; the visible Q&A and semantic Question/Answer data are not presented as eligibility for that retired feature. No `llms.txt`, hidden keyword blocks, fabricated citations, location doorway pages or “AI ranking” claims were added.
 

@@ -1,6 +1,6 @@
 # Better Call Sim
 
-Next.js website with Instagram-inspired black/yellow styling, 20 service pages, Northolt/West London context and sitewide search metadata.
+Next.js website with Instagram-inspired black/yellow styling, 20 service pages, UK-wide positioning and sitewide search metadata.
 
 Run npm ci, npm run dev, npm run typecheck, npm test, npm run build and npm run test:browser. CI builds and tests without a database or email credentials.
 

@@ -40,6 +40,7 @@ export function EnquiryForm() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(lead),
+        signal: AbortSignal.timeout(25000),
       });
       const json = (await response.json()) as {
         error?: string;
@@ -47,9 +48,13 @@ export function EnquiryForm() {
         delivery: string;
       };
       if (!response.ok) throw new Error(json.error || 'Unable to send your request.');
+      if (json.delivery !== 'sent' || !json.reference)
+        throw new Error('Delivery could not be confirmed. Please retry or contact Sim directly.');
       setResult(json);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unable to send your request.');
+      setError(err instanceof Error && err.name !== 'TimeoutError' && err.name !== 'TypeError' && err.name !== 'SyntaxError'
+        ? err.message
+        : 'Delivery could not be confirmed. Please retry or contact Sim directly.');
       setTimeout(() => errorRef.current?.focus(), 0);
     } finally {
       setBusy(false);
@@ -90,7 +95,7 @@ export function EnquiryForm() {
       </div>
       {site.preview && (
         <p className="notice">
-          Private preview — use sample details. No appointment will be automatically booked.
+          Website review version — use sample details. No appointment will be automatically booked.
         </p>
       )}
       <div ref={errorRef} tabIndex={-1} role={error ? 'alert' : undefined}>

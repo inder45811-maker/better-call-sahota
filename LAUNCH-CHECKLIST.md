@@ -1,11 +1,11 @@
-# Client details required before public launch
+# Business details required before public launch
 
 - [ ] Confirm the brand name and approve the design/copy.
 - [ ] Approve the proposed biography for Simran Sahota and supply the original portrait/logo plus any verified qualifications.
-- [ ] Confirm the phone/WhatsApp number and Calendly link transcribed from the supplied screenshots; supply email, service areas, business hours and any office address.
+- [ ] Confirm the phone/WhatsApp number transcribed from the supplied screenshots. The owner supplied Simran@anandassociates.com and UK-wide coverage. Calendly remains disabled as requested; business hours and a public office are not claimed.
 - [ ] Confirm the actual legal entity and estate-planning provider/jurisdiction.
 - [ ] Supply the regulated provider, FCA number/permissions and any AR/principal or introducer wording; approve page-specific risks and complaints routes.
-- [ ] Confirm review scope, meeting formats, duration and cost, and connect any approved booking calendar.
+- [ ] Confirm review scope, meeting formats, duration and cost, with appointments agreed directly; no booking calendar is enabled.
 - [ ] Approve privacy/terms/retention wording, identify the controller and processors, configure deletion and the contact for data rights.
 - [ ] Configure verified email sender, adviser recipient and secrets; test delivery to client-approved test addresses.
 - [ ] Approve the bounded IHT rule set and reporting assumptions with the appropriate professional.

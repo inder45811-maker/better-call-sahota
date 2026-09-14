@@ -2034,8 +2034,8 @@ h2 {
   min-height: 49px !important;
   padding: 12px 14px !important;
   border-radius: 4px !important;
-  background: #fffefb !important;
-  border-color: #c7d1bf !important;
+  background: #0a1320 !important;
+  border-color: #4c586b !important;
   font-size: 15px !important;
   white-space: normal !important;
   line-height: 1.6;
@@ -4402,7 +4402,7 @@ em {
 .final-cta .contact-row svg {
   color: #080d16;
 }
-.site-footer {
+.footer {
   background: #050a12;
   color: #e9edf3;
 }
@@ -4410,26 +4410,26 @@ em {
   border-color: #283343;
 }
 .footer-main > div:first-child > p,
-.footer-links a {
+.footer-main > div:not(:first-child) > a {
   color: #a7b3c3;
 }
-.footer-links h3 {
+.footer-main h3 {
   font-family: var(--sans);
   color: #f0f3f7;
   font-size: 13px;
   font-weight: 600;
   text-transform: none;
 }
-.footer-instagram {
+.instagram-link {
   color: #bec6d1;
 }
-.regulatory-footer {
+.regulatory-grid {
   border-color: #2b3749;
 }
-.regulatory-footer h4 {
+.regulatory-grid h4 {
   color: #d8dfe8;
 }
-.regulatory-footer p,
+.regulatory-grid p,
 .footer-bottom {
   color: #93a0b2;
 }
@@ -5290,3 +5290,19 @@ em {
 .preview-notice {
   color: #a4afbe;
 }
+
+/* Shared dark surfaces and readable secondary copy across every page template. */
+.review-section, .consideration-box, .service-review, .scenario-label {
+  background: #111e30;
+}
+.bcs-service-top > span { color: #8998ad; }
+.article-pensions .article-cover .cover-label { color: #ffc400; }
+.service-intro, .service-row p, .inline-review p, .provider-note p,
+.check-list li, .consideration-box p, .service-review > p:not(.eyebrow),
+.booking-expectation p, .calculator-scope > p, .calculator-scope > span,
+.calculator-progress > span:last-child, .field > label > span {
+  color: #b8c4d6;
+}
+.article-body a.button, .legal-body a.button { color: #080d16; }
+.stage-explainer > section .journey-number { color: #ffc400; }
+.stage-explainer > section > div > p { color: #b8c4d6; }
