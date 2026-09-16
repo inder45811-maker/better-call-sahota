@@ -1021,3 +1021,8 @@ em {
   .sim-nameplate strong { font-size: 25px; }
 }
 @media (max-width: 370px) { .bcs-hero-visual { height: 440px; } }
+@media (min-width: 761px) {
+  .bcs-hero-grid { position: static; }
+  .bcs-hero-visual { right: 0; }
+  .sim-hero-portrait { object-position: center 20%; }
+}
