@@ -1,6 +1,6 @@
 export const site = {
   name: 'Better Call Sim',
-  adviser: 'Simran Sahota',
+  adviser: 'Simran Singh Sahota',
   location: 'United Kingdom',
   instagram: 'https://www.instagram.com/bettercallsimuk/',
   origin: (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, ''),
@@ -14,8 +14,6 @@ export const site = {
   fcaReference: '',
   principal: '',
   adviserPortrait: '/brand/simran-study.png',
-  adviserStory:
-    'I’m Simran Sahota, the person behind Better Call Sim. My approach starts with a conversation about your family, your priorities and what you want to put in place. This website brings those estate-planning conversations together with the financial and property questions that often sit alongside them.',
   bookingUrl: '',
 };
 export const REVIEW_CTA = 'Book Your Financial & Estate Review';

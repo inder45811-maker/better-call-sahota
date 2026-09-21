@@ -35,9 +35,9 @@ const fixed: Page[] = [
   {
     path: 'meet-sim',
     label: 'Meet Sim',
-    title: 'Meet Simran Sahota | Your UK-Wide Planning Contact',
+    title: 'Meet Simran Singh Sahota | Founder of Better Call Sim',
     description:
-      'Meet Simran Sahota, the person behind Better Call Sim, supporting planning enquiries across the UK and connecting your financial, property and estate plans.',
+      'Meet Simran Singh Sahota, founder of Better Call Sim. Discover his decade in financial services and personal approach to financial and estate planning.',
     kind: 'about',
   },
   {
@@ -304,7 +304,9 @@ export function pageStructuredData(path: string) {
       '@id': url + '#simran-sahota',
       name: site.adviser,
       url,
-      description: 'The person behind Better Call Sim.',
+      description: 'Founder of Better Call Sim, with more than a decade in financial services.',
+      jobTitle: 'Founder',
+      sameAs: [site.instagram],
       worksFor: organisation,
     });
   }

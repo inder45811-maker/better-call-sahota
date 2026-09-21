@@ -235,9 +235,6 @@ export function SiteFooter() {
                 carry the same regulatory protections as regulated financial advice. The provider
                 and terms will be confirmed before you proceed.
               </p>
-              <p>
-                No STEP membership or other professional accreditation is claimed on this website.
-              </p>
             </div>
           </div>
           <div className="footer-bottom">

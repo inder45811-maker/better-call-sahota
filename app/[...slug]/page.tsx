@@ -1,15 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
+import { MeetSimPage } from '@/components/meet-sim';
 import { notFound, permanentRedirect } from 'next/navigation';
-import {
-  ArrowUpRight,
-  Check,
-  Info,
-  Camera as Instagram,
-  Phone,
-  MessageCircle,
-} from 'lucide-react';
+import { ArrowUpRight, Check, Info, Camera as Instagram, Phone, MessageCircle } from 'lucide-react';
 import {
   PageIntro,
   ReviewButton,
@@ -220,72 +213,7 @@ function PageContent({ path }: { path: string }) {
         </section>
       </main>
     );
-  if (path === 'meet-sim')
-    return (
-      <main id="main">
-        <PageIntro
-          eyebrow="MEET SIM"
-          title={'Big decisions.\nA real conversation.'}
-          description="The person behind Better Call Sim — and an approach that starts with what matters to you."
-        />
-        <section className="container about-layout">
-          <div className="about-mark">
-            {site.adviserPortrait ? (
-              <Image src={site.adviserPortrait} alt="Simran Sahota" width={1122} height={1402} sizes="(max-width: 760px) 90vw, 600px" />
-            ) : (
-              <>
-                <span className="about-initial">
-                  S<span>.</span>
-                </span>
-                <p>better call sim.</p>
-                <span className="about-mark-label">YOUR WEALTH. YOUR FAMILY. YOUR LEGACY.</span>
-              </>
-            )}
-          </div>
-          <div>
-            <p className="eyebrow">A PERSONAL APPROACH</p>
-            <p className="location-line">Supporting clients across the UK.</p>
-            <h2>
-              Start with your life.
-              <br />
-              <em>Build a plan around it.</em>
-            </h2>
-            <p>
-              There’s often more than one reason to start planning. A property decision can affect
-              your finances. A new family chapter can change your wishes. The aim of Better Call Sim
-              is to connect those conversations.
-            </p>
-            <p>
-              Begin with what you want to understand. Explore what needs attention. Agree the next
-              steps, including where a specialist provider is needed.
-            </p>
-            {site.adviserStory ? (
-              <p>{site.adviserStory}</p>
-            ) : (
-              <p className="notice">
-                Sim’s personal biography, portrait and professional credentials will be added once
-                supplied and verified. No qualifications or experience claims have been assumed for
-                this preview.
-              </p>
-            )}
-            <a href={site.instagram} className="text-link" target="_blank" rel="noreferrer">
-              <Instagram size={18} />
-              Meet Sim on Instagram <ArrowUpRight size={17} />
-            </a>
-            <ReviewButton />
-          </div>
-        </section>
-        <section className="section container">
-          <div className="section-heading">
-            <div>
-              <p className="eyebrow">ONE CONNECTED CONVERSATION</p>
-              <h2>Your priorities set the direction.</h2>
-            </div>
-          </div>
-          <RelatedPillars />
-        </section>
-      </main>
-    );
+  if (path === 'meet-sim') return <MeetSimPage />;
   if (path === 'book-review')
     return (
       <main id="main">

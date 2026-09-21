@@ -1026,3 +1026,32 @@ em {
   .bcs-hero-visual { right: 0; }
   .sim-hero-portrait { object-position: center 20%; }
 }
+
+/* Personal biography: readable chapters and an unobtrusive contents rail. */
+.biography-intro { align-items: start; }
+.biography-intro .about-mark { height: 620px; }
+.biography-intro h2 { font-size: clamp(34px, 3vw, 45px); }
+.biography-layout { display: grid; grid-template-columns: minmax(210px, 280px) minmax(0, 800px); justify-content: space-between; gap: 64px; padding-top: 80px; }
+.biography-contents { align-self: start; position: sticky; top: 32px; padding-top: 8px; }
+.biography-contents nav { display: flex; flex-direction: column; gap: 0; margin-top: 20px; }
+.biography-contents a { color: #d0c3b4; font-size: 14px; line-height: 1.6; padding: 14px 0; border-bottom: 1px solid #69513b; }
+.biography-contents a:hover { color: #e6c783; }
+.biography-chapters section { scroll-margin-top: 36px; padding-bottom: 48px; margin-bottom: 48px; border-bottom: 1px solid #69513b; }
+.biography-chapters h2 { font-size: clamp(32px, 3vw, 42px); margin-bottom: 25px; }
+.biography-chapters p { max-width: 72ch; color: #d0c3b4; line-height: 1.85; margin: 0 0 20px; }
+.biography-chapters .biography-approach { background: #321a1e; border: 1px solid #a9844e; padding: 36px; margin-bottom: 0; }
+.biography-approach ol { list-style: decimal; padding-left: 25px; margin: 24px 0; }
+.biography-approach li { color: #f4efdf; padding-left: 8px; margin-block: 14px; line-height: 1.7; }
+.biography-approach li::marker { color: #e6c783; }
+.biography-approach .button { max-width: 100%; white-space: normal; }
+@media (max-width: 1000px) {
+  .biography-layout { grid-template-columns: 1fr; gap: 36px; padding-top: 48px; }
+  .biography-contents { position: static; }
+  .biography-contents nav { display: grid; grid-template-columns: 1fr 1fr; column-gap: 28px; }
+}
+@media (max-width: 760px) {
+  .biography-intro .about-mark { height: 460px; }
+  .biography-chapters section { padding-bottom: 32px; margin-bottom: 36px; }
+  .biography-contents nav { grid-template-columns: 1fr; }
+  .biography-chapters .biography-approach { padding: 25px 20px; }
+}
