@@ -1,6 +1,6 @@
 # Vercel setup
 
-Use Next.js, repository root, Node 24 and the default build command. The production URL is https://better-call-sahota.vercel.app.
+Use Next.js, repository root, Node 24 and the default build command. The production URL is https://bettercallsim.co.uk (Vercel preview/deployment host: https://better-call-sahota.vercel.app).
 
 No database, migration, scheduled cleanup or Calendly integration is required. PDF reports are generated locally in the visitor's browser. Calculator answers and the optional name are not posted to the server. The PDF is not emailed or archived.
 

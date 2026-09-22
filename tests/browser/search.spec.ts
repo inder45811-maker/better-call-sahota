@@ -31,7 +31,7 @@ test('every canonical page has unique search metadata and parseable, accurate st
     expect(canonical, route + ' canonical').toBeTruthy();
     expect(new URL(canonical!).href, route).toBe(new URL(route, site.origin).href);
     expect(new URL(meta(html, 'og:url')!).href, route).toBe(new URL(route, site.origin).href);
-    expect(meta(html, 'robots'), route).toContain('noindex');
+    expect(meta(html, 'robots'), route).toContain(site.preview ? 'noindex' : 'index');
     expect(meta(html, 'twitter:title'), route).toBeTruthy();
     const graphs = jsonLd(html);
     expect(graphs, route).toHaveLength(2);
@@ -63,14 +63,24 @@ test('every canonical page has unique search metadata and parseable, accurate st
   }
   expect(pageCatalog.filter((p) => p.kind === 'service')).toHaveLength(20);
 });
-test('preview crawl rules, canonical sitemap coverage, redirects and missing pages stay consistent', async ({
+test('crawl rules, canonical sitemap coverage, redirects and missing pages stay consistent', async ({
   request,
 }) => {
   const robots = await (await request.get('/robots.txt')).text();
   expect(robots).toContain('User-Agent: OAI-SearchBot');
-  expect(robots).toContain('Disallow: /');
+  if (site.preview) {
+    expect(robots).toContain('Disallow: /');
+  } else {
+    expect(robots).toContain('Allow: /');
+    expect(robots).toContain('Disallow: /api/');
+    expect(robots).toContain('sitemap.xml');
+  }
   const sitemap = await (await request.get('/sitemap.xml')).text();
-  expect(sitemap).not.toContain('<loc>');
+  if (site.preview) {
+    expect(sitemap).not.toContain('<loc>');
+  } else {
+    expect(sitemap).toContain('<loc>');
+  }
   expect(
     sitemapEntries()
       .map((p) => new URL(p.url).pathname)

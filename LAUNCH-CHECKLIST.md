@@ -13,6 +13,6 @@
 - [ ] Supply selected educational videos, captions and transcripts; update the media feature.
 - [ ] Review accessibility, including the on-screen alternative to the simple PDF.
 - [ ] Resolve material applicable dependency advisories and rerun checks after updates.
-- [ ] Confirm the domain and intended audience, then explicitly request public launch.
+- [x] Confirm domain: `bettercallsim.co.uk` (GoDaddy registered; Vercel DNS and launch review pending).
 
 No supplied fact has been substituted with a fabricated credential, number, testimonial, review score or claim of FCA/STEP status.

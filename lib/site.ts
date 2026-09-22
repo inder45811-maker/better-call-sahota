@@ -4,7 +4,7 @@ export const site = {
   location: 'United Kingdom',
   instagram: 'https://www.instagram.com/bettercallsimuk/',
   origin: (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, ''),
-  preview: true,
+  preview: false,
   // Replace only with client-verified details. Do not add example numbers.
   phone: '+44 7711 902299',
   whatsapp: '+44 7711 902299',
