@@ -9,6 +9,7 @@ import {
   MessageCircle,
   Camera as Instagram,
 } from 'lucide-react';
+import { TikTokIcon } from '@/components/icons';
 import {
   Sheet,
   SheetTrigger,
@@ -193,9 +194,26 @@ export function SiteFooter() {
                 Your legacy. One plan.
               </p>
               <p className="footer-location">Supporting clients across the UK.</p>
-              <a href={site.instagram} target="_blank" rel="noreferrer" className="instagram-link">
-                <Instagram size={18} /> @bettercallsimuk <ArrowUpRight size={13} />
-              </a>
+              <div className="footer-socials">
+                <a
+                  href={site.instagram}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="instagram-link"
+                  aria-label="Visit Sim on Instagram (@bettercallsimuk)"
+                >
+                  <Instagram size={17} /> Instagram <span className="footer-handle">@bettercallsimuk</span> <ArrowUpRight size={13} />
+                </a>
+                <a
+                  href={site.tiktok}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="instagram-link"
+                  aria-label="Visit Sim on TikTok (@bettercallsimuk)"
+                >
+                  <TikTokIcon size={17} /> TikTok <span className="footer-handle">@bettercallsimuk</span> <ArrowUpRight size={13} />
+                </a>
+              </div>
             </div>
             <div>
               <h3>How I help</h3>

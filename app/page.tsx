@@ -1,6 +1,7 @@
-﻿import Link from 'next/link';
+import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowUpRight, ShieldCheck, House, TrendingUp, Check, Play, Camera } from 'lucide-react';
+import { TikTokIcon } from '@/components/icons';
 import { PlanningStages } from '@/components/planning-stages';
 import { ArticleCards, StoryCards, ReviewJourney, ReviewButton } from '@/components/content';
 import { ContactLink } from '@/components/site-shell';
@@ -190,14 +191,26 @@ export default function Home() {
                 width="230"
                 height="100"
               />
-              <a
-                href={site.instagram}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Visit Sim on Instagram"
-              >
-                <Camera size={24} />
-              </a>
+              <div className="bcs-hero-socials">
+                <a
+                  href={site.instagram}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Visit Sim on Instagram (@bettercallsimuk)"
+                  title="Instagram: @bettercallsimuk"
+                >
+                  <Camera size={22} />
+                </a>
+                <a
+                  href={site.tiktok}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Visit Sim on TikTok (@bettercallsimuk)"
+                  title="TikTok: @bettercallsimuk"
+                >
+                  <TikTokIcon size={22} />
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -315,18 +328,35 @@ export default function Home() {
           </Link>
         </div>
         <ArticleCards />
-        <a className="bcs-social-banner" href={site.instagram} target="_blank" rel="noreferrer">
+        <div className="bcs-social-banner">
           <span className="bcs-play">
             <Play size={23} fill="currentColor" />
           </span>
           <div>
             <h3>More from Better Call Sim.</h3>
-            <p>Explore Sim’s educational posts and videos on Instagram.</p>
+            <p>Explore Sim’s educational posts and videos on Instagram and TikTok.</p>
           </div>
-          <span>
-            @bettercallsimuk <ArrowUpRight size={23} />
-          </span>
-        </a>
+          <div className="bcs-social-actions">
+            <a
+              className="bcs-social-chip"
+              href={site.instagram}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram: @bettercallsimuk"
+            >
+              <Camera size={16} /> Instagram @bettercallsimuk <ArrowUpRight size={15} />
+            </a>
+            <a
+              className="bcs-social-chip"
+              href={site.tiktok}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="TikTok: @bettercallsimuk"
+            >
+              <TikTokIcon size={16} /> TikTok @bettercallsimuk <ArrowUpRight size={15} />
+            </a>
+          </div>
+        </div>
       </section>
       <section className="faq-section section">
         <div className="container faq-layout">

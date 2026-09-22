@@ -4,6 +4,7 @@ import { SportsPlanningPage } from '@/components/sports-planning';
 import { MeetSimPage } from '@/components/meet-sim';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { ArrowUpRight, Check, Info, Camera as Instagram, Phone, MessageCircle } from 'lucide-react';
+import { TikTokIcon } from '@/components/icons';
 import {
   PageIntro,
   ReviewButton,
@@ -295,6 +296,14 @@ function PageContent({ path }: { path: string }) {
               Open the profile <ArrowUpRight size={17} />
             </span>
           </a>
+          <a href={site.tiktok} target="_blank" rel="noreferrer">
+            <TikTokIcon size={27} />
+            <h2>Follow Sim on TikTok</h2>
+            <p>@bettercallsimuk</p>
+            <span className="text-link">
+              Open TikTok <ArrowUpRight size={17} />
+            </span>
+          </a>
           <div>
             <Phone size={27} />
             <h2>Prefer a call?</h2>
@@ -365,16 +374,24 @@ function PageContent({ path }: { path: string }) {
                 <em>making time for.</em>
               </h2>
               <p>
-                Visit Sim’s Instagram for posts and videos. Selected website videos will appear here
+                Visit Sim’s Instagram and TikTok for posts and videos. Selected website videos will appear here
                 once the media, captions and transcripts are supplied.
               </p>
             </div>
-            <a className="video-instagram" href={site.instagram} target="_blank" rel="noreferrer">
-              <Instagram size={45} strokeWidth={1} />
-              <span>bettercallsimuk</span>
-              <strong>Explore Sim’s Instagram</strong>
-              <ArrowUpRight size={25} />
-            </a>
+            <div className="video-social-links">
+              <a className="video-instagram" href={site.instagram} target="_blank" rel="noreferrer">
+                <Instagram size={40} strokeWidth={1} />
+                <span>@bettercallsimuk</span>
+                <strong>Explore Sim’s Instagram</strong>
+                <ArrowUpRight size={22} />
+              </a>
+              <a className="video-instagram" href={site.tiktok} target="_blank" rel="noreferrer">
+                <TikTokIcon size={40} />
+                <span>@bettercallsimuk</span>
+                <strong>Follow Sim on TikTok</strong>
+                <ArrowUpRight size={22} />
+              </a>
+            </div>
           </div>
         </section>
       </main>

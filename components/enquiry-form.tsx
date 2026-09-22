@@ -89,9 +89,14 @@ export function EnquiryForm({
           Your enquiry has been accepted by the email service for delivery to Sim. An appointment is
           not booked automatically.
         </p>
-        <a href={site.instagram} className="text-link" target="_blank" rel="noreferrer">
-          Visit @bettercallsimuk <ArrowUpRight size={17} />
-        </a>
+        <div className="enquiry-social-links">
+          <a href={site.instagram} className="text-link" target="_blank" rel="noreferrer">
+            Instagram @bettercallsimuk <ArrowUpRight size={17} />
+          </a>
+          <a href={site.tiktok} className="text-link" target="_blank" rel="noreferrer">
+            TikTok @bettercallsimuk <ArrowUpRight size={17} />
+          </a>
+        </div>
         <Link href="/the-plan" className="button">
           Explore the planning approach <ArrowUpRight size={17} />
         </Link>

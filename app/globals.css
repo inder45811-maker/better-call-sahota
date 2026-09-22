@@ -1902,7 +1902,7 @@ h2 {
 }
 .contact-options {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 25px;
   scroll-margin-top: 35px;
 }
@@ -5306,3 +5306,71 @@ em {
 .article-body a.button, .legal-body a.button { color: #080d16; }
 .stage-explainer > section .journey-number { color: #dfbe78; }
 .stage-explainer > section > div > p:not(.eyebrow) { color: #b8c4d6; }
+
+/* Instagram & TikTok Socials */
+.footer-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+.footer-handle {
+  color: #dfbe78;
+  font-weight: 500;
+}
+.bcs-hero-socials {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.bcs-hero-socials a {
+  color: #dfbe78;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.bcs-hero-socials a:hover {
+  opacity: 0.8;
+  transform: translateY(-1px);
+}
+.bcs-social-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.bcs-social-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: rgba(223, 190, 120, 0.1);
+  border: 1px solid rgba(223, 190, 120, 0.35);
+  border-radius: 4px;
+  color: #dfbe78;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+.bcs-social-chip:hover {
+  background: rgba(223, 190, 120, 0.22);
+  border-color: #dfbe78;
+}
+.video-social-links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.video-social-links .video-instagram {
+  flex: 1 1 200px;
+}
+.meet-sim-socials,
+.enquiry-social-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin: 12px 0 16px;
+}

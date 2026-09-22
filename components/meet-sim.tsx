@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { ArrowUpRight, Camera } from 'lucide-react';
+import { TikTokIcon } from '@/components/icons';
 import { PageIntro, ReviewButton, RelatedPillars } from '@/components/content';
 import { site } from '@/lib/site';
 
@@ -90,9 +91,14 @@ export function MeetSimPage() {
             Those years taught me something that has stayed with me throughout my career: being good
             with people starts with understanding them.
           </p>
-          <a href={site.instagram} className="text-link" target="_blank" rel="noreferrer">
-            <Camera size={18} /> Meet Sim on Instagram <ArrowUpRight size={17} />
-          </a>
+          <div className="meet-sim-socials">
+            <a href={site.instagram} className="text-link" target="_blank" rel="noreferrer">
+              <Camera size={18} /> Instagram @bettercallsimuk <ArrowUpRight size={17} />
+            </a>
+            <a href={site.tiktok} className="text-link" target="_blank" rel="noreferrer">
+              <TikTokIcon size={18} /> TikTok @bettercallsimuk <ArrowUpRight size={17} />
+            </a>
+          </div>
         </div>
       </section>
       <div className="container biography-layout">

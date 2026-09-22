@@ -2,7 +2,9 @@ export const site = {
   name: 'Better Call Sim',
   adviser: 'Simran Singh Sahota',
   location: 'United Kingdom',
+  handle: '@bettercallsimuk',
   instagram: 'https://www.instagram.com/bettercallsimuk/',
+  tiktok: 'https://www.tiktok.com/@bettercallsimuk',
   origin: (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, ''),
   preview: false,
   // Replace only with client-verified details. Do not add example numbers.
