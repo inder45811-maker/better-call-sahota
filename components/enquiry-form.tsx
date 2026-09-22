@@ -6,8 +6,14 @@ import { Choice, CheckField } from './form-controls';
 import { MARKETING_COPY, validateLead } from '@/lib/validation';
 import { identifySubmission } from '@/lib/submission';
 import { site } from '@/lib/site';
-export function EnquiryForm() {
-  const [interest, setInterest] = useState('Financial & Estate Review'),
+export function EnquiryForm({
+  initialInterest = 'Financial & Estate Review',
+  submitLabel = 'Request Your Financial & Estate Review',
+}: {
+  initialInterest?: string;
+  submitLabel?: string;
+}) {
+  const [interest, setInterest] = useState(initialInterest),
     [method, setMethod] = useState('email'),
     [marketing, setMarketing] = useState(false),
     [busy, setBusy] = useState(false),
@@ -153,6 +159,7 @@ export function EnquiryForm() {
           'Estate Planning',
           'Financial Advice',
           'Property Finance',
+          'Footballers & Sports Professionals',
           'Not sure yet',
         ].map((v) => ({ value: v, label: v }))}
       />
@@ -213,7 +220,7 @@ export function EnquiryForm() {
         optional. <Link href="/privacy">Privacy notice</Link>
       </p>
       <button disabled={busy} className="button form-submit" type="submit">
-        {busy ? 'Sending your request…' : 'Request Your Financial & Estate Review'}
+        {busy ? 'Sending your request…' : submitLabel}
         {busy ? <LoaderCircle className="spin" size={17} /> : <ArrowUpRight size={17} />}
       </button>
       <p className="field-hint">

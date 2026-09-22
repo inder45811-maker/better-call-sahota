@@ -93,6 +93,7 @@ for (const width of [320, 768, 1440, 1920]) {
         [
           '',
           'meet-sim',
+          'footballers-and-sports-professionals',
           'book-review',
           'iht-calculator',
           'estate-planning/wills',

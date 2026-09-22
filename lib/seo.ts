@@ -17,6 +17,14 @@ type Page = {
 };
 const fixed: Page[] = [
   {
+    path: 'footballers-and-sports-professionals',
+    label: 'Footballers & sports professionals',
+    title: 'Financial & Estate Planning for Footballers and Sports Professionals',
+    description:
+      'Personal financial and estate planning for footballers and sports professionals. Connect family, protection, property and life after sport in one plan.',
+    kind: 'page',
+  },
+  {
     path: '',
     label: 'Home',
     title: 'Estate & Financial Planning Across the UK',

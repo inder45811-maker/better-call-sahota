@@ -1055,3 +1055,28 @@ em {
   .biography-contents nav { grid-template-columns: 1fr; }
   .biography-chapters .biography-approach { padding: 25px 20px; }
 }
+
+/* Dedicated audience page, following the warm editorial design. */
+.sports-page .page-intro h1 { max-width: 1100px; font-size: clamp(42px, 4.2vw, 64px); }
+.sports-opening { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(300px, .8fr); gap: 72px; align-items: start; }
+.sports-opening p { color: #d0c3b4; line-height: 1.85; margin-bottom: 20px; }
+.sports-invitation, .sports-related { padding: 32px; background: #321a1e; border: 1px solid #a9844e; }
+.sports-invitation h2 { font-size: 38px; margin-bottom: 20px; }
+.sports-invitation .button { white-space: normal; max-width: 100%; }
+.sports-invitation .contact-row, .sports-page #private-meeting > .contact-row { margin-block: 24px; }
+.sports-layout { padding-bottom: 80px; }
+.sports-checklist { padding-left: 22px; margin: 22px 0; list-style: disc; }
+.sports-checklist li { padding-left: 8px; margin-bottom: 14px; line-height: 1.8; color: #d0c3b4; }
+.sports-checklist li::marker, .sports-process li::marker { color: #e6c783; }
+.sports-process { list-style: decimal; padding-left: 28px; }
+.sports-process li { padding-left: 12px; margin-block: 26px; }
+.sports-process h3 { font-size: 30px; margin-bottom: 10px; }
+.sports-provider { padding: 26px; border: 1px solid #a9844e; background: #281a16; }
+.sports-provider p { font-size: 14px; }
+.sports-service-links { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 30px; }
+.sports-service-links a { display: inline-flex; align-items: center; gap: 10px; color: #e6c783; }
+.sports-related { margin-bottom: 40px; }
+.sports-related h2 { font-size: 34px; margin-bottom: 15px; }
+.sports-related > p:not(.eyebrow) { color: #d0c3b4; margin-bottom: 20px; }
+@media (max-width: 1000px) { .sports-opening { gap: 36px; grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .sports-invitation, .sports-provider, .sports-related { padding: 24px 20px; } .sports-layout { padding-bottom: 50px; } }

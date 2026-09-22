@@ -92,6 +92,10 @@ export function SiteHeader() {
                   <ArrowUpRight size={16} />
                 </DropdownMenuItem>
               ))}
+              <DropdownMenuItem render={<Link href="/footballers-and-sports-professionals" />}>
+                Footballers &amp; sport
+                <ArrowUpRight size={16} />
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
           <Link href="/the-plan">The Plan</Link>
@@ -129,6 +133,7 @@ export function SiteHeader() {
                 {[
                   ['Home', '/'],
                   ...pillars.map((p) => [p.title, '/' + p.slug]),
+                  ['Footballers & sport', '/footballers-and-sports-professionals'],
                   ['The Plan', '/the-plan'],
                   ['Meet Sim', '/meet-sim'],
                   ['Insights', '/insights'],
@@ -199,6 +204,7 @@ export function SiteFooter() {
                   {p.title}
                 </Link>
               ))}
+              <Link href="/footballers-and-sports-professionals">Footballers &amp; sport</Link>
               <Link href="/iht-calculator">IHT calculator</Link>
             </div>
             <div>

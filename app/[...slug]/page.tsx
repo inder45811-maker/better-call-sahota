@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { SportsPlanningPage } from '@/components/sports-planning';
 import { MeetSimPage } from '@/components/meet-sim';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { ArrowUpRight, Check, Info, Camera as Instagram, Phone, MessageCircle } from 'lucide-react';
@@ -54,6 +55,7 @@ function PageContent({ path }: { path: string }) {
     article = articles.find((a) => 'insights/' + a.slug === path),
     story = stories.find((s) => 'case-studies/' + s.slug === path),
     legal = legalPages[path];
+  if (path === 'footballers-and-sports-professionals') return <SportsPlanningPage />;
   if (pillar)
     return (
       <main id="main">
@@ -97,6 +99,16 @@ function PageContent({ path }: { path: string }) {
           </div>
         </section>
         <section className="container section">
+          <div className="sports-related">
+            <p className="eyebrow">SPECIALIST PLANNING</p>
+            <h2>Footballers &amp; sports professionals</h2>
+            <p>
+              Bring your career, family, property and future plans into one connected conversation.
+            </p>
+            <Link href="/footballers-and-sports-professionals" className="text-link">
+              Explore planning for your sporting career <ArrowUpRight size={18} />
+            </Link>
+          </div>
           <ContentSources sources={hubAnswers[path].sources} />
           <div className="inline-review">
             <div>

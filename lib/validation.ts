@@ -15,6 +15,7 @@ const interests = [
   'Estate Planning',
   'Financial Advice',
   'Property Finance',
+  'Footballers & Sports Professionals',
   'IHT report',
   'Not sure yet',
 ];
