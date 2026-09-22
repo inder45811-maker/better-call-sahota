@@ -245,7 +245,7 @@ export function SiteFooter() {
               <h4>Financial advice & property finance</h4>
               <p>
                 {site.regulatedProvider
-                  ? `${site.regulatedProvider}. FCA reference: ${site.fcaReference}.`
+                  ? `${site.regulatedProvider} is authorised and regulated by the FCA (FRN ${site.fcaReference}).`
                   : 'The regulated provider, permissions and applicable protections must be confirmed before advice is provided. Regulatory status depends on the service and product; not all property finance is FCA regulated.'}
               </p>
               <Link href="/regulatory-information">
@@ -260,6 +260,9 @@ export function SiteFooter() {
                 and terms will be confirmed before you proceed.
               </p>
             </div>
+          </div>
+          <div className="footer-disclosure">
+            <p>{site.footerDisclosure}</p>
           </div>
           <div className="footer-bottom">
             <span>© {new Date().getFullYear()} Better Call Sim</span>
