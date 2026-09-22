@@ -133,7 +133,7 @@ export const legalPages: Record<
       },
       {
         title: 'Credentials and protections',
-        text: 'No STEP membership, TEP designation, solicitor status, independent-advice status or other qualification is claimed without evidence. FOS and FSCS coverage is not represented as applying identically to every service.',
+        text: 'Anand Wills & Trusts works in association with Countrywide Tax & Trust Corporation Ltd, whose team includes full STEP members (Trust and Estate Practitioners). Countrywide states that it follows the STEP Will Writing Code. These are memberships held by individual Countrywide practitioners, not a personal STEP membership or TEP designation attributed to Simran. FOS and FSCS coverage is not represented as applying identically to every service.',
       },
       {
         title: 'Investment and mortgage risks',

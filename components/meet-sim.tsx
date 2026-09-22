@@ -103,6 +103,7 @@ export function MeetSimPage() {
             <a href="#financial-services">My financial-services experience</a>
             <a href="#working-alongside-bhupinder">Working alongside Bhupinder</a>
             <a href="#why-better-call-sim">Why Better Call Sim?</a>
+            <a href="#professional-support">STEP and professional support</a>
             <a href="#my-approach">My approach</a>
           </nav>
         </aside>
@@ -115,6 +116,30 @@ export function MeetSimPage() {
               ))}
             </section>
           ))}
+          <section id="professional-support" aria-labelledby="professional-support-title">
+            <p className="eyebrow">SPECIALIST ESTATE-PLANNING SUPPORT</p>
+            <h2 id="professional-support-title">STEP and professional support</h2>
+            <p>
+              Anand Wills &amp; Trusts works in association with Countrywide Tax &amp; Trust
+              Corporation Ltd. Countrywide’s team includes full members of STEP, the Society of
+              Trust and Estate Practitioners, who hold the Trust and Estate Practitioner (TEP)
+              designation.
+            </p>
+            <p>
+              Countrywide also states that it follows the STEP Will Writing Code when drafting
+              Wills. These memberships belong to the individual practitioners at Countrywide;
+              no personal STEP membership or TEP designation is attributed to Simran here.
+            </p>
+            <p>
+              <a href="https://countrywidegroup.co.uk/im-planning-my-will" target="_blank" rel="noreferrer">
+                Read about Countrywide’s STEP practitioners
+              </a>
+              {' · '}
+              <a href="https://fliphtml5.com/vbugf/lrmd/Futureproof_Your_Estate_-_An_Essential_Guide/" target="_blank" rel="noreferrer">
+                Anand’s estate-planning guide
+              </a>
+            </p>
+          </section>
           <section id="my-approach" className="biography-approach" aria-labelledby="approach-title">
             <p className="eyebrow">A PLAN BUILT AROUND YOU</p>
             <h2 id="approach-title">My approach is simple:</h2>
@@ -141,3 +166,4 @@ export function MeetSimPage() {
     </main>
   );
 }
+
