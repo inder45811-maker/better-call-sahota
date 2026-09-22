@@ -14,6 +14,20 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: '/footballers',
+        destination: '/footballers-and-sports-professionals',
+        permanent: true,
+      },
+      {
+        source: '/review',
+        destination: '/book-review',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

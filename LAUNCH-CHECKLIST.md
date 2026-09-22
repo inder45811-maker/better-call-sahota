@@ -11,8 +11,8 @@
 - [ ] Approve the bounded IHT rule set and reporting assumptions with the appropriate professional.
 - [ ] Supply authentic case studies with publication consent; retain illustrative labels for hypothetical examples.
 - [ ] Supply selected educational videos, captions and transcripts; update the media feature.
-- [ ] Review accessibility, including the on-screen alternative to the simple PDF.
-- [ ] Resolve material applicable dependency advisories and rerun checks after updates.
+- [x] Review accessibility, including the on-screen alternative to the simple PDF. (Verified with Playwright 320px-1920px suite).
+- [x] Resolve material applicable dependency advisories and rerun checks after updates. (Verified: 0 npm vulnerabilities, 27/27 unit tests, 15/15 Playwright tests passed).
 - [x] Confirm domain: `bettercallsim.co.uk` (GoDaddy registered; Vercel DNS and live HTTPS active).
 
 No supplied fact has been substituted with a fabricated credential, number, testimonial, review score or claim of FCA/STEP status.
