@@ -103,7 +103,7 @@ function PageContent({ path }: { path: string }) {
         <section className="container section">
           <div className="sports-related">
             <p className="eyebrow">SPECIALIST PLANNING</p>
-            <h2>Footballers &amp; sports professionals</h2>
+            <h2>Footballers &amp; Sports Professionals</h2>
             <p>
               Bring your career, family, property and future plans into one connected conversation.
             </p>
