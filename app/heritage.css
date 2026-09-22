@@ -535,6 +535,7 @@ em {
   border-color: #7f704a;
 }
 .hub-aside img {
+  border-radius: 0;
   filter: brightness(0.8) saturate(0.7);
 }
 .service-row,
