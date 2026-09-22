@@ -127,8 +127,7 @@ export function MeetSimPage() {
             </p>
             <p>
               Countrywide also states that it follows the STEP Will Writing Code when drafting
-              Wills. These memberships belong to the individual practitioners at Countrywide;
-              no personal STEP membership or TEP designation is attributed to Simran here.
+              Wills. These memberships belong to the individual practitioners at Countrywide.
             </p>
             <p>
               <a href="https://countrywidegroup.co.uk/im-planning-my-will" target="_blank" rel="noreferrer">

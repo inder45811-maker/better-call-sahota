@@ -18,7 +18,7 @@ type Page = {
 const fixed: Page[] = [
   {
     path: 'footballers-and-sports-professionals',
-    label: 'Footballers & sports professionals',
+    label: 'Footballers & Sports Professionals',
     title: 'Financial & Estate Planning for Footballers and Sports Professionals',
     description:
       'Personal financial and estate planning for footballers and sports professionals. Connect family, protection, property and life after sport in one plan.',

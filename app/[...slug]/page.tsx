@@ -66,13 +66,15 @@ function PageContent({ path }: { path: string }) {
         <section className="container hub-layout">
           <aside className="hub-aside">
             <img
-              src={'/images/' + (pillar.slug === 'estate-planning' ? 'legacy' : 'home') + '.jpg'}
-              width="700"
-              height="900"
+              src={'/images/' + (pillar.slug === 'estate-planning' ? 'estate-legacy' : pillar.slug === 'financial-advice' ? 'financial-study' : 'property-residence') + '.webp'}
+              width="1000"
+              height="1250"
               alt={
                 pillar.slug === 'estate-planning'
-                  ? 'A mature tree across rolling countryside'
-                  : 'A warm contemporary home with a green courtyard'
+                  ? 'An ivory family document folio and brass clock on a walnut desk'
+                  : pillar.slug === 'financial-advice'
+                    ? 'A burgundy planning folio in a warmly lit walnut study'
+                    : 'Brass house keys in a burgundy tray in a traditional townhouse'
               }
             />
             <div>

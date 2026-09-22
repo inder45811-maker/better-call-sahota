@@ -434,7 +434,7 @@ em {
 .article-property .article-cover {
   background:
     linear-gradient(100deg, #21100fed, #21100f88),
-    url('/images/home.jpg') center / cover;
+    url('/images/property-residence.webp') center / cover;
 }
 .article-card h3 {
   font-size: 30px;

@@ -73,7 +73,7 @@ export const legalPages: Record<
       },
       {
         title: 'Rights and content',
-        text: 'Site-specific branding and copy are prepared for Better Call Sim. Contextual photography is used under the Unsplash License, with source details documented in the repository. Third-party brands belong to their respective owners.',
+        text: 'Site-specific branding and copy are prepared for Better Call Sim. Contextual service imagery is AI-generated and illustrative. Third-party brands belong to their respective owners.',
       },
     ],
   },
@@ -133,7 +133,7 @@ export const legalPages: Record<
       },
       {
         title: 'Credentials and protections',
-        text: 'Anand Wills & Trusts works in association with Countrywide Tax & Trust Corporation Ltd, whose team includes full STEP members (Trust and Estate Practitioners). Countrywide states that it follows the STEP Will Writing Code. These are memberships held by individual Countrywide practitioners, not a personal STEP membership or TEP designation attributed to Simran. FOS and FSCS coverage is not represented as applying identically to every service.',
+        text: 'Anand Wills & Trusts works in association with Countrywide Tax & Trust Corporation Ltd, whose team includes full STEP members (Trust and Estate Practitioners). Countrywide states that it follows the STEP Will Writing Code. These memberships are held by individual Countrywide practitioners. FOS and FSCS coverage is not represented as applying identically to every service.',
       },
       {
         title: 'Investment and mortgage risks',

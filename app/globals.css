@@ -313,7 +313,7 @@ p {
 .hero-photo {
   height: 100%;
   width: 100%;
-  background: #bfc8ba url('/images/home.jpg') 60% center/cover;
+  background: #bfc8ba url('/images/property-residence.webp') 60% center/cover;
   border-radius: 210px 210px 5px 5px;
   overflow: hidden;
 }
