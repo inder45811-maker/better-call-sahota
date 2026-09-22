@@ -12,7 +12,9 @@ export function Faq({ items }: { items: { q: string; a: string }[] }) {
         <AccordionItem key={item.q} value={i}>
           <AccordionTrigger>{item.q}</AccordionTrigger>
           <AccordionContent keepMounted>
-            <p>{item.a}</p>
+            {item.a.split('\n\n').map((para, pIdx) => (
+              <p key={pIdx}>{para}</p>
+            ))}
           </AccordionContent>
         </AccordionItem>
       ))}

@@ -103,7 +103,7 @@ export const homeFaqs = [
   },
   {
     q: 'Are all the services FCA regulated?',
-    a: 'No. Estate-planning services such as will writing sit outside FCA regulation. Financial advice and some property-finance activities have different regulatory requirements. The provider and applicable protections must be confirmed before you proceed.',
+    a: 'No. Different parts of our service fall under different regulatory frameworks.\n\nRegulated financial advice and regulated financial activities are carried out through Anand Financial Architecture Ltd, subject to the applicable FCA permissions and protections.\n\nFor estate planning, we work with Countrywide Tax & Trust Corporation Ltd, an established legal and estate-planning company whose team includes SRA-regulated solicitors and STEP-qualified practitioners. Where legal advice or services are provided by an SRA-regulated solicitor, that individual is subject to SRA professional rules.\n\nWe will make clear who is providing each service and what regulatory protections apply before you proceed.',
   },
   {
     q: 'Can I use the IHT calculator instead of taking advice?',
