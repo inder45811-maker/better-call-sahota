@@ -82,12 +82,12 @@ export function EnquiryForm({
           <em>has been sent.</em>
         </h2>
         <p>
-          Reference: <strong>{result.reference}</strong>. An appointment is only confirmed once the
-          details have been agreed.
+          Reference: <strong>{result.reference}</strong>. Sim will personally review your enquiry and
+          get in touch via your preferred contact method to confirm a convenient time.
         </p>
         <p>
-          Your enquiry has been accepted by the email service for delivery to Sim. An appointment is
-          not booked automatically.
+          Thank you for reaching out. An appointment is not booked automatically. We will contact
+          you shortly to schedule your complimentary review.
         </p>
         <div className="enquiry-social-links">
           <a href={site.instagram} className="text-link" target="_blank" rel="noreferrer">

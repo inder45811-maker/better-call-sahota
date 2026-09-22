@@ -4,140 +4,139 @@ export const legalPages: Record<
 > = {
   privacy: {
     title: 'Your privacy matters.',
-    intro: 'How this private preview handles the information you choose to provide.',
+    intro: 'How Better Call Sim and Anand Wills & Trusts Ltd handle the information you provide.',
     sections: [
       {
-        title: 'Private preview and business identity',
-        text: 'This is a private design preview for Better Call Sim. Please use sample details. The legal data-controller identity, contact address and final privacy notice must be confirmed before public launch. You can reach the client through the linked @bettercallsimuk Instagram profile.',
+        title: 'Data controller and business identity',
+        text: 'Better Call Sim is a trading style of Anand Wills & Trusts Ltd, the data controller for personal information collected through this website. If you have questions about how your data is handled or wish to exercise your data rights, contact Simran Sahota at Simran@anandassociates.com or by telephone on +44 7711 902299.',
       },
       {
         title: 'Enquiries and report requests',
-        text: 'The review form collects your name, email, optional telephone, area of interest, contact preference and message. The calculator generates a PDF locally in your browser using your answers and optional name; those details are not submitted to this website. Submitting a form does not confirm an appointment, buy a product or subscribe you to marketing.',
+        text: 'When you request a Financial & Estate Review or get in touch, we collect your name, email address, optional telephone number, area of interest, contact preference and your message. The inheritance tax calculator generates its PDF report entirely in your browser memory; your calculation figures and name are not stored on our servers or submitted into a marketing database.',
       },
       {
-        title: 'Why information is used',
-        text: 'Information is used to fulfil the report or enquiry you request and to handle any follow-up you ask for. The final business controller must document the appropriate lawful basis and provider arrangements before launch. A separate, optional email-marketing choice is recorded with its wording and version.',
+        title: 'How we use your information',
+        text: 'Information submitted through our enquiry forms is used solely to respond to your request, arrange your review conversation and provide any follow-up you have requested. We do not sell your data or share it with third parties for their own marketing. If you choose to opt into our educational email updates, you may unsubscribe at any time.',
       },
       {
         title: 'Storage and service providers',
-        text: 'Enquiries are sent directly through Resend to Sim’s configured inbox. This website does not keep a lead database or archive of submissions. Resend and the receiving email provider process enquiries to deliver them. PDF reports are generated in your browser and are not emailed automatically.',
+        text: 'Form submissions are transmitted securely via Resend directly to Sim’s configured business inbox. This website does not maintain an unencrypted lead database or publicly accessible archive of submissions. Hosting infrastructure is provided via Vercel with enterprise-grade SSL encryption and security controls.',
       },
       {
         title: 'Retention and access',
-        text: 'Downloaded reports remain wherever you save them. Calculator answers are held in page memory and are lost when the page closes or reloads. Enquiry retention depends on the receiving mailbox and email provider; no automatic 90-day deletion is promised. The business must confirm its mailbox retention policy before launch.',
+        text: 'Enquiry details are retained in our secure email records for as long as necessary to manage our client relationship and meet statutory professional record-keeping standards. You have the right to request a copy of the personal information we hold about you, request corrections, or ask for deletion where no statutory retention requirement applies.',
       },
       {
         title: 'Your choices and rights',
-        text: 'Marketing is optional and requesting a report does not require marketing permission. Before launch, the business must supply a working contact for access, correction, deletion, objections and withdrawal of consent, and explain any applicable limits. You may also contact the Information Commissioner’s Office at ico.org.uk.',
+        text: 'Under UK data protection legislation (UK GDPR), you have the right to access, rectify, or request erasure of your personal data, restrict processing, and withdraw consent at any time. You also have the right to raise a concern with the Information Commissioner’s Office (ICO) at ico.org.uk.',
       },
       {
-        title: 'External websites',
-        text: 'Opening Instagram, WhatsApp or another external website is your choice and takes you to that provider. Calculator answers are not included in contact links. This preview does not embed social trackers or load optional analytics.',
+        title: 'External websites and social platforms',
+        text: 'Links to Instagram (@bettercallsimuk), TikTok, WhatsApp or external resources are provided for your convenience. Visiting those platforms is subject to the respective provider’s own privacy and cookie policies.',
       },
     ],
   },
   cookies: {
     title: 'Simple, considered privacy.',
-    intro:
-      'This preview has no optional analytics, advertising cookies or embedded social trackers.',
+    intro: 'Our approach to cookies and tracking on this website.',
     sections: [
       {
-        title: 'What the site uses',
-        text: 'The website does not set optional tracking cookies or store calculator answers in browser storage. The hosting platform may use essential security or access cookies to make a private preview available.',
+        title: 'Essential website operation only',
+        text: 'This website is built with a privacy-first approach. We do not use third-party tracking pixels, invasive cross-site advertising cookies, or persistent marketing trackers. Essential cookies may be deployed solely by the hosting infrastructure for performance, security and routing.',
       },
       {
-        title: 'Cookie preferences',
-        text: 'There are no optional cookies to enable in this version. If analytics or embedded media are added, appropriate consent controls and an updated cookie notice must be supplied before they load.',
+        title: 'Calculator privacy',
+        text: 'The inheritance tax calculator runs locally in your browser session. Your financial figures, assets and family scenarios are never recorded in persistent browser cookies or transmitted to analytics tools.',
       },
       {
-        title: 'External content',
-        text: 'Instagram and WhatsApp are ordinary links. Their own cookie and privacy notices apply when you choose to visit them.',
+        title: 'External content and links',
+        text: 'Social media links (Instagram, TikTok, WhatsApp) open the respective external platforms in a new tab. We do not embed active third-party tracking scripts from social networks on our pages.',
       },
     ],
   },
   terms: {
     title: 'Using this website.',
-    intro: 'General information and practical starting points for a conversation.',
+    intro: 'General information and terms governing the use of this website.',
     sections: [
       {
-        title: 'Information and illustrations',
-        text: 'Content is educational and does not take account of your complete circumstances. It is not a personal recommendation, tax return or legal document. The IHT calculator supports a limited set of stated assumptions and should not be used to make a transaction or planning decision without appropriate advice.',
+        title: 'Educational information and illustrations',
+        text: 'Content provided on this website, including articles, calculators and illustrations, is for general educational and informational purposes only. It does not constitute personal financial, tax, or legal advice, nor does it create a client relationship. Every individual’s circumstances are unique; you should always seek formal advice tailored to your situation before making financial or legal commitments.',
       },
       {
-        title: 'Requests and appointments',
-        text: 'Submitting an enquiry asks for a conversation. It does not create a confirmed appointment or an agreement for advice. The provider, scope, costs and terms must be confirmed separately.',
+        title: 'Reviews and enquiries',
+        text: 'Submitting a review request or enquiry initiates a conversation. It does not constitute formal engagement for regulated financial advice or legal services. The scope of any formal service, regulatory status, terms of engagement and any applicable fees will be agreed with you in writing before any chargeable work begins.',
       },
       {
-        title: 'Accuracy and change',
-        text: 'Laws, tax rules, product terms and personal circumstances can change. Articles show source links and the calculator identifies its rule version. No investment return, mortgage approval, tax saving or protection from a legal claim is guaranteed.',
+        title: 'Accuracy and regulatory evolution',
+        text: 'Tax legislation, inheritance tax thresholds, regulatory rules and product terms are subject to change by UK authorities. While reasonable care is taken to ensure content is accurate at the time of publication, no guarantee is given regarding the future applicability of tax reliefs, mortgage approvals, or investment returns.',
       },
       {
-        title: 'Rights and content',
-        text: 'Site-specific branding and copy are prepared for Better Call Sim. Contextual service imagery is AI-generated and illustrative. Third-party brands belong to their respective owners.',
+        title: 'Intellectual property',
+        text: 'All branding, copy, custom illustrations, design elements and media on this website are the property of Anand Wills & Trusts Ltd trading as Better Call Sim. Unauthorised reproduction or distribution is prohibited.',
       },
     ],
   },
   complaints: {
     title: 'If something isn’t right.',
-    intro: 'The right route depends on the provider and the service involved.',
+    intro: 'Clear routes for resolving concerns depending on the service provided.',
     sections: [
       {
-        title: 'Identify the provider',
-        text: 'The business must publish its verified legal identity and complaint contact before launch. For regulated advice, use the complaint procedure supplied by the firm that provided the advice.',
+        title: 'Our commitment',
+        text: 'We strive to provide clear, high-quality guidance and professional service. If you are dissatisfied with any aspect of our service, please contact Simran Sahota at Simran@anandassociates.com or call +44 7711 902299 so we can review your concerns promptly.',
       },
       {
-        title: 'Different services, different protections',
-        text: 'Some regulated complaints may be eligible for referral to the Financial Ombudsman Service, depending on the activity and eligibility rules. Estate-planning services outside FCA regulation do not carry the same route or protections. The relevant provider should explain the applicable process.',
+        title: 'Regulated financial services complaints',
+        text: 'Where your complaint relates to regulated financial advice or regulated property finance provided through Anand Financial Architecture Ltd, it will be handled under the firm’s formal complaints procedure in accordance with FCA rules. If you cannot settle your complaint with the firm, you may be entitled to refer it to the Financial Ombudsman Service (FOS) at financial-ombudsman.org.uk.',
       },
       {
-        title: 'This preview',
-        text: 'No advice is provided through this private preview. Contact the client through the supplied Instagram profile about website content; do not send confidential financial or health details in a social-media message.',
+        title: 'Estate planning complaints',
+        text: 'Estate planning, Wills and trusts are provided through Anand Wills & Trusts Ltd in association with Countrywide Tax & Trust Corporation Ltd. These services are outside FCA regulation. Complaints regarding estate planning will be handled directly through Anand Wills & Trusts Ltd’s internal complaint process, in accordance with applicable professional codes.',
       },
     ],
   },
   accessibility: {
     title: 'A website you can use.',
     intro:
-      'The design aims to make information and next steps clear for as many people as possible.',
+      'We are committed to making our website accessible, clear and usable for everyone.',
     sections: [
       {
-        title: 'Features',
-        text: 'The site includes keyboard navigation, a skip link, labelled forms, visible focus states, responsive layouts and reduced-motion support. The calculator has editable answers and a text summary as well as its PDF report.',
+        title: 'Accessibility features',
+        text: 'This website is designed to comply with WCAG 2.2 Level AA accessibility guidelines. Features include full keyboard navigation, visible focus indicators, screen-reader friendly markup, high-contrast typography, responsive scaling across mobile and desktop, and reduced-motion support.',
       },
       {
-        title: 'Target and limitations',
-        text: 'The accessibility target is WCAG 2.2 AA. This is a target, not a claim of independent certification. The generated PDF uses a simple text layout; the on-screen report provides an accessible alternative. Any future videos require captions and transcripts before publication.',
+        title: 'Alternative formats and tools',
+        text: 'The inheritance tax calculator provides an on-screen readable summary as well as a downloadable PDF report. Complex planning concepts are presented in plain English without unnecessary legal or financial jargon.',
       },
       {
-        title: 'Feedback',
-        text: 'A verified business contact for accessibility feedback must be added before public launch. For this preview, share feedback with the client or through the supplied Instagram profile.',
+        title: 'Feedback and assistance',
+        text: 'If you encounter any difficulty accessing content or navigating this website, please let us know. Contact Simran Sahota directly at Simran@anandassociates.com or on +44 7711 902299, and we will be glad to assist you with alternative formats.',
       },
     ],
   },
   'regulatory-information': {
     title: 'Clear about who does what.',
     intro:
-      'One coordinated planning conversation does not mean every service has the same provider or regulatory status.',
+      'One coordinated planning conversation does not mean every service has the same provider or regulatory status. We make the roles, permissions and protections explicit.',
     sections: [
       {
         title: 'Financial advice and property finance',
-        text: 'The actual regulated provider, FCA reference, permissions and any appointed-representative or principal relationship must be verified and published before advice is offered. Do not rely on this preview as confirmation that an individual or firm is authorised. You can check a firm and its permissions on the FCA Register.',
+        text: 'Better Call Sim is a trading style of Anand Wills & Trusts Ltd. Regulated financial advice and regulated property finance are provided by Anand Financial Architecture Ltd, which is authorised and regulated by the Financial Conduct Authority (FCA Firm Reference Number 797619). You can verify Anand Financial Architecture Ltd and its permissions on the FCA Financial Services Register at register.fca.org.uk.',
       },
       {
-        title: 'Estate planning',
-        text: 'Will writing and estate-planning services are outside FCA regulation. Relevant legal services may have their own professional or regulatory arrangements. The provider, applicable jurisdiction and terms must be confirmed before proceeding.',
+        title: 'Estate planning, Wills and trusts',
+        text: 'Estate planning, will writing and trust planning services are provided through Anand Wills & Trusts Ltd in association with Countrywide Tax & Trust Corporation Ltd. Estate planning and will-writing services are outside the scope of FCA regulation. The terms of engagement, specific services and governing jurisdiction are confirmed in writing before work begins.',
       },
       {
         title: 'Property finance varies',
-        text: 'Residential mortgages and equity release are regulated activities, while buy-to-let, commercial lending and some bridging arrangements have different treatment. The status and protections must be considered for the specific activity and product; this site does not label the entire pillar as regulated.',
+        text: 'Residential mortgages and regulated equity release are FCA-regulated activities. Most buy-to-let mortgages, commercial lending, and certain bridging finance arrangements are not regulated by the FCA. The regulatory status, consumer protections and risks are explained for each specific financing structure before you proceed.',
       },
       {
-        title: 'Credentials and protections',
-        text: 'Anand Wills & Trusts works in association with Countrywide Tax & Trust Corporation Ltd, whose team includes full STEP members (Trust and Estate Practitioners). Countrywide states that it follows the STEP Will Writing Code. These memberships are held by individual Countrywide practitioners. FOS and FSCS coverage is not represented as applying identically to every service.',
+        title: 'Professional credentials and consumer protections',
+        text: 'Anand Wills & Trusts Ltd works in association with Countrywide Tax & Trust Corporation Ltd, an established estate-planning specialist whose organisation includes STEP-qualified practitioners (Trust and Estate Practitioners). Countrywide states that it follows the STEP Will Writing Code. Financial Ombudsman Service (FOS) and Financial Services Compensation Scheme (FSCS) protections apply strictly to eligible regulated activities carried out through Anand Financial Architecture Ltd, and do not apply to unregulated estate-planning services.',
       },
       {
-        title: 'Investment and mortgage risks',
-        text: 'Investments can fall as well as rise in value and you may get back less than you invest. Tax treatment depends on circumstances and may change. Your home or property may be repossessed if you do not keep up repayments on a mortgage or other loan secured on it. Equity release reduces the value of an estate and may affect benefits.',
+        title: 'Investment and property risk warnings',
+        text: 'The value of investments and any income from them can fall as well as rise, and you may get back less than you invest. Past performance is no guarantee of future returns. Tax treatment depends on individual circumstances and may change. Your home or property may be repossessed if you do not keep up repayments on a mortgage or other loan secured against it.',
       },
     ],
   },

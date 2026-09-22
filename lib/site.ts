@@ -103,11 +103,11 @@ export const homeFaqs = [
   },
   {
     q: 'What does the initial review cost?',
-    a: 'The scope and any fee will be confirmed before the appointment. Submitting a request does not commit you to a product or a paid service.',
+    a: 'Your initial Financial & Estate Review is complimentary. It is an exploratory discussion to understand your family, your assets and your priorities.\n\nIf further advice or legal implementation is appropriate, the provider, scope and any applicable fees will be clearly explained and agreed with you in writing before you proceed.',
   },
   {
     q: 'Are all the services FCA regulated?',
-    a: 'No. Different parts of our service fall under different regulatory frameworks.\n\nRegulated financial advice and regulated financial activities are carried out through Anand Financial Architecture Ltd, subject to the applicable FCA permissions and protections.\n\nFor estate planning, we work with Countrywide Tax & Trust Corporation Ltd, an established legal and estate-planning company whose team includes SRA-regulated solicitors and STEP-qualified practitioners. Where legal advice or services are provided by an SRA-regulated solicitor, that individual is subject to SRA professional rules.\n\nWe will make clear who is providing each service and what regulatory protections apply before you proceed.',
+    a: 'No. Different parts of our service fall under different regulatory frameworks.\n\nRegulated financial advice and regulated property finance are carried out through Anand Financial Architecture Ltd, authorised and regulated by the FCA (FRN 797619), subject to applicable FCA permissions and statutory protections.\n\nFor estate planning, we work in association with Countrywide Tax & Trust Corporation Ltd, an established estate-planning specialist whose organisation includes STEP-qualified practitioners (Trust and Estate Practitioners). Countrywide follows the STEP Will Writing Code.\n\nWe always make clear who is providing each service and what regulatory protections apply before you proceed.',
   },
   {
     q: 'Can I use the IHT calculator instead of taking advice?',

@@ -61,48 +61,50 @@ export function PageIntro({
     </section>
   );
 }
+const coverConfig: Record<string, { slogan: string; icon: typeof ShieldCheck }> = {
+  estate: { slogan: 'MAKE YOUR\nWISHES CLEAR.', icon: ShieldCheck },
+  pensions: { slogan: 'YOUR NEXT\nCHAPTER.', icon: Sprout },
+  property: { slogan: 'ROOM FOR\nWHAT’S NEXT.', icon: House },
+};
+
 export function ArticleCards() {
   return (
     <div className="article-grid">
-      {articles.map((a, i) => (
-        <Link
-          href={'/insights/' + a.slug}
-          key={a.slug}
-          className={'article-card article-' + a.theme}
-        >
-          <div className="article-cover">
-            <span>
-              {['MAKE YOUR\nWISHES CLEAR.', 'YOUR NEXT\nCHAPTER.', 'ROOM FOR\nWHAT’S NEXT.'][i]
-                .split('\n')
-                .map((t) => (
+      {articles.map((a, i) => {
+        const config = coverConfig[a.theme] || coverConfig.estate;
+        const Icon = config.icon;
+        return (
+          <Link
+            href={'/insights/' + a.slug}
+            key={a.slug}
+            className={'article-card article-' + a.theme}
+          >
+            <div className="article-cover">
+              <span>
+                {config.slogan.split('\n').map((t) => (
                   <span key={t}>
                     {t}
                     <br />
                   </span>
                 ))}
-            </span>
-            <div className="cover-symbol">
-              {i === 0 ? (
-                <ShieldCheck size={62} strokeWidth={0.8} />
-              ) : i === 1 ? (
-                <Sprout size={62} strokeWidth={0.8} />
-              ) : (
-                <House size={62} strokeWidth={0.8} />
-              )}
+              </span>
+              <div className="cover-symbol">
+                <Icon size={62} strokeWidth={0.8} />
+              </div>
+              <span className="cover-label">THE BIGGER PICTURE / 0{i + 1}</span>
             </div>
-            <span className="cover-label">THE BIGGER PICTURE / 0{i + 1}</span>
-          </div>
-          <div className="article-meta">
-            <span>{a.category}</span>
-            <span>{a.readTime}</span>
-          </div>
-          <h3>{a.title}</h3>
-          <p>{a.description}</p>
-          <span className="text-link">
-            Read the guide <ArrowUpRight size={16} />
-          </span>
-        </Link>
-      ))}
+            <div className="article-meta">
+              <span>{a.category}</span>
+              <span>{a.readTime}</span>
+            </div>
+            <h3>{a.title}</h3>
+            <p>{a.description}</p>
+            <span className="text-link">
+              Read the guide <ArrowUpRight size={16} />
+            </span>
+          </Link>
+        );
+      })}
     </div>
   );
 }
@@ -137,16 +139,16 @@ export function ReviewJourney() {
     <div className="review-journey">
       {[
         {
-          title: 'A conversation about you',
-          text: 'Share what matters, what’s changing and the questions on your mind.',
+          title: 'Complimentary Discovery',
+          text: 'Share your family, property and financial priorities in a relaxed, no-jargon conversation.',
         },
         {
-          title: 'A look at the bigger picture',
-          text: 'Explore how your finances, property and estate plans fit together.',
+          title: 'Connecting the Whole Picture',
+          text: 'We look across estate planning, pensions, mortgages and protection so nothing is left in a silo.',
         },
         {
-          title: 'Clear next steps',
-          text: 'Agree what needs attention, who can help and the scope of any further work.',
+          title: 'A Concrete Action Plan',
+          text: 'Identify immediate gaps, tax exposure and sensible next steps — with any future fees agreed before you proceed.',
         },
       ].map((step, i) => (
         <div key={step.title}>

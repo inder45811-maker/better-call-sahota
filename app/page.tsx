@@ -32,8 +32,7 @@ export default function Home() {
               <em>One plan.</em>
             </h1>
             <p>
-              Your finances, your property and your family’s future. Bring it all together with a
-              Financial &amp; Estate Review.
+              Solicitors draft wills without looking at pensions. Mortgage brokers arrange finance in isolation. <strong>Better Call Sim brings it all together</strong> — one coordinated strategy across your estate planning, regulated financial advice, protection and property finance.
             </p>
             <ReviewButton />
             <div className="hero-secondary">
@@ -77,16 +76,15 @@ export default function Home() {
       <section className="section container" id="services">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">THREE AREAS. ONE BIGGER PICTURE.</p>
+            <p className="eyebrow">ONE JOINED-UP PLAN. ZERO GAPS.</p>
             <h2>
-              Life doesn’t come
+              Life doesn’t happen
               <br />
               <em>in separate boxes.</em>
             </h2>
           </div>
           <p>
-            Neither should your planning. Connect the decisions you make today with the future you
-            want to build.
+            Neither should your planning. When legal documents, pensions, property and tax strategies don’t talk to each other, costly gaps emerge. We connect every piece into one cohesive plan.
           </p>
         </div>
         <div className="bcs-services">

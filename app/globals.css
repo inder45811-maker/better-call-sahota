@@ -1964,7 +1964,38 @@ h2 {
 }
 .booking-expectation .eyebrow {
   font-size: 11px;
-  margin-bottom: 15px;
+  margin-bottom: 0;
+}
+.review-fee-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.badge-complimentary {
+  display: inline-block;
+  padding: 3px 10px;
+  background: #1b4d3e;
+  color: #fff;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.fee-disclosure-subtext {
+  margin-top: 10px;
+  font-size: 13px !important;
+  line-height: 1.6;
+  color: #556251 !important;
+}
+.booking-disclaimer-note {
+  margin-top: 14px;
+  font-size: 12px !important;
+  line-height: 1.6;
+  color: #727e70 !important;
+  border-top: 1px solid #d8dfd1;
+  padding-top: 12px;
 }
 .booking-expectation > p:last-child {
   font-size: 15px;
@@ -4660,6 +4691,17 @@ em {
 }
 .booking-expectation h3 {
   font-size: 25px;
+}
+.badge-complimentary {
+  background: #195240;
+  color: #a7f3d0;
+}
+.fee-disclosure-subtext {
+  color: #9cb0c8 !important;
+}
+.booking-disclaimer-note {
+  color: #8496ad !important;
+  border-color: #2b3749;
 }
 .enquiry-form,
 .calculator-panel,

@@ -170,4 +170,8 @@ export const articleAnswers: Record<string, string> = {
     'Bring recent pension statements, contribution details, information about guarantees and charges, a State Pension forecast, and a picture of your goals and spending. A review should start with what you already have before considering whether anything should change.',
   'before-you-remortgage':
     'Check the end date of your deal, remaining balance, early repayment charges and the rate you may move onto. Compare your current lender’s options with alternatives using fees, affordability and the total cost, not the headline rate alone.',
+  'giving-property-to-children':
+    'Gifting your home to children while continuing to live there triggers HMRC Gift with Reservation rules, meaning the property remains taxable in your estate. It may also create Capital Gains Tax and family risk issues without proper professional planning.',
+  'life-assurance-in-trust':
+    'Life assurance written in trust pays out directly to trustees outside your estate and free of inheritance tax, providing immediate cash to pay HMRC without waiting for probate or forcing property sales.',
 };

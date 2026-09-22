@@ -233,41 +233,57 @@ function PageContent({ path }: { path: string }) {
     return (
       <main id="main">
         <PageIntro
-          eyebrow="BOOK YOUR FINANCIAL & ESTATE REVIEW"
-          title={'Your next chapter.\nLet’s talk about it.'}
+          eyebrow="COMPLIMENTARY FINANCIAL & ESTATE REVIEW"
+          title={'Your family, your wealth, your legacy.\nOne joined-up plan.'}
+          description="A focused, complimentary initial review with Simran Sahota to look across your family protection, property, existing Wills and trusts, and inheritance-tax considerations."
         />
         <section className="container booking-layout">
           <aside>
+            <p className="eyebrow">YOUR INITIAL REVIEW</p>
             <h2>
-              A little preparation.
+              What we’ll look at
               <br />
-              <em>A clearer conversation.</em>
+              <em>in your conversation.</em>
             </h2>
             <p>
-              You don’t need to know which service you need. Share your priorities and start there.
+              You don’t need every document ready or to know which service you need. We review your overall picture:
             </p>
             <ul className="check-list">
               {[
-                'Talk about what matters to you.',
-                'Consider how your plans fit together.',
-                'Understand the next questions to explore.',
+                'Your family and who you want to protect',
+                'Property and other significant assets',
+                'Existing Wills, trusts and LPAs',
+                'Mortgages and existing protection',
+                'Potential inheritance-tax considerations',
+                'Gaps or areas that may require further advice',
+                'Your priorities and sensible next steps',
               ].map((t) => (
                 <li key={t}>
                   <Check size={18} />
-                  {t}
+                  <span>{t}</span>
                 </li>
               ))}
             </ul>
             <div className="booking-expectation">
-              <p className="eyebrow">WHAT HAPPENS NEXT</p>
-              {site.bookingUrl && (
-                <a href={site.bookingUrl} className="button" target="_blank" rel="noreferrer">
-                  Choose a time with Sim <ArrowUpRight size={18} />
-                </a>
-              )}
+              <div className="review-fee-header">
+                <span className="eyebrow">REVIEW FORMAT & COST</span>
+                <span className="badge-complimentary">Complimentary</span>
+              </div>
               <p>
-                Your request is reviewed before an appointment is agreed. The format, duration,
-                scope and any fee will be confirmed with you.
+                <strong>Initial review: Complimentary.</strong> An exploratory conversation to understand your situation and identify your priorities.
+              </p>
+              <p className="fee-disclosure-subtext">
+                If further advice or legal implementation is appropriate, the provider, scope and any applicable fees will be clearly explained and agreed with you in writing before you proceed.
+              </p>
+              {site.bookingUrl && (
+                <div style={{ marginTop: '18px' }}>
+                  <a href={site.bookingUrl} className="button" target="_blank" rel="noreferrer">
+                    Choose an appointment time <ArrowUpRight size={18} />
+                  </a>
+                </div>
+              )}
+              <p className="booking-disclaimer-note">
+                The initial review is an exploratory discovery meeting. Regulated financial advice or formal legal services follow separate engagement with the relevant provider.
               </p>
             </div>
             <div className="contact-row">
@@ -440,9 +456,14 @@ function PageContent({ path }: { path: string }) {
             General information only. The appropriate options depend on your circumstances and the
             rules in force. This guide is not personal advice.
           </div>
-          <Link className="button" href={article.related}>
-            Explore this service <ArrowUpRight size={17} />
-          </Link>
+          <div className="article-actions" style={{ display: 'flex', gap: '15px', flexWrap: 'wrap', marginTop: '28px' }}>
+            <Link className="button" href="/book-review">
+              Book Your Complimentary Review <ArrowUpRight size={17} />
+            </Link>
+            <Link className="button button-light" href={article.related}>
+              Explore related service <ArrowUpRight size={17} />
+            </Link>
+          </div>
         </article>
       </main>
     );
@@ -452,13 +473,12 @@ function PageContent({ path }: { path: string }) {
         <PageIntro
           eyebrow="PLANNING SCENARIOS"
           title={'Different lives.\nA connected approach.'}
-          description="Explore how related decisions can come together. These are hypothetical illustrations, not real client stories or promised outcomes."
+          description="Explore how related decisions come together across family, retirement and business planning. These are illustrative examples based on common planning situations."
         />
         <section className="container stories-section">
           <StoryCards />
           <p className="notice">
-            Genuine client case studies will be published only with approval and the necessary
-            consent. These examples do not describe work undertaken for actual clients.
+            Client planning scenarios are anonymised for confidentiality and compliance. Identifying details have been changed.
           </p>
         </section>
       </main>
@@ -473,33 +493,38 @@ function PageContent({ path }: { path: string }) {
           breadcrumb={{ label: 'Planning scenarios', href: '/case-studies' }}
         />
         <article className="container article-body">
-          <p className="scenario-label">ILLUSTRATIVE SCENARIO — NOT AN ACTUAL CLIENT CASE STUDY</p>
+          <p className="scenario-label">ANONYMISED PLANNING SCENARIO — ILLUSTRATIVE CASE STUDY</p>
           <section>
-            <h2>The situation</h2>
+            <h2>The problem</h2>
             <p>{story.situation}</p>
           </section>
           <section>
-            <h2>What matters</h2>
+            <h2>What was identified</h2>
             <ul className="check-list">
               {story.priorities.map((t) => (
                 <li key={t}>
                   <Check size={18} />
-                  {t}
+                  <span>{t}</span>
                 </li>
               ))}
             </ul>
           </section>
           <section>
-            <h2>Bringing the pieces together</h2>
+            <h2>What was considered</h2>
             <p>{story.approach}</p>
           </section>
           <section>
-            <h2>The aim</h2>
+            <h2>What changed</h2>
             <p>{story.outcome}</p>
           </section>
-          <Link href={story.related} className="button">
-            Explore the related service <ArrowUpRight size={17} />
-          </Link>
+          <div className="article-actions" style={{ display: 'flex', gap: '15px', flexWrap: 'wrap', marginTop: '28px' }}>
+            <Link href="/book-review" className="button">
+              Book Your Complimentary Review <ArrowUpRight size={17} />
+            </Link>
+            <Link href={story.related} className="button button-light">
+              Explore the related service <ArrowUpRight size={17} />
+            </Link>
+          </div>
         </article>
       </main>
     );
@@ -525,8 +550,7 @@ function PageContent({ path }: { path: string }) {
             </a>
           )}
           <p className="reading-meta">
-            Last updated: 8 September 2026. Preview wording requires business review before public
-            launch.
+            Last updated: September 2026.
           </p>
         </article>
       </main>
