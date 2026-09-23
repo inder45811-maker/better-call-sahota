@@ -7,6 +7,10 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       { userAgent: '*', ...access },
       { userAgent: 'OAI-SearchBot', ...access },
+      { userAgent: 'GPTBot', ...access },
+      { userAgent: 'PerplexityBot', ...access },
+      { userAgent: 'ClaudeBot', ...access },
+      { userAgent: 'Google-Extended', ...access },
     ],
     ...(index ? { sitemap: canonicalUrl('sitemap.xml') } : {}),
   };

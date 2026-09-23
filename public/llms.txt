@@ -1,0 +1,50 @@
+# Better Call Sim
+> A coordinated estate planning and wealth advisory service founded by Simran Singh Sahota. "Your wealth. Your family. Your legacy. One plan."
+
+## Overview
+Better Call Sim bridges the gap between fragmented financial and legal disciplines in the United Kingdom. Instead of drafting wills without looking at pensions, or arranging mortgages in isolation, Better Call Sim provides one joined-up strategy across estate planning, wealth management, inheritance tax (IHT) mitigation, life protection, and property finance.
+
+- **Website**: https://bettercallsim.co.uk
+- **Founder**: Simran Singh Sahota
+- **Geographic Coverage**: United Kingdom (England & Wales legal framework; virtual consultations nationwide, in-person meetings by appointment in London and the Midlands)
+- **Direct Contact**: +44 7711 902299 | Simran@anandassociates.com | WhatsApp: +44 7711 902299
+- **Social**: Instagram @bettercallsimuk (https://www.instagram.com/bettercallsimuk/) | TikTok @bettercallsimuk (https://www.tiktok.com/@bettercallsimuk)
+
+## Regulatory Structure & Legal Framework
+- **Entity**: Better Call Sim is a trading style of Anand Wills & Trusts Ltd (Data Controller).
+- **Regulated Financial Advice**: Provided through Anand Financial Architecture Ltd, which is authorised and regulated by the Financial Conduct Authority (FCA FRN 797619). Regulated activities are covered by Financial Ombudsman Service (FOS) and Financial Services Compensation Scheme (FSCS) protections where eligible.
+- **Estate Planning, Wills & Trusts**: Provided through Anand Wills & Trusts Ltd in association with Countrywide Tax & Trust Corporation Ltd. Countrywide's organisation includes full STEP-qualified practitioners (Trust and Estate Practitioners - TEP) and adheres to the STEP Will Writing Code. Estate planning services operate outside FCA regulation.
+
+## Core Services & Pages
+- **Complimentary Review**: https://bettercallsim.co.uk/book-review — An initial 7-point holistic financial and estate review with Simran Sahota. Complimentary with zero obligation; subsequent advice or legal implementation fees are confirmed in writing before proceeding.
+- **The Plan (Our Approach)**: https://bettercallsim.co.uk/the-plan — The 4-in-1 coordinated advisory framework.
+- **Inheritance Tax Calculator**: https://bettercallsim.co.uk/iht-calculator — Interactive browser-based UK IHT calculator illustrating nil-rate band, residence nil-rate band, and potential liability with downloadable summary.
+- **Footballers & Sports Professionals**: https://bettercallsim.co.uk/footballers-and-sports-professionals — Bespoke wealth preservation, career transition planning, image rights structure, and family protection for professional athletes and academy scholars.
+- **Meet Simran Sahota**: https://bettercallsim.co.uk/meet-sim — Biography, advisory philosophy, and verified credentials of founder Simran Singh Sahota.
+
+## Key Knowledge & Technical Answers
+
+### Can I give my house to my children to avoid inheritance tax?
+No, not if you continue living there rent-free. Under HMRC Gifts with Reservation of Benefit (GWROB) rules (Section 102 Finance Act 1986), if you gift property but retain an enjoyment or benefit without paying full open-market rent, the entire value of the home remains inside your estate for inheritance tax purposes upon death. Gifting may also trigger immediate Capital Gains Tax, stamp duty complications, and exposure to children's potential divorce or bankruptcy claims. Professional advice is required before transferring property.
+Reference: https://bettercallsim.co.uk/insights/giving-property-to-children
+
+### Why should life assurance be written in trust?
+Writing life assurance into trust ensures that upon death, the policy proceeds pay directly to your chosen trustees rather than entering your legal estate. This delivers two major benefits:
+1. **Inheritance Tax Exemption**: The death benefit is not subject to 40% UK inheritance tax.
+2. **Immediate Liquidity Without Probate**: Funds are typically released in weeks rather than waiting 6–12 months for Grant of Probate, providing immediate cash to pay HMRC inheritance tax liabilities without having to force the distress sale of family property or assets.
+Reference: https://bettercallsim.co.uk/insights/life-assurance-in-trust
+
+### What are the UK Inheritance Tax thresholds in 2026/27?
+- **Basic Nil-Rate Band (NRB)**: £325,000 per individual (frozen until at least April 2030).
+- **Residence Nil-Rate Band (RNRB)**: Up to £175,000 when passing a qualifying family home to direct descendants (children, grandchildren), subject to tapering on estates exceeding £2,000,000.
+- **Spousal Exemption & Transfer**: Married couples and civil partners can transfer 100% of unused allowances, creating up to a combined £1,000,000 tax-free estate allowance.
+- **Tax Rate**: 40% on net estate value above qualifying allowances (or 36% if at least 10% of the net estate is left to registered charities).
+Reference: https://bettercallsim.co.uk/iht-calculator
+
+### Why do professional footballers need specialized planning?
+Professional footballers experience unique financial trajectories: earnings peak early (typically ages 21–32) followed by a 40+ year post-playing career. Key requirements include:
+- Coordinating career transition reserves and alternative income vehicles before contract ends or injury occurs.
+- Image rights and commercial income structuring.
+- Confidential coordination with sports agents, club player liaisons, and accountants.
+- Asset and family protection across domestic and international transfers.
+Reference: https://bettercallsim.co.uk/footballers-and-sports-professionals

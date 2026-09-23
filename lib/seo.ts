@@ -212,11 +212,17 @@ export function siteStructuredData() {
         '@type': 'Organization',
         '@id': canonicalUrl() + '#organization',
         name: site.name,
+        legalName: site.legalEntity,
         url: canonicalUrl(),
         logo: canonicalUrl('brand/better-call-sim-logo.png'),
         telephone: site.phone,
+        email: site.email,
         sameAs: [site.instagram, site.tiktok],
-        areaServed: { '@type': 'Country', name: site.location },
+        areaServed: [
+          { '@type': 'Country', name: 'United Kingdom' },
+          { '@type': 'AdministrativeArea', name: 'England' },
+          { '@type': 'AdministrativeArea', name: 'Wales' },
+        ],
       },
       {
         '@type': 'WebSite',
@@ -315,6 +321,15 @@ export function pageStructuredData(path: string) {
       description: 'Founder of Better Call Sim, with more than a decade in financial services.',
       jobTitle: 'Founder',
       sameAs: [site.instagram, site.tiktok],
+      knowsAbout: [
+        'Estate Planning',
+        'Inheritance Tax Planning',
+        'Wills and Trusts',
+        'Lasting Powers of Attorney',
+        'Wealth Management',
+        'Life Assurance in Trust',
+        'Athlete and Sports Professional Wealth Planning',
+      ],
       worksFor: organisation,
     });
   }

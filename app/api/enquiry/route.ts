@@ -1,4 +1,5 @@
 import { allowRequest, emailMessage, json, readBody, runtime } from '@/lib/server';
+import { site } from '@/lib/site';
 import { validateLead, MARKETING_COPY, CONSENT_VERSION } from '@/lib/validation';
 import { createHash } from 'node:crypto';
 export async function POST(request: Request) {
@@ -11,9 +12,10 @@ export async function POST(request: Request) {
   if (!(await allowRequest(request)))
     return json({ error: 'Please wait 15 minutes before trying again.' }, 429);
   const digest = createHash('sha256').update(JSON.stringify(lead)).digest('hex');
+  const recipientEmail = (runtime().ENQUIRY_TO_EMAIL || site.email).trim();
   const status = await emailMessage(
     lead.requestId + '-' + digest.slice(0, 24),
-    runtime().ENQUIRY_TO_EMAIL ?? '',
+    recipientEmail,
     'New Better Call Sim enquiry',
     [
       'Name: ' + lead.name,
