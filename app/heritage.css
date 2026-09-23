@@ -731,17 +731,6 @@ em {
 .privacy-copy a {
   color: #e6c783;
 }
-.mobile-contact-bar {
-  background: #211315;
-  border-top: 1px solid #857548;
-}
-.mobile-contact-bar > a:first-child {
-  background: #dfbe78;
-  color: #291910;
-}
-.mobile-contact-bar > a {
-  color: #f5efdd;
-}
 :focus-visible {
   outline-color: #e6c783;
 }

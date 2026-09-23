@@ -2840,32 +2840,124 @@ h2 {
     height: 42px;
     width: 42px;
   }
+  body {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+  }
   .mobile-contact-bar {
     position: fixed;
-    z-index: 40;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 61px;
-    display: grid;
-    grid-template-columns: 1.2fr 1fr 1fr;
-    background: #f7f8ef;
-    border-top: 1px solid #c7d1bf;
-    box-shadow: 0 -3px 20px #1c37240a;
-    padding-bottom: env(safe-area-inset-bottom);
-  }
-  .mobile-contact-bar > a {
+    z-index: 999;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    left: 12px;
+    right: 12px;
+    max-width: 440px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 7px;
-    font-size: 12px;
-    border-right: 1px solid #d7dfcf;
-    min-height: 60px;
+    justify-content: space-between;
+    gap: 6px;
+    padding: 6px;
+    background: rgba(20, 13, 9, 0.94);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(223, 190, 120, 0.32);
+    border-radius: 9999px;
+    box-shadow:
+      0 12px 32px -4px rgba(0, 0, 0, 0.75),
+      0 4px 12px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
   }
-  .mobile-contact-bar > a:first-child {
-    background: #183b42;
-    color: #f9f5e9;
+  .mobile-contact-bar > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 42px;
+    border-radius: 9999px;
+    text-decoration: none;
+    font-family: inherit;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .mobile-contact-bar .mobile-bar-primary {
+    flex: 1.25 1 auto;
+    min-width: 0;
+    padding: 0 14px;
+    background: linear-gradient(135deg, #f5dfa8 0%, #dfbe78 50%, #c59844 100%);
+    color: #160e06 !important;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    box-shadow: 0 3px 10px rgba(223, 190, 120, 0.25);
+    border: none;
+  }
+  .mobile-contact-bar .mobile-bar-primary:hover,
+  .mobile-contact-bar .mobile-bar-primary:active {
+    transform: scale(0.98);
+    box-shadow: 0 1px 4px rgba(223, 190, 120, 0.2);
+  }
+  .mobile-contact-bar .mobile-bar-primary svg {
+    color: #160e06;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+  .mobile-contact-bar .mobile-bar-primary:hover svg {
+    transform: translate(1px, -1px);
+  }
+  .mobile-contact-bar .mobile-bar-call {
+    flex: 0 0 auto;
+    padding: 0 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(223, 190, 120, 0.24);
+    color: #f7f1e1 !important;
+    font-size: 12.5px;
+    font-weight: 600;
+  }
+  .mobile-contact-bar .mobile-bar-call:hover,
+  .mobile-contact-bar .mobile-bar-call:active {
+    background: rgba(223, 190, 120, 0.15);
+    border-color: rgba(223, 190, 120, 0.4);
+    transform: scale(0.98);
+  }
+  .mobile-contact-bar .mobile-bar-call svg {
+    color: #dfbe78;
+    flex-shrink: 0;
+  }
+  .mobile-contact-bar .mobile-bar-whatsapp {
+    flex: 0 0 auto;
+    padding: 0 12px;
+    background: rgba(37, 211, 102, 0.1);
+    border: 1px solid rgba(37, 211, 102, 0.32);
+    color: #ffffff !important;
+    font-size: 12.5px;
+    font-weight: 600;
+  }
+  .mobile-contact-bar .mobile-bar-whatsapp:hover,
+  .mobile-contact-bar .mobile-bar-whatsapp:active {
+    background: rgba(37, 211, 102, 0.22);
+    border-color: rgba(37, 211, 102, 0.5);
+    transform: scale(0.98);
+  }
+  .mobile-contact-bar .mobile-bar-whatsapp svg {
+    color: #25d366;
+    flex-shrink: 0;
+  }
+  @media (max-width: 360px) {
+    .mobile-contact-bar {
+      left: 8px;
+      right: 8px;
+      gap: 4px;
+      padding: 5px;
+    }
+    .mobile-contact-bar .mobile-bar-primary {
+      font-size: 12px;
+      padding: 0 10px;
+    }
+    .mobile-contact-bar .mobile-bar-call,
+    .mobile-contact-bar .mobile-bar-whatsapp {
+      padding: 0 9px;
+      font-size: 11.5px;
+    }
   }
   .hero {
     padding-top: 35px;
@@ -5263,23 +5355,6 @@ em {
   }
   .regulatory-footer p {
     font-size: 12px;
-  }
-  .mobile-contact-bar {
-    display: flex;
-    background: #0b1321;
-    border-top: 1px solid #4a4c40;
-    color: #fff;
-  }
-  .mobile-contact-bar a:first-child {
-    background: #dfbe78;
-    color: #080d16;
-  }
-  .mobile-contact-bar a {
-    border-color: #354156;
-    font-size: 12px;
-  }
-  .mobile-contact-bar a:not(:first-child) svg {
-    color: #dfbe78;
   }
   .page-intro h1 {
     font-size: 45px;

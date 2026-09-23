@@ -288,14 +288,18 @@ export function SiteFooter() {
           )}
         </div>
       </footer>
-      <div className="mobile-contact-bar">
-        <Link href="/book-review">
-          <ArrowUpRight size={18} />
-          Book a review
+      <nav className="mobile-contact-bar" aria-label="Quick contact">
+        <Link href="/book-review" className="mobile-bar-primary">
+          <span>Book a review</span>
+          <ArrowUpRight size={15} />
         </Link>
-        <ContactLink type="phone" />
-        <ContactLink type="whatsapp" />
-      </div>
+        <ContactLink type="phone" className="mobile-bar-call">
+          <span>Call Sim</span>
+        </ContactLink>
+        <ContactLink type="whatsapp" className="mobile-bar-whatsapp">
+          <span>WhatsApp</span>
+        </ContactLink>
+      </nav>
     </>
   );
 }
