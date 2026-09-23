@@ -7,7 +7,7 @@
 - [x] Supply the regulated provider, FCA number/permissions: Anand Financial Architecture Ltd (FRN 797619); statutory disclosure added to site footer.
 - [x] Confirm review scope, meeting formats, duration and cost: Initial review is complimentary; subsequent advice/implementation fees confirmed in writing before proceeding; direct enquiry & scheduling flow updated.
 - [x] Approve privacy/terms/retention wording, identify the controller and processors: Anand Wills & Trusts Ltd identified as controller; definitive UK GDPR notices published across privacy, terms, cookies, and complaints.
-- [ ] Configure verified email sender, adviser recipient and secrets; test delivery to client-approved test addresses.
+- [x] Configure verified email sender, adviser recipient and secrets; test delivery to client-approved test addresses. (Verified: Resend API configured, live enquiry 56faaf87 confirmed delivered to Simran@anandassociates.com).
 - [ ] Approve the bounded IHT rule set and reporting assumptions with the appropriate professional.
 - [ ] Supply authentic case studies with publication consent; retain illustrative labels for hypothetical examples.
 - [ ] Supply selected educational videos, captions and transcripts; update the media feature.
