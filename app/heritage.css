@@ -1070,3 +1070,12 @@ em {
 .sports-related > p:not(.eyebrow) { color: #d0c3b4; margin-bottom: 20px; }
 @media (max-width: 1000px) { .sports-opening { gap: 36px; grid-template-columns: 1fr; } }
 @media (max-width: 760px) { .sports-invitation, .sports-provider, .sports-related { padding: 24px 20px; } .sports-layout { padding-bottom: 50px; } }
+
+/* Updated brand artwork: preserve the complete supplied 2:1 lockup. */
+.site-header { height: 128px; }
+.brand img { width: 220px; height: 110px; object-fit: contain; }
+.mobile-navigation .brand img { width: 200px; height: 100px; }
+@media (max-width: 760px) {
+  .site-header { height: 106px; }
+  .brand img { width: 180px; height: 90px; }
+}

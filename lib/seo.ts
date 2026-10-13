@@ -214,7 +214,7 @@ export function siteStructuredData() {
         name: site.name,
         legalName: site.legalEntity,
         url: canonicalUrl(),
-        logo: canonicalUrl('brand/better-call-sim-logo.png'),
+        logo: canonicalUrl('brand/better-call-sim-logo-2026.png'),
         telephone: site.phone,
         email: site.email,
         sameAs: [site.instagram, site.tiktok],

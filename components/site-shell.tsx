@@ -28,7 +28,7 @@ import { site, pillars, REVIEW_CTA } from '@/lib/site';
 export function Brand() {
   return (
     <Link href="/" className="brand" aria-label="Better Call Sim home">
-      <img src="/brand/better-call-sim-logo.png" alt="Better Call Sim" width="210" height="105" />
+      <img src="/brand/better-call-sim-logo-2026.png" alt="Better Call Sim" width="210" height="105" />
     </Link>
   );
 }

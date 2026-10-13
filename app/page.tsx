@@ -184,10 +184,10 @@ export default function Home() {
             </span>
             <div>
               <img
-                src="/brand/better-call-sim-logo.png"
+                src="/brand/better-call-sim-logo-2026.png"
                 alt="Better Call Sim"
                 width="230"
-                height="100"
+                height="115"
               />
               <div className="bcs-hero-socials">
                 <a
