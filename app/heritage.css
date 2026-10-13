@@ -1079,3 +1079,6 @@ em {
   .site-header { height: 106px; }
   .brand img { width: 180px; height: 90px; }
 }
+
+/* Blend the supplied dark artwork into the warm site surfaces. */
+.brand img, .bcs-personal-statement img { mix-blend-mode: lighten; }
