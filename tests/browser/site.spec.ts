@@ -171,6 +171,57 @@ test('calculator can be completed from its visible controls and downloads a PDF'
   expect(violations).toEqual([]);
   expect(submissions).toEqual([]);
 });
+test('couple calculator journey works end-to-end and downloads a 3-page PDF with couple heading', async ({
+  page,
+}) => {
+  await page.goto('/iht-calculator');
+  async function choose(label: string, option: string) {
+    await page.getByRole('combobox', { name: label, exact: true }).click();
+    await page.getByRole('option', { name: option, exact: true }).click();
+  }
+  await choose(
+    'Whose estate are you considering?',
+    'A married couple / civil partners — estimate after both deaths',
+  );
+  await choose(
+    'Does the straightforward UK residence scenario apply?',
+    'Yes — this straightforward scenario applies',
+  );
+  await choose('Who inherits after the second death?', 'Children or other direct descendants');
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
+
+  await page.getByLabel('Your home (combined value)', { exact: true }).fill('800000');
+  await page.getByLabel('Cash and savings (both partners)', { exact: true }).fill('1400000');
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
+
+  await choose(
+    'On the first death, does everything pass outright to the surviving spouse / civil partner?',
+    'Yes — everything passes outright to the survivor',
+  );
+  await choose(
+    'Is either partner’s own net estate worth more than £2 million?',
+    'No — neither estate exceeds £2 million',
+  );
+  await choose(
+    'After the second death, does a qualifying home pass outright to direct descendants?',
+    'Yes',
+  );
+  await choose('Are there any specialist circumstances?', 'None of these apply');
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
+
+  await page.getByLabel('Your name (optional)', { exact: true }).fill('Sim & Partner');
+  await page.getByRole('button', { name: 'Create My IHT Report' }).click();
+
+  await expect(page.getByRole('heading', { name: 'Estimated inheritance tax after both deaths' })).toBeVisible();
+  await expect(page.locator('.result-amount strong')).toHaveText('£520,000');
+  await expect(page.locator('.couple-explanation')).toBeVisible();
+
+  const downloadPromise = page.waitForEvent('download');
+  await page.getByRole('link', { name: 'Download your report' }).click();
+  const download = await downloadPromise;
+  await download.saveAs('artifacts/couple-iht-report.pdf');
+  await page.screenshot({ path: 'artifacts/calculator-couple-result.png', fullPage: true });
+});
 test('email-only API rejects bad requests and retired report endpoints cannot save details', async ({
   request,
 }) => {

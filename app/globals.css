@@ -5503,3 +5503,27 @@ em {
   flex-wrap: wrap;
   margin: 12px 0 16px;
 }
+/* IHT calculator: shared calculation summary and couple explanation */
+.result-breakdown dd.result-breakdown-wrap {
+  white-space: normal;
+  text-align: right;
+  max-width: 60%;
+}
+.result-breakdown > div.result-breakdown-emphasis dt,
+.result-breakdown > div.result-breakdown-emphasis dd {
+  color: #dfbe78;
+  font-weight: 600;
+}
+.result-panel .couple-explanation,
+.calculator-panel .couple-explanation {
+  border-left: 3px solid #dfbe78;
+  padding: 10px 0 10px 14px;
+  margin: 14px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+@media (max-width: 640px) {
+  .result-breakdown dd.result-breakdown-wrap {
+    max-width: 55%;
+  }
+}

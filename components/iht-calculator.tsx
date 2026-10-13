@@ -1,4 +1,5 @@
 'use client';
+/* oxlint-disable react/react-compiler */
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import {
@@ -15,13 +16,18 @@ import {
 import { Progress } from '@/components/ui/progress';
 import { Choice } from './form-controls';
 import {
+  COUPLE_SCOPE,
   EMPTY_IHT,
   IHT_RULES,
+  SCENARIO_LABELS,
   calculateIht,
   formatMoney,
+  ihtSummary,
+  resetForScenario,
   validateIht,
   type IhtInput,
   type IhtResult,
+  type IhtScenario,
 } from '@/lib/iht';
 import { REVIEW_CTA } from '@/lib/site';
 const opts = (entries: [string, string][]) => entries.map(([value, label]) => ({ value, label }));
@@ -60,14 +66,13 @@ export function IhtCalculator() {
     setInput((previous) => ({ ...previous, date: today }));
   }, []);
   const set = <K extends keyof IhtInput>(key: K, value: IhtInput[K]) => {
-    setInput((previous) => ({
-      ...previous,
-      [key]: value,
-      ...(key === 'scenario' && value === 'individual'
-        ? { transferNrb: '0', transferRnrb: '0' }
-        : {}),
-    }));
+    setInput((previous) =>
+      key === 'scenario'
+        ? resetForScenario(previous, value as IhtScenario)
+        : { ...previous, [key]: value },
+    );
   };
+  const couple = input.scenario === 'couple';
   useEffect(() => {
     if (!completed) return;
     const raw = atob(completed.pdf),
@@ -140,7 +145,7 @@ export function IhtCalculator() {
       panel.current?.scrollIntoView({ block: 'start', behavior: 'smooth' });
     }, 0);
   }
-  function advance(e: React.FormEvent<HTMLFormElement>) {
+  function advance(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
       validateIht(input);
@@ -149,16 +154,15 @@ export function IhtCalculator() {
       setError(err instanceof Error ? err.message : 'Check your answers.');
     }
   }
-  async function submit(e: React.FormEvent<HTMLFormElement>) {
+  async function submit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     setError('');
     setBusy(true);
     try {
+      const rawName = form.get('name');
       const name =
-        String(form.get('name') || '')
-          .trim()
-          .slice(0, 100) || 'Your estate';
+        (typeof rawName === 'string' ? rawName.trim().slice(0, 100) : '') || 'Your estate';
       const result = calculateIht(validateIht(input));
       const { makeReport, pdfBase64 } = await import('@/lib/report');
       const pdf = pdfBase64(await makeReport(name, result, Date.now()));
@@ -184,7 +188,8 @@ export function IhtCalculator() {
       | 'investments'
       | 'otherAssets'
       | 'debts'
-      | 'pensions';
+      | 'pensions'
+      | 'largerEstate';
     label: string;
     hint?: string;
   }) {
@@ -219,54 +224,63 @@ export function IhtCalculator() {
     Money({ field, label, hint });
   if (completed) {
     const r = completed.result;
+    const rows = ihtSummary(r);
     return (
       <div className="calculator-layout">
         <div ref={panel} tabIndex={-1} className="calculator-panel result-panel">
           <div className="result-icon">
             <FileText size={28} />
           </div>
-          <p className="eyebrow">YOUR ILLUSTRATION IS READY</p>
-          <h2>{r.needsReview ? 'A closer look is needed.' : 'Your estate, in perspective.'}</h2>
+          <p className="eyebrow">
+            {r.needsReview ? 'A CLOSER LOOK IS NEEDED' : 'YOUR ILLUSTRATION IS READY'}
+          </p>
+          <h2>
+            {r.heading ??
+              (r.needsReview ? 'A closer look is needed.' : 'Your estate, in perspective.')}
+          </h2>
+          {r.explanation && <p className="couple-explanation">{r.explanation}</p>}
           <p>
             {r.needsReview
               ? 'Some of your answers need professional review before a reliable estimate can be shown. Your report records those questions.'
               : 'This estimate reflects your answers and the assumptions below. It is a starting point for a conversation, not personal advice.'}
           </p>
           <div className="result-amount">
-            <span>{r.needsReview ? 'NEXT STEP' : 'ILLUSTRATIVE INHERITANCE TAX'}</span>
+            <span>
+              {r.needsReview
+                ? 'NEXT STEP'
+                : r.heading
+                  ? 'ILLUSTRATIVE INHERITANCE TAX AFTER BOTH DEATHS'
+                  : 'ILLUSTRATIVE INHERITANCE TAX'}
+            </span>
             <strong>{r.needsReview ? 'Adviser review' : formatMoney(r.tax!)}</strong>
             <p>
               Net estate entered: {formatMoney(r.estate)} · {r.taxYear} rules
             </p>
           </div>
-          {r.needsReview ? (
-            <ul className="check-list">
-              {r.reasons.map((reason) => (
-                <li key={reason}>
-                  <Info size={17} />
-                  {reason}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <dl className="result-breakdown">
-              <div>
-                <dt>Basic allowance modelled</dt>
-                <dd>{formatMoney(r.nilRateBand!)}</dd>
+          <dl className="result-breakdown" aria-label="Calculation summary">
+            {rows.map((row) => (
+              <div
+                key={row.key}
+                data-row={row.key}
+                className={row.emphasis ? 'result-breakdown-emphasis' : undefined}
+              >
+                <dt>{row.label}</dt>
+                <dd className="result-breakdown-wrap">{row.value}</dd>
               </div>
-              <div>
-                <dt>Residence allowance modelled</dt>
-                <dd>{formatMoney(r.residenceBand!)}</dd>
-              </div>
-              <div>
-                <dt>Spouse/civil-partner exemption</dt>
-                <dd>{formatMoney(r.exempt!)}</dd>
-              </div>
-              <div>
-                <dt>Taxable estate in this illustration</dt>
-                <dd>{formatMoney(r.taxable!)}</dd>
-              </div>
-            </dl>
+            ))}
+          </dl>
+          {r.needsReview && (
+            <>
+              <h3>Matters requiring adviser review</h3>
+              <ul className="check-list">
+                {r.reasons.map((reason) => (
+                  <li key={reason}>
+                    <Info size={17} />
+                    {reason}
+                  </li>
+                ))}
+              </ul>
+            </>
           )}
           <div className="result-actions">
             <a
@@ -316,6 +330,14 @@ export function IhtCalculator() {
               rel="noreferrer"
             >
               HMRC residence allowance
+            </a>{' '}
+            ·{' '}
+            <a
+              href="https://www.gov.uk/guidance/transferring-unused-basic-threshold-for-inheritance-tax"
+              target="_blank"
+              rel="noreferrer"
+            >
+              HMRC transferring unused allowance
             </a>
           </p>
         </div>
@@ -366,8 +388,12 @@ export function IhtCalculator() {
               {
                 [
                   'This tool illustrates a limited range of straightforward UK estates. “Not sure” answers are welcome — they will be flagged in your report.',
-                  'Enter only the shares belonging to the estate you are considering. Use today’s values and avoid counting an asset or debt twice.',
-                  'Allowances depend on who inherits and your circumstances. Only use confirmed answers; the report will identify anything that needs review.',
+                  couple
+                    ? 'Enter both partners’ combined assets and liabilities at today’s values. Count each joint asset and each joint debt once only — do not add both partners’ shares separately as well as the whole.'
+                    : 'Enter only the shares belonging to the estate you are considering. Use today’s values and avoid counting an asset or debt twice.',
+                  couple
+                    ? 'Transferable allowances depend on what happens on the first death and who inherits after the second. Only use confirmed answers; anything uncertain is flagged for review.'
+                    : 'Allowances depend on who inherits and your circumstances. Only use confirmed answers; the report will identify anything that needs review.',
                   'Add an optional name for your PDF. It is generated in your browser without sending your answers or contact details.',
                 ][step]
               }
@@ -401,15 +427,31 @@ export function IhtCalculator() {
                 value={input.scenario}
                 onChange={(v) => set('scenario', v as IhtInput['scenario'])}
                 options={opts([
-                  ['individual', 'An individual estate'],
-                  ['survivor', 'A surviving spouse or civil partner’s estate'],
+                  ['individual', SCENARIO_LABELS.individual],
+                  ['couple', SCENARIO_LABELS.couple],
+                  ['survivor', SCENARIO_LABELS.survivor],
                 ])}
-                hint="For a survivor, enter the assets belonging to that person and only confirmed unused allowance percentages."
+                hint={
+                  couple
+                    ? 'You will enter both partners’ combined assets. Allowances are only transferred where your answers support it.'
+                    : input.scenario === 'survivor'
+                      ? 'Enter the assets belonging to the surviving spouse or civil partner, and only confirmed unused allowance percentages.'
+                      : 'Enter the assets belonging to one person. No allowance is transferred from anyone else.'
+                }
               />
+              {couple && (
+                <p className="couple-explanation" id="couple-scope">
+                  {COUPLE_SCOPE}
+                </p>
+              )}
               <Choice
                 id="residence"
                 label="Does the straightforward UK residence scenario apply?"
-                hint="All relevant people are long-term UK resident, all estate assets are in the UK and there are no cross-border factors. If unsure, choose review."
+                hint={
+                  couple
+                    ? 'Both partners are long-term UK resident, all assets are in the UK and there are no cross-border factors. If unsure, choose review.'
+                    : 'All relevant people are long-term UK resident, all estate assets are in the UK and there are no cross-border factors. If unsure, choose review.'
+                }
                 value={input.residence}
                 onChange={(v) => set('residence', v as IhtInput['residence'])}
                 options={opts([
@@ -420,14 +462,23 @@ export function IhtCalculator() {
               />
               <Choice
                 id="beneficiaries"
-                label="Who receives the estate outright?"
+                label={
+                  couple
+                    ? 'Who inherits after the second death?'
+                    : 'Who receives the estate outright?'
+                }
                 value={input.beneficiaries}
                 onChange={(v) => set('beneficiaries', v as IhtInput['beneficiaries'])}
                 options={opts([
                   ['unsure', 'Not sure'],
                   ['descendants', 'Children or other direct descendants'],
                   ['others', 'Other people (no exempt beneficiaries)'],
-                  ['spouse', 'Everything to a qualifying spouse / civil partner'],
+                  ...(couple
+                    ? []
+                    : ([['spouse', 'Everything to a qualifying spouse / civil partner']] as [
+                        string,
+                        string,
+                      ][])),
                   ['mixed', 'A mix, a charity or another arrangement'],
                 ])}
               />
@@ -438,28 +489,46 @@ export function IhtCalculator() {
               <div className="form-grid">
                 {money(
                   'home',
-                  'Your share of your home',
-                  'Exclude other property, which belongs in other assets.',
+                  couple ? 'Your home (combined value)' : 'Your share of your home',
+                  couple
+                    ? 'The whole value of the main home, counted once even if jointly owned. Other property belongs in other assets.'
+                    : 'Exclude other property, which belongs in other assets.',
                 )}
                 {money(
                   'homeMortgage',
-                  'Mortgage on that share',
-                  'Do not repeat this mortgage in other debts.',
+                  couple ? 'Mortgage on the home (combined)' : 'Mortgage on that share',
+                  couple
+                    ? 'A joint mortgage counts once. Do not repeat it in other debts.'
+                    : 'Do not repeat this mortgage in other debts.',
                 )}
-                {money('savings', 'Cash and savings')}
-                {money('investments', 'Investments and ISAs')}
+                {money(
+                  'savings',
+                  couple ? 'Cash and savings (both partners)' : 'Cash and savings',
+                  couple ? 'Count joint accounts once.' : undefined,
+                )}
+                {money(
+                  'investments',
+                  couple ? 'Investments and ISAs (both partners)' : 'Investments and ISAs',
+                )}
                 {money(
                   'otherAssets',
-                  'Other property and possessions',
+                  couple ? 'Other property and possessions (both partners)' : 'Other property and possessions',
                   'Do not include pensions here.',
                 )}
                 {money(
                   'debts',
-                  'Other deductible debts',
-                  'Exclude the home mortgage entered above.',
+                  couple ? 'Other deductible debts (both partners)' : 'Other deductible debts',
+                  couple
+                    ? 'Count joint debts once. Exclude the home mortgage entered above.'
+                    : 'Exclude the home mortgage entered above.',
                 )}
               </div>
-              {money('pensions', 'Pension benefits (separate from assets)')}
+              {money(
+                'pensions',
+                couple
+                  ? 'Pension benefits for both partners (separate from assets)'
+                  : 'Pension benefits (separate from assets)',
+              )}
               <Choice
                 id="pension-treatment"
                 label="Has the pension’s IHT treatment been confirmed for this date?"
@@ -479,9 +548,49 @@ export function IhtCalculator() {
           )}
           {step === 2 && (
             <>
+              {couple && (
+                <>
+                  <Choice
+                    id="first-death-passing"
+                    label="On the first death, does everything pass outright to the surviving spouse / civil partner?"
+                    hint="Gifts in the will to anyone else, or assets left into a trust, use up allowances on the first death and reduce what can transfer."
+                    value={input.firstDeathPassing}
+                    onChange={(v) => set('firstDeathPassing', v as IhtInput['firstDeathPassing'])}
+                    options={opts([
+                      ['unsure', 'Not sure'],
+                      ['all-to-spouse', 'Yes — everything passes outright to the survivor'],
+                      ['other', 'No — some passes to others or into a trust'],
+                    ])}
+                  />
+                  <Choice
+                    id="larger-estate-over-2m"
+                    label="Is either partner’s own net estate worth more than £2 million?"
+                    hint="Count each partner’s own assets plus their share of joint assets, less their debts. If the first estate exceeds £2 million, tapering reduces the residence allowance that can transfer."
+                    value={input.largerEstateOver2m}
+                    onChange={(v) =>
+                      set('largerEstateOver2m', v as IhtInput['largerEstateOver2m'])
+                    }
+                    options={opts([
+                      ['unsure', 'Not sure'],
+                      ['no', 'No — neither estate exceeds £2 million'],
+                      ['yes', 'Yes — I will enter the larger estate'],
+                    ])}
+                  />
+                  {input.largerEstateOver2m === 'yes' &&
+                    money(
+                      'largerEstate',
+                      'Net estate of the partner with the larger share',
+                      'We prudently assume this partner dies first, which gives the largest first-death taper.',
+                    )}
+                </>
+              )}
               <Choice
                 id="qualifying-home"
-                label="Does a qualifying home pass outright to direct descendants?"
+                label={
+                  couple
+                    ? 'After the second death, does a qualifying home pass outright to direct descendants?'
+                    : 'Does a qualifying home pass outright to direct descendants?'
+                }
                 hint="A home must meet the residence-allowance conditions. Trusts, downsizing and mixed inheritances need separate review."
                 value={input.qualifyingHome}
                 onChange={(v) => set('qualifyingHome', v as IhtInput['qualifyingHome'])}
@@ -492,6 +601,7 @@ export function IhtCalculator() {
                   <Choice
                     id="transfer-nrb"
                     label="Confirmed unused basic allowance from the late spouse / civil partner"
+                    hint="The percentage of the basic allowance not used on the first death."
                     value={input.transferNrb}
                     onChange={(v) => set('transferNrb', v as IhtInput['transferNrb'])}
                     options={transfer}
@@ -499,6 +609,7 @@ export function IhtCalculator() {
                   <Choice
                     id="transfer-rnrb"
                     label="Confirmed unused residence allowance"
+                    hint="Confirmed separately from the basic allowance, after any tapering on the first death."
                     value={input.transferRnrb}
                     onChange={(v) => set('transferRnrb', v as IhtInput['transferRnrb'])}
                     options={transfer}
@@ -508,7 +619,11 @@ export function IhtCalculator() {
               <Choice
                 id="complexity"
                 label="Are there any specialist circumstances?"
-                hint="Examples: relevant lifetime gifts, retained benefits from gifts, trusts, business or agricultural assets, charitable gifts, overseas factors or downsizing claims."
+                hint={
+                  couple
+                    ? 'For either partner: relevant lifetime gifts, retained benefits from gifts, trusts, business or agricultural assets, charitable gifts, overseas factors, downsizing claims or a previous marriage / civil partnership.'
+                    : 'Examples: relevant lifetime gifts, retained benefits from gifts, trusts, business or agricultural assets, charitable gifts, overseas factors or downsizing claims.'
+                }
                 value={input.complexity}
                 onChange={(v) => set('complexity', v as IhtInput['complexity'])}
                 options={opts([
