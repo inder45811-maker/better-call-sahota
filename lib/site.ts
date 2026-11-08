@@ -15,7 +15,7 @@ export const site = {
   regulatedProvider: 'Anand Financial Architecture Ltd',
   fcaReference: '797619',
   principal: '',
-  adviserPortrait: '/brand/simran-study-hands-v2.png',
+  adviserPortrait: '/brand/simran-study-hands-together.png',
   bookingUrl: '',
   footerDisclosure:
     'Better Call Sim is a trading style of Anand Wills & Trusts Ltd, working in partnership with Anand Financial Architecture Ltd for regulated financial services and Countrywide Tax & Trust Corporation Ltd for estate planning services. Anand Financial Architecture Ltd is authorised and regulated by the FCA (FRN 797619). Countrywide has STEP-qualified professionals within its organisation.',
