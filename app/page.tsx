@@ -53,7 +53,7 @@ export default function Home() {
             />
             <div className="sim-nameplate">
               <div>
-                <span>YOUR PLAN STARTS WITH A PERSON.</span>
+                <span>LET’S TALK ABOUT WHAT MATTERS TO YOU.</span>
                 <strong>SIMRAN SAHOTA</strong>
               </div>
               <Link href="/meet-sim" aria-label="Meet Simran Sahota">
