@@ -8,15 +8,18 @@ import { pageMetadata, siteStructuredData } from '@/lib/seo';
 import { StructuredData } from '@/components/search-content';
 import { SiteAnalytics } from '@/components/site-analytics';
 
+const googleVerification = [
+  process.env.GOOGLE_SITE_VERIFICATION,
+  process.env.GOOGLE_SITE_VERIFICATION_ADDITIONAL,
+].filter((value): value is string => Boolean(value));
+
 export const metadata: Metadata = {
   ...pageMetadata(''),
   metadataBase: new URL(site.origin),
   applicationName: site.name,
   icons: { icon: '/favicon.svg' },
   verification: {
-    ...(process.env.GOOGLE_SITE_VERIFICATION
-      ? { google: process.env.GOOGLE_SITE_VERIFICATION }
-      : {}),
+    ...(googleVerification.length ? { google: googleVerification } : {}),
     ...(process.env.BING_SITE_VERIFICATION
       ? { other: { 'msvalidate.01': process.env.BING_SITE_VERIFICATION } }
       : {}),
