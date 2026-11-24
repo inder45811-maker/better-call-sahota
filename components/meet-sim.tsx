@@ -70,9 +70,10 @@ export function MeetSimPage() {
           <Image
             src={site.adviserPortrait}
             alt="Simran Singh Sahota, founder of Better Call Sim"
-            width={1122}
-            height={1402}
-            sizes="(max-width: 760px) 90vw, 600px"
+            width={1254}
+            height={1254}
+            sizes="(max-width: 470px) calc(100vw - 40px), (max-width: 760px) 430px, (max-width: 1300px) 42vw, 580px"
+            loading="eager"
           />
         </div>
         <div>

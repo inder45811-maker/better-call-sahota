@@ -974,52 +974,58 @@ em {
   .header-actions { margin-left: auto; }
 }
 
-/* One photographic hero: the office continues behind the copy and adviser. */
-.bcs-hero { position: relative; isolation: isolate; overflow: hidden; background: #1d1210; border-color: #705132; }
-.office-backdrop { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
-.office-backdrop img { object-fit: cover; object-position: left 42%; filter: blur(5px) brightness(.55) sepia(.2); transform: scale(1.03); }
-.office-backdrop:after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #1c0d0be8 0%, #20100cdd 32%, #21120fb8 55%, #21120f99 100%); }
-.bcs-hero-grid { position: relative; min-height: 710px; padding-block: 58px; grid-template-columns: 1fr 1fr; gap: 60px; }
-.bcs-hero-copy { position: relative; z-index: 3; max-width: 580px; }
+/* Homepage portrait and nameplate. */
+.bcs-hero {
+  background: radial-gradient(ellipse at 78% 40%, #3a231b, #211310 66%, #1d1210);
+  border-color: #705132;
+}
+.bcs-hero-grid {
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 80px);
+  padding-block: clamp(40px, 5vw, 72px);
+}
+.bcs-hero-copy { max-width: 580px; }
 .bcs-hero-copy > p:not(.eyebrow) { color: #ede2d0; }
 .hero-secondary > span { color: #d5c5b5; }
-.bcs-hero-visual { position: absolute; inset: 0 calc((1440px - 100vw) / 2) 0 auto; width: min(62vw, 1120px); max-width: none; height: 100%; border: 0; border-radius: 0; box-shadow: none; background: transparent; }
-.sim-hero-portrait { object-fit: cover; object-position: center 34%; mask-image: linear-gradient(90deg, transparent, #000 30%); }
-.bcs-hero-visual:after { height: 150px; background: linear-gradient(transparent, #160d0be6); }
-.sim-nameplate { left: 30%; right: 8%; bottom: 24px; padding: 18px 22px; background: #261714d9; border-top: 1px solid #b38a4e; }
+.bcs-hero-visual {
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  border: 1px solid #8f714b;
+  border-radius: 6px;
+  background: #271813;
+  box-shadow: 0 20px 48px #13090766;
+}
+.sim-hero-portrait {
+  position: static;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+}
+.bcs-hero-visual:after { content: none; }
+.sim-nameplate {
+  position: static;
+  padding: 16px clamp(15px, 2vw, 24px);
+  background: #261714;
+  border-top: 1px solid #8f714b;
+  backdrop-filter: none;
+}
 .sim-nameplate span { color: #decdb6; }
-.sim-nameplate strong { font-size: 27px; }
+.sim-nameplate strong { font-size: clamp(22px, 2.3vw, 27px); }
 .about-mark { border-radius: 4px; border-color: #a9844e; }
 .bcs-personal-statement { background-image: linear-gradient(90deg, #251410f2, #25141099), url('/images/heritage-desk.png'); }
 .bcs-service-card { border-top: 2px solid #a9844e; }
 .bcs-marquee { background: #321a1e; }
-@media (max-width: 1552px) and (min-width: 761px) { .bcs-hero-visual { right: -56px; } }
-@media (max-width: 1100px) and (min-width: 761px) {
-  .bcs-hero-grid { min-height: 680px; }
-  .bcs-hero-visual { right: -32px; width: 62vw; }
-  .bcs-hero-copy { max-width: 440px; }
-  .sim-nameplate { left: 35%; right: 5%; padding-inline: 15px; }
-  .sim-nameplate strong { font-size: 22px; }
-}
 @media (max-width: 760px) {
-  .bcs-hero-grid { display: flex; flex-direction: column; gap: 0; padding-block: 38px 0; min-height: 0; }
-  .bcs-hero-copy { align-self: stretch; }
-  .office-backdrop:after { background: #21110eea; }
-  .bcs-hero-visual { position: relative; inset: auto; width: calc(100% + 40px); height: 520px; margin-top: 18px; align-self: center; border-radius: 0; }
-  .sim-hero-portrait { object-position: center 32%; mask-image: linear-gradient(180deg, transparent, #000 18%); }
-  .sim-nameplate { left: 20px; right: 20px; bottom: 20px; padding: 18px; }
+  .bcs-hero-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-block: 38px 32px; }
+  .bcs-hero-visual { max-width: 480px; justify-self: center; }
   .sim-nameplate strong { font-size: 25px; }
-}
-@media (max-width: 370px) { .bcs-hero-visual { height: 440px; } }
-@media (min-width: 761px) {
-  .bcs-hero-grid { position: static; }
-  .bcs-hero-visual { right: 0; }
-  .sim-hero-portrait { object-position: center 20%; }
 }
 
 /* Personal biography: readable chapters and an unobtrusive contents rail. */
-.biography-intro { align-items: start; }
-.biography-intro .about-mark { height: 620px; }
+.biography-intro { align-items: center; }
+.biography-intro .about-mark { height: auto; aspect-ratio: 1; }
 .biography-intro h2 { font-size: clamp(34px, 3vw, 45px); }
 .biography-layout { display: grid; grid-template-columns: minmax(210px, 280px) minmax(0, 800px); justify-content: space-between; gap: 64px; padding-top: 80px; }
 .biography-contents { align-self: start; position: sticky; top: 32px; padding-top: 8px; }
@@ -1040,7 +1046,6 @@ em {
   .biography-contents nav { display: grid; grid-template-columns: 1fr 1fr; column-gap: 28px; }
 }
 @media (max-width: 760px) {
-  .biography-intro .about-mark { height: 460px; }
   .biography-chapters section { padding-bottom: 32px; margin-bottom: 36px; }
   .biography-contents nav { grid-template-columns: 1fr; }
   .biography-chapters .biography-approach { padding: 25px 20px; }

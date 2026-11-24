@@ -15,7 +15,6 @@ export default function Home() {
     <main id="main">
       <StructuredData value={pageStructuredData('')} />
       <section className="bcs-hero">
-        <div className="office-backdrop" aria-hidden="true"><Image src="/brand/simran-study-hands-together.png" alt="" fill sizes="100vw" /></div>
         <div className="container bcs-hero-grid">
           <div className="bcs-hero-copy">
             <p className="eyebrow">
@@ -44,11 +43,12 @@ export default function Home() {
           <div className="bcs-hero-visual">
             <Image
               className="sim-hero-portrait"
-              src="/brand/simran-study-hands-together.png"
+              src={site.adviserPortrait}
               alt="Simran Sahota, the person behind Better Call Sim"
-              width={1122}
-              height={1402}
-              sizes="(max-width: 760px) 100vw, 60vw"
+              width={1254}
+              height={1254}
+              sizes="(max-width: 520px) calc(100vw - 40px), (max-width: 760px) 480px, (max-width: 1260px) 45vw, 550px"
+              loading="eager"
               fetchPriority="high"
             />
             <div className="sim-nameplate">
