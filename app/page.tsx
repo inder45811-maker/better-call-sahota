@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowUpRight, ShieldCheck, House, TrendingUp, Check, Play, Camera } from 'lucide-react';
+import { ArrowUpRight, ShieldCheck, House, TrendingUp, Check, Camera } from 'lucide-react';
 import { TikTokIcon } from '@/components/icons';
 import { PlanningStages } from '@/components/planning-stages';
 import { ArticleCards, StoryCards, ReviewJourney, ReviewButton } from '@/components/content';
@@ -328,34 +328,29 @@ export default function Home() {
           </Link>
         </div>
         <ArticleCards />
-        <div className="bcs-social-banner">
-          <span className="bcs-play">
-            <Play size={23} fill="currentColor" />
-          </span>
+      </section>
+      <section className="section container" id="social" aria-labelledby="social-heading">
+        <div className="section-heading">
           <div>
-            <h3>More from Better Call Sim.</h3>
-            <p>Explore Sim’s educational posts and videos on Instagram and TikTok.</p>
+            <h2 id="social-heading">Follow Better Call Sim</h2>
           </div>
-          <div className="bcs-social-actions">
-            <a
-              className="bcs-social-chip"
-              href={site.instagram}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Instagram: @bettercallsimuk"
-            >
-              <Camera size={16} /> Instagram @bettercallsimuk <ArrowUpRight size={15} />
-            </a>
-            <a
-              className="bcs-social-chip"
-              href={site.tiktok}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="TikTok: @bettercallsimuk"
-            >
-              <TikTokIcon size={16} /> TikTok @bettercallsimuk <ArrowUpRight size={15} />
-            </a>
-          </div>
+          <p>Find short videos and practical posts on wills, family protection, property and inheritance planning.</p>
+        </div>
+        <div className="bcs-social-grid">
+          <a className="bcs-social-card" href={site.tiktok} target="_blank" rel="noreferrer">
+            <span className="bcs-social-icon"><TikTokIcon size={26} /></span>
+            <span>
+              <strong>TikTok</strong>
+              <span>{site.handle}</span>
+            </span>
+          </a>
+          <a className="bcs-social-card" href={site.instagram} target="_blank" rel="noreferrer">
+            <span className="bcs-social-icon"><Camera size={26} aria-hidden="true" /></span>
+            <span>
+              <strong>Instagram</strong>
+              <span>{site.handle}</span>
+            </span>
+          </a>
         </div>
       </section>
       <section className="faq-section section">

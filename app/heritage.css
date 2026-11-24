@@ -957,12 +957,10 @@ em {
 }
 
 /* Shared editorial sections and compact tablet service layouts. */
-.faq-section, .bcs-social-banner { background: #2c191b; border-color: #69523b; }
+.faq-section { background: #2c191b; border-color: #69523b; }
 .faq-layout [data-slot='accordion-item'] { border-color: #69523b; }
 .faq-layout [data-slot='accordion-trigger'] { color: #f4efdf; }
 .faq-layout [data-slot='accordion-content'] { color: #d0c3b4; }
-.bcs-social-banner h3 { font-size: 30px; }
-.bcs-social-banner p { color: #d0c3b4; }
 .service-review .button { max-width: 100%; white-space: normal; text-align: center; }
 @media (min-width: 761px) and (max-width: 1000px) {
   .service-detail { grid-template-columns: 1fr; }
