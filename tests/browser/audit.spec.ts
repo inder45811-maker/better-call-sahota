@@ -120,7 +120,7 @@ test('short mobile navigation can scroll to the review link and dismiss with Esc
   const trigger = page.getByRole('button', { name: 'Open navigation' });
   await trigger.click();
   const dialog = page.getByRole('dialog');
-  const review = dialog.getByRole('link', { name: 'Book Your Financial & Estate Review' });
+  const review = dialog.getByRole('link', { name: 'Request Your Financial & Estate Review' });
   await review.scrollIntoViewIfNeeded();
   await expect(review).toBeInViewport();
   await page.keyboard.press('Escape');

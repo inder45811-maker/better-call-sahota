@@ -1,17 +1,33 @@
-import { allowRequest, emailMessage, json, readBody, runtime } from '@/lib/server';
+import {
+  allowRequest,
+  emailMessage,
+  json,
+  readBody,
+  runtime,
+} from '@/lib/server';
 import { site } from '@/lib/site';
-import { validateLead, MARKETING_COPY, CONSENT_VERSION } from '@/lib/validation';
+import {
+  validateLead,
+  MARKETING_COPY,
+  CONSENT_VERSION,
+} from '@/lib/validation';
+import { reviewStatus } from '@/lib/review';
 import { createHash } from 'node:crypto';
 export async function POST(request: Request) {
   let lead;
   try {
     lead = validateLead(await readBody(request));
   } catch (error) {
-    return json({ error: error instanceof Error ? error.message : 'Check your details.' }, 400);
+    return json(
+      { error: error instanceof Error ? error.message : 'Check your details.' },
+      400,
+    );
   }
   if (!(await allowRequest(request)))
     return json({ error: 'Please wait 15 minutes before trying again.' }, 429);
-  const digest = createHash('sha256').update(JSON.stringify(lead)).digest('hex');
+  const digest = createHash('sha256')
+    .update(JSON.stringify(lead))
+    .digest('hex');
   const recipientEmail = (runtime().ENQUIRY_TO_EMAIL || site.email).trim();
   const status = await emailMessage(
     lead.requestId + '-' + digest.slice(0, 24),
@@ -24,6 +40,22 @@ export async function POST(request: Request) {
       'Phone: ' + lead.phone,
       'Interest: ' + lead.interest,
       'Message: ' + lead.message,
+      ...(lead.review
+        ? [
+            'Review route: ' + lead.review.audience,
+            'Initial routing: ' + reviewStatus(lead.review),
+            'Jurisdiction: ' + lead.review.location.join(', '),
+            'Trigger: ' + lead.review.trigger.join(', '),
+            'Support requested: ' + lead.review.needs.join(', '),
+            'Timing: ' + lead.review.timing.join(', '),
+            'Circumstances or advisers: ' +
+              lead.review.circumstances.join(', '),
+            'Open to a proposal: ' + lead.review.proposal.join(', '),
+          ]
+        : ['Initial routing: scope-check']),
+      'Referral (self-reported): ' + (lead.referral || ''),
+      'First campaign touch: ' + JSON.stringify(lead.firstCampaign ?? {}),
+      'Latest campaign touch: ' + JSON.stringify(lead.latestCampaign ?? {}),
       'Reference: ' + lead.requestId.slice(0, 8),
       'Marketing permission: ' + (lead.marketingEmail ? 'yes' : 'no'),
       'Consent wording: ' + MARKETING_COPY,

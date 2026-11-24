@@ -229,12 +229,33 @@ function PageContent({ path }: { path: string }) {
       </main>
     );
   if (path === 'meet-sim') return <MeetSimPage />;
+  if (path === 'family-wealth-check')
+    return (
+      <main id="main">
+        <PageIntro
+          eyebrow="FAMILY WEALTH CHECK"
+          title={'You have built a home and a life together.\nHas your family’s plan kept up?'}
+          description="A new home, growing family or change in circumstances can leave arrangements out of date. Six short questions will help you identify topics worth discussing across wills, decision-making arrangements, protection and inheritance planning."
+        />
+        <section className="container booking-layout">
+          <aside>
+            <h2>What you’ll get</h2>
+            <p>Get discussion prompts based on your answers. You can then request a complimentary initial conversation with Simran.</p>
+            <p>The initial conversation helps clarify priorities and next steps. Any bespoke advice or legal work is scoped and priced separately.</p>
+            <Link className="text-link" href="/book-review">Ready to talk? Request a review</Link>
+          </aside>
+          <div id="family-check">
+            <EnquiryForm audience="family" />
+          </div>
+        </section>
+      </main>
+    );
   if (path === 'book-review')
     return (
       <main id="main">
         <PageIntro
           eyebrow="COMPLIMENTARY FINANCIAL & ESTATE REVIEW"
-          title={'Your family, your wealth, your legacy.\nOne joined-up plan.'}
+          title={'Request a Financial & Estate Review'}
           description="A focused, complimentary initial review with Simran Sahota to look across your family protection, property, existing Wills and trusts, and inheritance-tax considerations."
         />
         <section className="container booking-layout">
@@ -275,13 +296,7 @@ function PageContent({ path }: { path: string }) {
               <p className="fee-disclosure-subtext">
                 If further advice or legal implementation is appropriate, the provider, scope and any applicable fees will be clearly explained and agreed with you in writing before you proceed.
               </p>
-              {site.bookingUrl && (
-                <div style={{ marginTop: '18px' }}>
-                  <a href={site.bookingUrl} className="button" target="_blank" rel="noreferrer">
-                    Choose an appointment time <ArrowUpRight size={18} />
-                  </a>
-                </div>
-              )}
+              <p>The form sends a request. Sim will contact you to agree a suitable time{site.reviewResponseTime ? ' ' + site.reviewResponseTime : ''}.</p>
               <p className="booking-disclaimer-note">
                 The initial review is an exploratory discovery meeting. Regulated financial advice or formal legal services follow separate engagement with the relevant provider.
               </p>

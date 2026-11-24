@@ -32,9 +32,10 @@ export default function Home() {
               <em>One plan.</em>
             </h1>
             <p>
-              Solicitors draft wills without looking at pensions. Mortgage brokers arrange finance in isolation. <strong>Better Call Sim brings it all together</strong> — one coordinated strategy across your estate planning, regulated financial advice, protection and property finance.
+              A new home, a growing family or an overdue plan can raise questions about wills, protection and inheritance. <strong>Better Call Sim helps you identify gaps and coordinate the next steps</strong> alongside the right professionals.
             </p>
-            <ReviewButton />
+            <Link className="button" href="/family-wealth-check">Start My Family Wealth Check</Link>
+            <div><Link className="text-link" href="/book-review">Ready to talk? Request a review</Link></div>
             <div className="hero-secondary">
               <ContactLink type="whatsapp">Let’s talk on WhatsApp</ContactLink>
               <span>No jargon. A real conversation.</span>
@@ -76,7 +77,7 @@ export default function Home() {
       <section className="section container" id="services">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">ONE JOINED-UP PLAN. ZERO GAPS.</p>
+            <p className="eyebrow">IDENTIFY GAPS. COORDINATE THE NEXT STEPS.</p>
             <h2>
               Life doesn’t happen
               <br />
@@ -84,7 +85,7 @@ export default function Home() {
             </h2>
           </div>
           <p>
-            Neither should your planning. When legal documents, pensions, property and tax strategies don’t talk to each other, costly gaps emerge. We connect every piece into one cohesive plan.
+            We look at your existing arrangements together, identify what may need attention and agree who can help with each next step.
           </p>
         </div>
         <div className="bcs-services">
@@ -305,6 +306,7 @@ export default function Home() {
             </h2>
           </div>
           <ReviewJourney />
+          <p className="center-action">Simran has worked in financial services for over a decade and works alongside Bhupinder Anand on financial and estate planning. <Link className="text-link" href="/meet-sim#working-alongside-bhupinder">Meet Sim and read about his professional support</Link></p>
           <div className="center-action">
             <ReviewButton />
             <p>The scope, format and any fee are agreed before you proceed.</p>

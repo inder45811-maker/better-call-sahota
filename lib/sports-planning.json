@@ -195,7 +195,7 @@
     },
     {
       "id": "private-meeting",
-      "title": "Book a private planning meeting",
+      "title": "Request a private planning meeting",
       "blocks": [
         {
           "type": "paragraph",

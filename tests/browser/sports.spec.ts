@@ -1,5 +1,7 @@
 import { test, expect } from '@playwright/test';
-test('sports planning links to a contextual private meeting request', async ({ page }) => {
+test('sports planning links to a contextual private meeting request', async ({
+  page,
+}) => {
   let submitted: Record<string, unknown> | undefined;
   await page.route('**/api/enquiry', async (route) => {
     submitted = route.request().postDataJSON();
@@ -11,17 +13,45 @@ test('sports planning links to a contextual private meeting request', async ({ p
   });
   await page.goto('/footballers-and-sports-professionals');
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
-    'Footballers and Sports Professionals',
+    'Your next contract matters.',
   );
   await page
-    .getByRole('link', { name: 'Book a private planning meeting', exact: true })
+    .getByRole('link', { name: 'I’m a player or family member', exact: true })
     .first()
     .click();
   await expect(page).toHaveURL(/#private-meeting$/);
-  await page.getByLabel('Your name', { exact: true }).fill('Sports test visitor');
-  await page.getByLabel('Email address', { exact: true }).fill('sports@example.com');
-  await page.getByRole('button', { name: 'Request a private planning meeting' }).click();
+  const player = page.locator('#private-meeting');
+  await player.getByLabel('Where are you based?').selectOption('England');
+  await player
+    .getByLabel('What prompted this?')
+    .selectOption('Football career change');
+  await player.getByLabel('Protection', { exact: true }).check();
+  await player.getByLabel('When do you want to act?').selectOption('Now');
+  await player.getByLabel('Dependants', { exact: true }).check();
+  await player.getByLabel(/Are you open to a proposal/).selectOption('Yes');
+  await player
+    .getByRole('button', { name: 'See my discussion prompts' })
+    .click();
+  await page
+    .getByLabel('Your name', { exact: true })
+    .fill('Sports test visitor');
+  await page
+    .getByLabel('Email address', { exact: true })
+    .fill('sports@example.com');
+  await page
+    .getByRole('button', { name: 'Request a private planning meeting' })
+    .click();
   await expect(page.getByRole('status')).toContainText('sports-test');
+  await expect(page.getByRole('status')).toContainText(
+    'Sim will review your request',
+  );
+  await expect(
+    page.getByRole('link', { name: 'Choose an appointment time' }),
+  ).toHaveCount(0);
   expect(submitted?.interest).toBe('Footballers & Sports Professionals');
   expect(submitted?.marketingEmail).toBe(false);
+  expect(submitted?.review).toMatchObject({
+    audience: 'player',
+    needs: ['Protection'],
+  });
 });

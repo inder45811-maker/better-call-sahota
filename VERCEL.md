@@ -6,6 +6,8 @@ No database, migration, scheduled cleanup or Calendly integration is required. P
 
 Enquiries are sent directly through Resend. Configure RESEND_API_KEY, REPORT_FROM_EMAIL (a verified sender), and ENQUIRY_TO_EMAIL (Sim's inbox). NEXT_PUBLIC_SITE_URL must be the canonical public URL. Secrets must never use the NEXT_PUBLIC_ prefix.
 
+Sim schedules reviews and agent introductions manually after receiving a request. Set `NEXT_PUBLIC_REVIEW_RESPONSE_TIME` to approved wording such as “within two working days” if you can consistently meet that timeframe. Enquiry emails include any qualification answers, first and latest campaign labels, optional referral source and separate email marketing permission.
+
 Email success means provider acceptance, not guaranteed inbox delivery. Failure or missing configuration returns an error and does not claim the enquiry was saved. No lead database is kept. Resend idempotency keys reduce duplicate delivery during its supported retry window; there is no durable retry queue. Per-instance throttling is best-effort and resets on cold starts; configure platform rate limits for stronger abuse protection.
 
 Historical database migrations and Sites packaging metadata are retained only as history. They are not used by this application. Mailbox retention and final business disclosures still need confirmation. Search indexing remains disabled for review.

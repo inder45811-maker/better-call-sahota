@@ -11,7 +11,7 @@ export const stories = [
       'Problem: If either parent died or lost capacity, statutory intestacy rules would decide asset distribution without protecting the survivor, and courts would appoint guardians.',
       'What We Identified: Employer "death-in-service" benefit was tied strictly to current employment and written without trust nomination, threatening delays and potential tax drag.',
       'What Was Considered: Lasting Powers of Attorney for both financial and health decisions, mirror wills with testamentary guardianship trusts, and independent life assurance written in trust.',
-      'What Changed: Guardianship legally secured; trust provisions ensure children are provided for at milestones; life cover guarantees mortgage clearance without probate delays.',
+      'What Changed: Guardianship legally secured; trust provisions ensure children are provided for at milestones; life cover is intended to help repay the mortgage, subject to policy terms and a successful claim.',
     ],
     approach:
       'We conducted a whole-picture review coordinating their family protection, mortgage liabilities and estate planning. Rather than buying separate off-the-shelf documents, their arrangements were designed to work together seamlessly.',
@@ -93,30 +93,30 @@ export const articles = [
   {
     slug: 'life-assurance-in-trust',
     category: 'FINANCIAL ADVICE',
-    title: 'Why life assurance in trust is the cleanest way to fund an IHT bill.',
-    description: 'How written-in-trust protection provides immediate tax-free cash without waiting for probate.',
+    title: 'Can life assurance in trust help fund an inheritance tax bill?',
+    description: 'How life cover in trust may help with estate costs, and why timing and tax treatment depend on the arrangement.',
     readTime: '4 min read',
     theme: 'pensions',
     paragraphs: [
       [
-        'The probate cash-flow crisis',
-        'In the UK, inheritance tax must generally be paid to HMRC by the end of the sixth month following death. Crucially, this deadline often arrives before the probate registry grants probate. Because banks freeze accounts until probate is granted, executors frequently find themselves with a large tax liability and no access to the estate’s cash.',
+        'Cash available to the estate',
+        'Executors may need to meet estate costs or make an inheritance tax payment before all assets are accessible. Start by checking likely costs and what funds may be available.',
       ],
       [
-        'How writing life cover in trust works',
-        'When a life policy is written in trust, the legal ownership of the policy belongs to your chosen trustees, not your personal estate. When a claim arises, the insurer pays the proceeds directly to your trustees. The payout does not pass through probate and is not subject to 40% inheritance tax.',
+        'How a trust can affect who receives a payout',
+        'Where a life policy is held in trust, the insurer may pay the trustees directly after accepting a claim. Whether the proceeds form part of the estate and how they are taxed depends on policy ownership, the trust terms and the circumstances.',
       ],
       [
-        'Immediate liquidity for your executors',
-        'With immediate access to funds, your trustees can loan or advance cash to your executors to settle the HMRC bill on time. Your family is spared the distress of taking out expensive executor loans or being forced to sell family heirlooms and property in a depressed market.',
+        'When the proceeds can be used',
+        'Claim checks, required documentation and trustee decisions can affect when funds are available. Whether trustees can use funds to support the estate depends on their powers and duties under the trust.',
       ],
       [
-        'The danger of policies without a trust',
-        'A life insurance policy taken out without a trust nomination is paid directly into your personal estate, where it is liable for inheritance tax at up to 40% and locked behind probate. Ensuring your policies are written in trust is a simple, high-impact step we look at in every review.',
+        'What to check in a review',
+        'Bring details of who owns your policies, who is due to receive any proceeds and any existing trust documents. A review can identify whether you need advice about cover or how a trust would fit your plans.',
       ],
     ],
-    source: 'https://www.moneyhelper.org.uk/en/everyday-money/insurance/life-insurance',
-    sourceName: 'MoneyHelper: Life insurance and trusts',
+    source: 'https://www.gov.uk/hmrc-internal-manuals/inheritance-tax-manual/ihtm20141',
+    sourceName: 'HMRC: Trusts of life policies',
     related: '/financial-advice',
   },
   {

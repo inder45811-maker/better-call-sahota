@@ -1,24 +1,43 @@
 'use client';
-import { useRef, useState } from 'react';
+import { useId, useRef, useState } from 'react';
 import Link from 'next/link';
-import { ArrowUpRight, CheckCircle2, LockKeyhole, LoaderCircle } from 'lucide-react';
+import {
+  ArrowUpRight,
+  CheckCircle2,
+  LockKeyhole,
+  LoaderCircle,
+} from 'lucide-react';
 import { Choice, CheckField } from './form-controls';
 import { MARKETING_COPY, validateLead } from '@/lib/validation';
 import { identifySubmission } from '@/lib/submission';
+import { ReviewCheck, ReviewPrompts } from './review-check';
+import { captureCampaign } from '@/lib/attribution';
+import type { ReviewAudience, validateReview } from '@/lib/review';
 import { site } from '@/lib/site';
 export function EnquiryForm({
   initialInterest = 'Financial & Estate Review',
   submitLabel = 'Request Your Financial & Estate Review',
+  audience,
 }: {
   initialInterest?: string;
   submitLabel?: string;
+  audience?: ReviewAudience;
 }) {
+  const id = useId();
+  const [review, setReview] = useState<ReturnType<
+    typeof validateReview
+  > | null>(null);
+  const [editing, setEditing] = useState(Boolean(audience));
+  const heading = useRef<HTMLHeadingElement>(null);
   const [interest, setInterest] = useState(initialInterest),
     [method, setMethod] = useState('email'),
     [marketing, setMarketing] = useState(false),
     [busy, setBusy] = useState(false),
     [error, setError] = useState(''),
-    [result, setResult] = useState<{ reference: string; delivery: string } | null>(null);
+    [result, setResult] = useState<{
+      reference: string;
+      delivery: string;
+    } | null>(null);
   const identity = useRef({ fingerprint: '', id: '' }),
     errorRef = useRef<HTMLDivElement>(null);
   async function submit(e: React.FormEvent<HTMLFormElement>) {
@@ -27,6 +46,7 @@ export function EnquiryForm({
     setError('');
     const data = new FormData(e.currentTarget);
     try {
+      const { first, latest } = captureCampaign();
       const lead = identifySubmission(
         identity.current,
         validateLead({
@@ -37,6 +57,10 @@ export function EnquiryForm({
           message: data.get('message') ?? '',
           website: data.get('website') ?? '',
           interest,
+          review: review ?? undefined,
+          firstCampaign: first,
+          latestCampaign: latest,
+          referral: data.get('referral') ?? '',
           contactMethod: method,
           callback: method !== 'email',
           marketingEmail: marketing,
@@ -53,10 +77,14 @@ export function EnquiryForm({
         reference: string;
         delivery: string;
       };
-      if (!response.ok) throw new Error(json.error || 'Unable to send your request.');
+      if (!response.ok)
+        throw new Error(json.error || 'Unable to send your request.');
       if (json.delivery !== 'sent' || !json.reference)
-        throw new Error('Delivery could not be confirmed. Please retry or contact Sim directly.');
+        throw new Error(
+          'Delivery could not be confirmed. Please retry or contact Sim directly.',
+        );
       setResult(json);
+      requestAnimationFrame(() => heading.current?.focus());
     } catch (err) {
       setError(
         err instanceof Error &&
@@ -76,24 +104,36 @@ export function EnquiryForm({
       <div className="success-panel" role="status">
         <CheckCircle2 size={42} strokeWidth={1.3} />
         <p className="eyebrow">YOUR NEXT STEP</p>
-        <h2>
+        <h2 ref={heading} tabIndex={-1}>
           Your review request
           <br />
           <em>has been sent.</em>
         </h2>
         <p>
-          Reference: <strong>{result.reference}</strong>. Sim will personally review your enquiry and
-          get in touch via your preferred contact method to confirm a convenient time.
+          Reference: <strong>{result.reference}</strong>.
         </p>
+        <p>An appointment is not booked automatically.</p>
         <p>
-          Thank you for reaching out. An appointment is not booked automatically. We will contact
-          you shortly to schedule your complimentary review.
+          Sim will review your request and get in touch using your preferred
+          contact method
+          {site.reviewResponseTime ? ' ' + site.reviewResponseTime : ''} to
+          agree the next step.
         </p>
         <div className="enquiry-social-links">
-          <a href={site.instagram} className="text-link" target="_blank" rel="noreferrer">
+          <a
+            href={site.instagram}
+            className="text-link"
+            target="_blank"
+            rel="noreferrer"
+          >
             Instagram @bettercallsimuk <ArrowUpRight size={17} />
           </a>
-          <a href={site.tiktok} className="text-link" target="_blank" rel="noreferrer">
+          <a
+            href={site.tiktok}
+            className="text-link"
+            target="_blank"
+            rel="noreferrer"
+          >
             TikTok @bettercallsimuk <ArrowUpRight size={17} />
           </a>
         </div>
@@ -102,135 +142,182 @@ export function EnquiryForm({
         </Link>
       </div>
     );
+  if (audience && editing)
+    return (
+      <ReviewCheck
+        audience={audience}
+        initial={review}
+        onComplete={(answers) => {
+          setReview(answers);
+          setEditing(false);
+          requestAnimationFrame(() => heading.current?.focus());
+        }}
+      />
+    );
   return (
-    <form onSubmit={submit} className="enquiry-form">
-      <div className="form-heading">
-        <span>LET’S START WITH YOU</span>
-        <h2>What’s on your mind?</h2>
-        <p>Share a few details. There’s no need to have all the answers.</p>
-      </div>
-      {site.preview && (
-        <p className="notice">
-          Website review version — use sample details. No appointment will be automatically booked.
-        </p>
+    <>
+      {review && (
+        <ReviewPrompts review={review} edit={() => setEditing(true)} />
       )}
-      <div ref={errorRef} tabIndex={-1} role={error ? 'alert' : undefined}>
-        {error && (
-          <>
-            <p className="form-error">{error}</p>
-            <a
-              className="text-link"
-              href={`mailto:${site.email}?subject=Financial%20%26%20Estate%20Review`}
-            >
-              Email Sim directly: {site.email}
-            </a>
-          </>
+      <form onSubmit={submit} className="enquiry-form">
+        <div className="form-heading">
+          <span>LET’S START WITH YOU</span>
+          <h2 ref={heading} tabIndex={-1}>
+            {review ? 'Request a review' : 'What’s on your mind?'}
+          </h2>
+          <p>Share a few details. There’s no need to have all the answers.</p>
+        </div>
+        {site.preview && (
+          <p className="notice">
+            Website review version — use sample details. No appointment will be
+            automatically booked.
+          </p>
         )}
-      </div>
-      <div className="form-grid">
-        <div className="field">
-          <label htmlFor="name">Your name</label>
-          <input
-            className="field-input"
-            autoComplete="name"
-            id="name"
-            name="name"
-            required
-            maxLength={100}
-            placeholder="Full name"
+        <div ref={errorRef} tabIndex={-1} role={error ? 'alert' : undefined}>
+          {error && (
+            <>
+              <p className="form-error">{error}</p>
+              <a
+                className="text-link"
+                href={`mailto:${site.email}?subject=Financial%20%26%20Estate%20Review`}
+              >
+                Email Sim directly: {site.email}
+              </a>
+            </>
+          )}
+        </div>
+        <div className="form-grid">
+          <div className="field">
+            <label htmlFor={id + '-name'}>Your name</label>
+            <input
+              className="field-input"
+              autoComplete="name"
+              id={id + '-name'}
+              name="name"
+              required
+              maxLength={100}
+              placeholder="Full name"
+            />
+          </div>
+          <div className="field">
+            <label htmlFor={id + '-email'}>Email address</label>
+            <input
+              className="field-input"
+              id={id + '-email'}
+              name="email"
+              type="email"
+              autoComplete="email"
+              required
+              maxLength={254}
+              placeholder="you@example.com"
+            />
+          </div>
+        </div>
+        {!audience && (
+          <Choice
+            id={id + '-interest'}
+            label="What would you like to explore?"
+            value={interest}
+            onChange={setInterest}
+            options={[
+              'Financial & Estate Review',
+              'Estate Planning',
+              'Financial Advice',
+              'Property Finance',
+              'Footballers & Sports Professionals',
+              'Not sure yet',
+            ].map((v) => ({ value: v, label: v }))}
           />
+        )}
+        <div className="form-grid">
+          <Choice
+            id={id + '-contact-method'}
+            label="How would you prefer to hear back?"
+            value={method}
+            onChange={setMethod}
+            options={[
+              { value: 'email', label: 'Email' },
+              { value: 'phone', label: 'Telephone' },
+              { value: 'whatsapp', label: 'WhatsApp' },
+            ]}
+          />
+          <div className="field">
+            <label htmlFor={id + '-phone'}>
+              Telephone {method === 'email' ? '(optional)' : ''}
+            </label>
+            <input
+              className="field-input"
+              id={id + '-phone'}
+              name="phone"
+              type="tel"
+              autoComplete="tel"
+              required={method !== 'email'}
+              maxLength={30}
+              placeholder="Your contact number"
+            />
+          </div>
         </div>
         <div className="field">
-          <label htmlFor="email">Email address</label>
+          <label htmlFor={id + '-message'}>
+            Anything you’d like to add? <span>(optional)</span>
+          </label>
+          <textarea
+            className="field-input"
+            id={id + '-message'}
+            name="message"
+            rows={4}
+            maxLength={1000}
+            placeholder="A little about what you’d like to discuss…"
+          />
+          <p className="field-hint">
+            Please leave out account numbers, health details, contracts and
+            other confidential information.
+          </p>
+        </div>
+        <div className="field">
+          <label htmlFor={id + '-referral'}>
+            How did you hear about me? <span>(optional)</span>
+          </label>
           <input
             className="field-input"
-            id="email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            required
-            maxLength={254}
-            placeholder="you@example.com"
+            id={id + '-referral'}
+            name="referral"
+            maxLength={120}
           />
         </div>
-      </div>
-      <Choice
-        id="interest"
-        label="What would you like to explore?"
-        value={interest}
-        onChange={setInterest}
-        options={[
-          'Financial & Estate Review',
-          'Estate Planning',
-          'Financial Advice',
-          'Property Finance',
-          'Footballers & Sports Professionals',
-          'Not sure yet',
-        ].map((v) => ({ value: v, label: v }))}
-      />
-      <div className="form-grid">
-        <Choice
-          id="contact-method"
-          label="How would you prefer to hear back?"
-          value={method}
-          onChange={setMethod}
-          options={[
-            { value: 'email', label: 'Email' },
-            { value: 'phone', label: 'Telephone' },
-            { value: 'whatsapp', label: 'WhatsApp' },
-          ]}
+        <div className="honeypot" aria-hidden="true">
+          <label htmlFor={id + '-website'}>Website</label>
+          <input
+            id={id + '-website'}
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </div>
+        <CheckField
+          id={id + '-marketing-email'}
+          label={MARKETING_COPY}
+          checked={marketing}
+          onChange={setMarketing}
         />
-        <div className="field">
-          <label htmlFor="phone">Telephone {method === 'email' ? '(optional)' : ''}</label>
-          <input
-            className="field-input"
-            id="phone"
-            name="phone"
-            type="tel"
-            autoComplete="tel"
-            required={method !== 'email'}
-            maxLength={30}
-            placeholder="Your contact number"
-          />
-        </div>
-      </div>
-      <div className="field">
-        <label htmlFor="message">
-          Anything you’d like to add? <span>(optional)</span>
-        </label>
-        <textarea
-          className="field-input"
-          id="message"
-          name="message"
-          rows={4}
-          maxLength={1000}
-          placeholder="A little about what you’d like to discuss…"
-        />
-        <p className="field-hint">
-          Please leave out account numbers, health details and other confidential information.
+        <p className="privacy-copy">
+          <LockKeyhole size={14} /> Your details are used to handle this
+          request. Marketing is optional.{' '}
+          <Link href="/privacy">Privacy notice</Link>
         </p>
-      </div>
-      <div className="honeypot" aria-hidden="true">
-        <label htmlFor="website">Website</label>
-        <input id="website" name="website" tabIndex={-1} autoComplete="off" />
-      </div>
-      <CheckField
-        id="marketing-email"
-        label={MARKETING_COPY}
-        checked={marketing}
-        onChange={setMarketing}
-      />
-      <p className="privacy-copy">
-        <LockKeyhole size={14} /> Your details are used to handle this request. Marketing is
-        optional. <Link href="/privacy">Privacy notice</Link>
-      </p>
-      <button disabled={busy} className="button form-submit" type="submit">
-        {busy ? 'Sending your request…' : submitLabel}
-        {busy ? <LoaderCircle className="spin" size={17} /> : <ArrowUpRight size={17} />}
-      </button>
-      <p className="field-hint">
-        The appointment format, scope and any fee will be agreed before you proceed.
-      </p>
-    </form>
+        <button disabled={busy} className="button form-submit" type="submit">
+          {busy ? 'Sending your request…' : submitLabel}
+          {busy ? (
+            <LoaderCircle className="spin" size={17} />
+          ) : (
+            <ArrowUpRight size={17} />
+          )}
+        </button>
+        <p className="field-hint">
+          The appointment format, scope and any fee will be agreed before you
+          proceed.
+        </p>
+      </form>
+    </>
   );
 }

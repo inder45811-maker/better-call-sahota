@@ -38,20 +38,26 @@ export function SportsPlanningPage() {
     <main id="main" className="sports-page">
       <PageIntro
         eyebrow="FOOTBALLERS & SPORTS PROFESSIONALS"
-        title={copy.title}
-        description={copy.tagline}
+        title={'Your next contract matters.\nSo does the plan beyond it.'}
+        description="A private initial conversation about your family, property, existing arrangements and life after football. With your permission, Sim can coordinate with your agent, accountant and other advisers."
       />
       <section className="container sports-opening" aria-label="Planning around your career">
         <div>
-          <CopyBlocks blocks={copy.intro} />
+          <h2>What you’ll cover in the first meeting</h2>
+          <ul className="sports-checklist">
+            <li>Agree which priorities matter most now.</li>
+            <li>Identify potential gaps worth investigating.</li>
+            <li>Agree the next action and who should be involved.</li>
+          </ul>
         </div>
         <aside className="sports-invitation">
           <p className="eyebrow">YOUR CAREER. YOUR FAMILY. YOUR FUTURE.</p>
           <h2>One connected picture.</h2>
           <p>A personal planning conversation, built around the realities of your sporting life.</p>
-          <Link href="#private-meeting" className="button">
-            Book a private planning meeting <ArrowUpRight size={18} />
-          </Link>
+          <div className="contact-row">
+            <Link href="#private-meeting" className="button">I’m a player or family member</Link>
+            <Link href="#agent-introduction" className="button">I’m an agent or adviser</Link>
+          </div>
           <div className="contact-row">
             <ContactLink type="phone" />
             <ContactLink type="whatsapp" />
@@ -70,6 +76,7 @@ export function SportsPlanningPage() {
           </nav>
         </aside>
         <div className="biography-chapters">
+          <CopyBlocks blocks={copy.intro} />
           {copy.sections.map((section) => (
             <section id={section.id} key={section.id} aria-labelledby={section.id + '-title'}>
               <h2 id={section.id + '-title'}>{section.title}</h2>
@@ -81,6 +88,7 @@ export function SportsPlanningPage() {
                     <ContactLink type="whatsapp" />
                   </div>
                   <EnquiryForm
+                    audience="player"
                     initialInterest="Footballers & Sports Professionals"
                     submitLabel="Request a private planning meeting"
                   />
@@ -88,6 +96,15 @@ export function SportsPlanningPage() {
               )}
             </section>
           ))}
+          <section id="agent-introduction" aria-labelledby="agent-introduction-title">
+            <h2 id="agent-introduction-title">Request a private introduction</h2>
+            <p>Arrange a brief conversation about where Sim can help alongside the player’s existing advisers. Use your own contact details for the introduction.</p>
+            <EnquiryForm
+              audience="agent"
+              initialInterest="Footballers & Sports Professionals"
+              submitLabel="Request an agent introduction"
+            />
+          </section>
           <aside
             className="sports-provider"
             aria-label="Service providers and regulatory information"

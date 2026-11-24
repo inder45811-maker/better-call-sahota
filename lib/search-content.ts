@@ -173,5 +173,5 @@ export const articleAnswers: Record<string, string> = {
   'giving-property-to-children':
     'Gifting your home to children while continuing to live there triggers HMRC Gift with Reservation rules, meaning the property remains taxable in your estate. It may also create Capital Gains Tax and family risk issues without proper professional planning.',
   'life-assurance-in-trust':
-    'Life assurance written in trust pays out directly to trustees outside your estate and free of inheritance tax, providing immediate cash to pay HMRC without waiting for probate or forcing property sales.',
+    'Life assurance held in trust may pay out to trustees. Who can use the proceeds, when funds may become available and how they are taxed depend on the policy, trust terms and circumstances.',
 };

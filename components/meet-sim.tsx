@@ -6,15 +6,6 @@ import { site } from '@/lib/site';
 
 const chapters = [
   {
-    id: 'understanding-people',
-    title: 'Being good with people starts with understanding them.',
-    paragraphs: [
-      'Financial planning shouldn’t be about throwing technical language at somebody until they nod politely and hope the meeting ends.',
-      'It should be about listening, understanding what somebody is trying to achieve, identifying the problems they may not have considered and then explaining their options in a way that actually makes sense.',
-      'That’s ultimately why I created Better Call Sim.',
-    ],
-  },
-  {
     id: 'financial-services',
     title: 'More than a decade in financial services',
     paragraphs: [
@@ -37,6 +28,16 @@ const chapters = [
       'It means that when I’m working with a client, I’m not restricted to looking at one product or one problem in isolation.',
       'We can look at the entire financial picture.',
       'And where a situation becomes particularly complex, I have access to an exceptional depth of financial planning knowledge and professional experience when considering the appropriate strategy.',
+    ],
+  },
+  {
+    id: 'understanding-people',
+    title: 'Being good with people starts with understanding them.',
+    paragraphs: [
+      'Before financial services, I worked in sales and customer service at Phones4u and Carphone Warehouse. I progressed to deputy manager at Phones4u and later ranked first among approximately 500 Carphone Warehouse consultants.',
+      'Financial planning shouldn’t be about throwing technical language at somebody until they nod politely and hope the meeting ends.',
+      'It should be about listening, understanding what somebody is trying to achieve, identifying the problems they may not have considered and then explaining their options in a way that actually makes sense.',
+      'That’s ultimately why I created Better Call Sim.',
     ],
   },
   {
@@ -77,20 +78,8 @@ export function MeetSimPage() {
         <div>
           <p className="eyebrow">THE PERSON BEHIND THE PLAN</p>
           <h2 id="simran-name">I’m Simran Singh Sahota, founder of Better Call Sim.</h2>
-          <p>
-            I’ve worked in financial services for more than a decade and became professionally
-            qualified in 2016, but my career actually started in sales and customer service.
-          </p>
-          <p>
-            Before entering financial services, I worked for both Phones4u and Carphone Warehouse.
-            At Phones4u, I became the top salesperson in my store, progressing into a Deputy Manager
-            role. I later joined Carphone Warehouse, where I became the number one consultant out of
-            approximately 500 consultants across the company.
-          </p>
-          <p>
-            Those years taught me something that has stayed with me throughout my career: being good
-            with people starts with understanding them.
-          </p>
+          <p>I help families and homeowners see how their property, protection and estate plans fit together, and work out what to review first.</p>
+          <p>I’ve worked in financial services for more than a decade. I work alongside Bhupinder Anand and draw on specialist estate-planning support through Anand Wills &amp; Trusts and Countrywide.</p>
           <div className="meet-sim-socials">
             <a href={site.instagram} className="text-link" target="_blank" rel="noreferrer">
               <Camera size={18} /> Instagram @bettercallsimuk <ArrowUpRight size={17} />
@@ -105,9 +94,9 @@ export function MeetSimPage() {
         <aside className="biography-contents" aria-label="On this page">
           <p className="eyebrow">MY STORY</p>
           <nav aria-label="Biography chapters">
-            <a href="#understanding-people">Understanding people</a>
             <a href="#financial-services">My financial-services experience</a>
             <a href="#working-alongside-bhupinder">Working alongside Bhupinder</a>
+            <a href="#understanding-people">Understanding people</a>
             <a href="#why-better-call-sim">Why Better Call Sim?</a>
             <a href="#professional-support">STEP and professional support</a>
             <a href="#my-approach">My approach</a>

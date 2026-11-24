@@ -4,6 +4,7 @@ export const site = {
   location: 'United Kingdom',
   handle: '@bettercallsimuk',
   instagram: 'https://www.instagram.com/bettercallsimuk/',
+  linkedin: 'https://www.linkedin.com/in/simran-sahota-cemap-a8683b354/',
   tiktok: 'https://www.tiktok.com/@bettercallsimuk',
   origin: (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, ''),
   preview: false,
@@ -16,11 +17,11 @@ export const site = {
   fcaReference: '797619',
   principal: '',
   adviserPortrait: '/brand/simran-study-hands-together.png',
-  bookingUrl: '',
+  reviewResponseTime: process.env.NEXT_PUBLIC_REVIEW_RESPONSE_TIME?.trim() || '',
   footerDisclosure:
     'Better Call Sim is a trading style of Anand Wills & Trusts Ltd, working in partnership with Anand Financial Architecture Ltd for regulated financial services and Countrywide Tax & Trust Corporation Ltd for estate planning services. Anand Financial Architecture Ltd is authorised and regulated by the FCA (FRN 797619). Countrywide has STEP-qualified professionals within its organisation.',
 };
-export const REVIEW_CTA = 'Book Your Financial & Estate Review';
+export const REVIEW_CTA = 'Request Your Financial & Estate Review';
 export const pillars = [
   {
     slug: 'estate-planning',

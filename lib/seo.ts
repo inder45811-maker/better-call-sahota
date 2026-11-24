@@ -50,10 +50,17 @@ const fixed: Page[] = [
   },
   {
     path: 'book-review',
-    label: 'Book a review',
-    title: 'Book Your Financial & Estate Review',
+    label: 'Request a review',
+    title: 'Request Your Financial & Estate Review',
     description:
       'Start a conversation about your wealth, family and future. Send Sim a Financial & Estate Review enquiry and agree a suitable time directly.',
+    kind: 'page',
+  },
+  {
+    path: 'family-wealth-check',
+    label: 'Family Wealth Check',
+    title: 'Family Wealth Check | Better Call Sim',
+    description: 'Six short questions about your family, home and existing plans, with discussion prompts and an optional initial review.',
     kind: 'page',
   },
   {

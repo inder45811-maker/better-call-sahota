@@ -41,7 +41,7 @@ test('desktop and mobile homepage render without overflow and primary paths work
   await page.goto('/');
   await expect(page.locator('h1')).toContainText('Your wealth.');
   await expect(
-    page.getByRole('link', { name: 'Book Your Financial & Estate Review', exact: true }).first(),
+    page.getByRole('link', { name: 'Request Your Financial & Estate Review', exact: true }).first(),
   ).toBeVisible();
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.evaluate(() => document.fonts.ready);

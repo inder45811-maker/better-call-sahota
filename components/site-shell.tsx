@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   ArrowUpRight,
   ChevronDown,
@@ -23,6 +23,8 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from '@/components/ui/dropdown-menu';
+import { usePathname } from 'next/navigation';
+import { captureCampaign } from '@/lib/attribution';
 import { site, pillars, REVIEW_CTA } from '@/lib/site';
 
 export function Brand() {
@@ -64,6 +66,10 @@ export function ContactLink({
   );
 }
 export function SiteHeader() {
+  const pathname = usePathname();
+  useEffect(() => {
+    captureCampaign();
+  }, [pathname]);
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -101,6 +107,7 @@ export function SiteHeader() {
           </DropdownMenu>
           <Link href="/the-plan">The Plan</Link>
           <Link href="/meet-sim">Meet Sim</Link>
+              <a href={site.linkedin}>LinkedIn</a>
           <DropdownMenu>
             <DropdownMenuTrigger className="nav-trigger">
               Insights <ChevronDown size={12} />
@@ -121,7 +128,7 @@ export function SiteHeader() {
         </nav>
         <div className="header-actions">
           <Link className="button button-small" href="/book-review">
-            Book your review <ArrowUpRight size={16} />
+            Request a review <ArrowUpRight size={16} />
           </Link>
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger className="mobile-menu-button" aria-label="Open navigation">
@@ -228,13 +235,15 @@ export function SiteFooter() {
             <div>
               <h3>Get to know Sim</h3>
               <Link href="/meet-sim">Meet Sim</Link>
+              <a href={site.linkedin}>LinkedIn</a>
               <Link href="/the-plan">The Plan</Link>
               <Link href="/case-studies">Case studies</Link>
               <Link href="/insights">Insights & videos</Link>
             </div>
             <div>
               <h3>Let’s talk</h3>
-              <Link href="/book-review">Book your review</Link>
+              <Link href="/book-review">Request a review</Link>
+              <Link href="/family-wealth-check">Family Wealth Check</Link>
               <Link href="/contact">Contact</Link>
               <ContactLink type="phone" />
               <ContactLink type="whatsapp" />
@@ -290,7 +299,7 @@ export function SiteFooter() {
       </footer>
       <nav className="mobile-contact-bar" aria-label="Quick contact">
         <Link href="/book-review" className="mobile-bar-primary">
-          <span>Book a review</span>
+          <span>Request a review</span>
           <ArrowUpRight size={15} />
         </Link>
         <ContactLink type="phone" className="mobile-bar-call">

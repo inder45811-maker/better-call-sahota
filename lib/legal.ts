@@ -16,7 +16,7 @@ export const legalPages: Record<
       },
       {
         title: 'How we use your information',
-        text: 'Information submitted through our enquiry forms is used solely to respond to your request, arrange your review conversation and provide any follow-up you have requested. We do not sell your data or share it with third parties for their own marketing. If you choose to opt into our educational email updates, you may unsubscribe at any time.',
+        text: 'We use contact details and review answers to respond to your request, arrange your review and provide any follow-up you request. We use campaign information and optional referral answers to understand how people find us. We do not sell your data or share it with third parties for their own marketing. If you choose to opt into our educational email updates, you may unsubscribe at any time.',
       },
       {
         title: 'Storage and service providers',
@@ -43,6 +43,10 @@ export const legalPages: Record<
       {
         title: 'Essential website operation only',
         text: 'This website is built with a privacy-first approach. We do not use third-party tracking pixels, invasive cross-site advertising cookies, or persistent marketing trackers. Essential cookies may be deployed solely by the hosting infrastructure for performance, security and routing.',
+      },
+      {
+        title: 'Campaign information',
+        text: 'When a link includes campaign information, we keep the first and most recent campaign labels in your browser tab for the session. If you submit a review request, we send those labels with it. Your answers to the Family Wealth Check stay on the page unless you choose to send a request.',
       },
       {
         title: 'Calculator privacy',

@@ -127,9 +127,8 @@ export async function makeReport(name: string, result: IhtResult, createdAt: num
 
   const clientName = clean(name.trim() || 'Simran');
   const nationalPhone = '07711 902299';
-  const bookingUrl =
-    (site.bookingUrl ||
-      (site.origin.includes('localhost') ? 'https://bettercallsim.co.uk' : site.origin)) +
+  const reviewUrl =
+    (site.origin.includes('localhost') ? 'https://bettercallsim.co.uk' : site.origin) +
     '/book-review';
 
   function drawFooter(page: PDFPage, pageNum: number, totalPages: number) {
@@ -837,7 +836,7 @@ export async function makeReport(name: string, result: IhtResult, createdAt: num
   });
 
   try {
-    const qr = QRCode.create(bookingUrl, { errorCorrectionLevel: 'M' });
+    const qr = QRCode.create(reviewUrl, { errorCorrectionLevel: 'M' });
     const qrSize = 62;
     const mSize = qrSize / qr.modules.size;
     const qrInnerX = qrCardX + (qrCardW - qrSize) / 2;
