@@ -201,26 +201,6 @@ export function SiteFooter() {
                 Your legacy. One plan.
               </p>
               <p className="footer-location">Supporting clients across the UK.</p>
-              <div className="footer-socials">
-                <a
-                  href={site.instagram}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="instagram-link"
-                  aria-label="Visit Sim on Instagram (@bettercallsimuk)"
-                >
-                  <Instagram size={17} /> Instagram <span className="footer-handle">@bettercallsimuk</span> <ArrowUpRight size={13} />
-                </a>
-                <a
-                  href={site.tiktok}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="instagram-link"
-                  aria-label="Visit Sim on TikTok (@bettercallsimuk)"
-                >
-                  <TikTokIcon size={17} /> TikTok <span className="footer-handle">@bettercallsimuk</span> <ArrowUpRight size={13} />
-                </a>
-              </div>
             </div>
             <div>
               <h3>How I help</h3>
@@ -233,6 +213,14 @@ export function SiteFooter() {
               <Link href="/iht-calculator">IHT calculator</Link>
             </div>
             <div>
+              <h3>Let’s talk</h3>
+              <Link href="/book-review">Request a review</Link>
+              <Link href="/family-wealth-check">Family Wealth Check</Link>
+              <Link href="/contact">Contact</Link>
+              <ContactLink type="phone" />
+              <ContactLink type="whatsapp" />
+            </div>
+            <div>
               <h3>Get to know Sim</h3>
               <Link href="/meet-sim">Meet Sim</Link>
               <a href={site.linkedin}>LinkedIn</a>
@@ -241,12 +229,13 @@ export function SiteFooter() {
               <Link href="/insights">Insights & videos</Link>
             </div>
             <div>
-              <h3>Let’s talk</h3>
-              <Link href="/book-review">Request a review</Link>
-              <Link href="/family-wealth-check">Family Wealth Check</Link>
-              <Link href="/contact">Contact</Link>
-              <ContactLink type="phone" />
-              <ContactLink type="whatsapp" />
+              <h3>Follow Sim</h3>
+              <a href={site.instagram} target="_blank" rel="noreferrer">
+                <Instagram size={17} aria-hidden="true" /> Instagram
+              </a>
+              <a href={site.tiktok} target="_blank" rel="noreferrer">
+                <TikTokIcon size={17} /> TikTok
+              </a>
             </div>
           </div>
           <div className="regulatory-grid">

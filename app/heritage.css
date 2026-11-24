@@ -481,8 +481,12 @@ em {
   color: #f4efdf;
 }
 .footer-main {
-  grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  gap: 48px;
+  grid-template-columns: minmax(0, 1.25fr) repeat(4, minmax(0, 1fr));
+  gap: 30px;
+}
+.footer-brand .brand img {
+  max-width: 100%;
+  height: auto;
 }
 .footer-main > div:first-child > p {
   font-family: var(--serif);
@@ -501,7 +505,6 @@ em {
   font-size: 13px;
 }
 .footer-main > div:not(:first-child) > a,
-.instagram-link,
 .footer-bottom,
 .regulatory-grid p,
 .preview-notice {
@@ -770,6 +773,14 @@ em {
   }
   .footer-main {
     gap: 26px;
+  }
+}
+@media (min-width: 761px) and (max-width: 1000px) {
+  .footer-main {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .footer-brand {
+    grid-column: 1 / -1;
   }
 }
 @media (max-width: 760px) {
