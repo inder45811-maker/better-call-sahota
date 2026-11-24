@@ -40,6 +40,9 @@ test('the mobile family check gives prompts before collecting contact details an
     .getByLabel('Email address', { exact: true })
     .fill('family@example.com');
   await page.getByLabel(/How did you hear about me/).fill('A friend');
+  const followUps = page.getByRole('checkbox', { name: /up to three reminders/ });
+  await expect(followUps).not.toBeChecked();
+  await followUps.check();
   await page
     .getByRole('button', { name: 'Request Your Financial & Estate Review' })
     .click();
@@ -53,6 +56,7 @@ test('the mobile family check gives prompts before collecting contact details an
     firstCampaign: { utm_source: 'instagram', utm_campaign: 'family' },
     referral: 'A friend',
     marketingEmail: false,
+    reviewFollowUps: true,
   });
   await expect(
     page.getByRole('link', { name: 'Choose an appointment time' }),

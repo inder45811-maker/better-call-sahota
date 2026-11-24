@@ -16,7 +16,7 @@ export const legalPages: Record<
       },
       {
         title: 'How we use your information',
-        text: 'We use contact details and review answers to respond to your request, arrange your review and provide any follow-up you request. We use campaign information and optional referral answers to understand how people find us. We do not sell your data or share it with third parties for their own marketing. If you choose to opt into our educational email updates, you may unsubscribe at any time.',
+        text: 'We use contact details and review answers to respond to your request and arrange your review. You can separately choose to receive up to three reminders about arranging the review or to receive occasional educational email updates. You can withdraw either choice at any time by replying to the email. We use campaign information and optional referral answers to understand how people find us. We do not sell your data or share it with third parties for their own marketing.',
       },
       {
         title: 'Storage and service providers',

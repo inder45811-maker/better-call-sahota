@@ -10,6 +10,7 @@ export type LeadInput = {
   contactMethod: 'email' | 'phone' | 'whatsapp';
   message: string;
   marketingEmail: boolean;
+  reviewFollowUps?: boolean;
   callback: boolean;
   website: string;
   review?: ReturnType<typeof validateReview>;
@@ -65,6 +66,8 @@ export function validateLead(value: unknown): LeadInput {
     throw new Error('Choose an area of interest and contact method.');
   if (typeof v.marketingEmail !== 'boolean' || typeof v.callback !== 'boolean')
     throw new Error('Please check your contact preferences.');
+  if (v.reviewFollowUps !== undefined && typeof v.reviewFollowUps !== 'boolean')
+    throw new Error('Please check your follow-up preference.');
   if (
     (phone || v.callback || v.contactMethod !== 'email') &&
     !/^\+?[\d ()-]{7,30}$/.test(phone)
@@ -91,6 +94,9 @@ export function validateLead(value: unknown): LeadInput {
     contactMethod: v.contactMethod as LeadInput['contactMethod'],
     message,
     marketingEmail: v.marketingEmail,
+    ...(v.reviewFollowUps === undefined
+      ? {}
+      : { reviewFollowUps: v.reviewFollowUps }),
     callback: v.callback,
     website,
   };
@@ -98,3 +104,6 @@ export function validateLead(value: unknown): LeadInput {
 export const CONSENT_VERSION = '2026-09-08-v1';
 export const MARKETING_COPY =
   'Email me occasional planning guides and updates. I can unsubscribe at any time.';
+export const REVIEW_FOLLOW_UP_VERSION = '2026-11-24-review-v1';
+export const REVIEW_FOLLOW_UP_COPY =
+  'Email me up to three reminders about arranging this review. I can stop these emails at any time.';

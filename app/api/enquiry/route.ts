@@ -10,6 +10,8 @@ import {
   validateLead,
   MARKETING_COPY,
   CONSENT_VERSION,
+  REVIEW_FOLLOW_UP_COPY,
+  REVIEW_FOLLOW_UP_VERSION,
 } from '@/lib/validation';
 import { reviewStatus } from '@/lib/review';
 import { createHash } from 'node:crypto';
@@ -60,6 +62,31 @@ export async function POST(request: Request) {
       'Marketing permission: ' + (lead.marketingEmail ? 'yes' : 'no'),
       'Consent wording: ' + MARKETING_COPY,
       'Consent version: ' + CONSENT_VERSION,
+      'Review follow-up permission: ' + (lead.reviewFollowUps ? 'yes' : 'no'),
+      'Review follow-up wording: ' + REVIEW_FOLLOW_UP_COPY,
+      'Review follow-up consent version: ' + REVIEW_FOLLOW_UP_VERSION,
+      'Lead tracking: ' +
+        JSON.stringify({
+          id: lead.requestId,
+          name: lead.name,
+          email: lead.email,
+          phone: lead.phone,
+          contactMethod: lead.contactMethod,
+          reviewRoute: lead.review?.audience,
+          trigger: lead.review?.trigger,
+          location: lead.review?.location,
+          timing: lead.review?.timing,
+          qualification: lead.review
+            ? reviewStatus(lead.review)
+            : 'scope-check',
+          firstCampaign: lead.firstCampaign,
+          latestCampaign: lead.latestCampaign,
+          referral: lead.referral,
+          reviewFollowUpConsent: lead.reviewFollowUps
+            ? REVIEW_FOLLOW_UP_VERSION
+            : null,
+          marketingEmail: lead.marketingEmail,
+        }),
     ].join('\n'),
     lead.email,
   );

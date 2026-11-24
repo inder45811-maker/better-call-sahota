@@ -8,7 +8,11 @@ import {
   LoaderCircle,
 } from 'lucide-react';
 import { Choice, CheckField } from './form-controls';
-import { MARKETING_COPY, validateLead } from '@/lib/validation';
+import {
+  MARKETING_COPY,
+  REVIEW_FOLLOW_UP_COPY,
+  validateLead,
+} from '@/lib/validation';
 import { identifySubmission } from '@/lib/submission';
 import { ReviewCheck, ReviewPrompts } from './review-check';
 import { captureCampaign } from '@/lib/attribution';
@@ -32,6 +36,7 @@ export function EnquiryForm({
   const [interest, setInterest] = useState(initialInterest),
     [method, setMethod] = useState('email'),
     [marketing, setMarketing] = useState(false),
+    [reviewFollowUps, setReviewFollowUps] = useState(false),
     [busy, setBusy] = useState(false),
     [error, setError] = useState(''),
     [result, setResult] = useState<{
@@ -64,6 +69,7 @@ export function EnquiryForm({
           contactMethod: method,
           callback: method !== 'email',
           marketingEmail: marketing,
+          reviewFollowUps,
         }),
       );
       const response = await fetch('/api/enquiry', {
@@ -294,6 +300,12 @@ export function EnquiryForm({
             autoComplete="off"
           />
         </div>
+        <CheckField
+          id={id + '-review-follow-ups'}
+          label={REVIEW_FOLLOW_UP_COPY}
+          checked={reviewFollowUps}
+          onChange={setReviewFollowUps}
+        />
         <CheckField
           id={id + '-marketing-email'}
           label={MARKETING_COPY}
