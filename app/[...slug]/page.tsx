@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SportsPlanningPage } from '@/components/sports-planning';
 import { MeetSimPage } from '@/components/meet-sim';
+import { AnalyticsPreference } from '@/components/site-analytics';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { ArrowUpRight, Check, Info, Camera as Instagram, Phone, MessageCircle } from 'lucide-react';
 import { TikTokIcon } from '@/components/icons';
@@ -548,6 +549,7 @@ function PageContent({ path }: { path: string }) {
       <main id="main">
         <PageIntro eyebrow="USEFUL INFORMATION" title={legal.title} description={legal.intro} />
         <article className="container article-body legal-body">
+          {path === 'cookies' && <AnalyticsPreference />}
           {legal.sections.map((section) => (
             <section key={section.title}>
               <h2>{section.title}</h2>
@@ -565,7 +567,7 @@ function PageContent({ path }: { path: string }) {
             </a>
           )}
           <p className="reading-meta">
-            Last updated: September 2026.
+            Last updated: {path === 'cookies' || path === 'privacy' ? 'November' : 'September'} 2026.
           </p>
         </article>
       </main>

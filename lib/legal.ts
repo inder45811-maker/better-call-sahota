@@ -23,6 +23,10 @@ export const legalPages: Record<
         text: 'Form submissions are transmitted securely via Resend directly to Sim’s configured business inbox. This website does not maintain an unencrypted lead database or publicly accessible archive of submissions. Hosting infrastructure is provided via Vercel with enterprise-grade SSL encryption and security controls.',
       },
       {
+        title: 'Website usage statistics',
+        text: 'We use Vercel Web Analytics to understand visitor numbers, page views and referring websites so we can improve the site. This is separate from your enquiry. You can turn off website analytics on our Cookies & Analytics page.',
+      },
+      {
         title: 'Retention and access',
         text: 'Enquiry details are retained in our secure email records for as long as necessary to manage our client relationship and meet statutory professional record-keeping standards. You have the right to request a copy of the personal information we hold about you, request corrections, or ask for deletion where no statutory retention requirement applies.',
       },
@@ -38,10 +42,10 @@ export const legalPages: Record<
   },
   cookies: {
     title: 'Simple, considered privacy.',
-    intro: 'Our approach to cookies and tracking on this website.',
+    intro: 'Manage your website analytics preference and learn how Better Call Sim uses cookies.',
     sections: [
       {
-        title: 'Essential website operation only',
+        title: 'Essential website cookies',
         text: 'This website is built with a privacy-first approach. We do not use third-party tracking pixels, invasive cross-site advertising cookies, or persistent marketing trackers. Essential cookies may be deployed solely by the hosting infrastructure for performance, security and routing.',
       },
       {

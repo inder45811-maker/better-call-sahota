@@ -278,7 +278,7 @@ export function SiteFooter() {
             <div>
               {[
                 ['Privacy', 'privacy'],
-                ['Cookies', 'cookies'],
+                ['Cookies & analytics', 'cookies'],
                 ['Terms', 'terms'],
                 ['Complaints', 'complaints'],
                 ['Accessibility', 'accessibility'],

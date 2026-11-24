@@ -10,4 +10,8 @@ Sim schedules reviews and agent introductions manually after receiving a request
 
 Email success means provider acceptance, not guaranteed inbox delivery. Failure or missing configuration returns an error and does not claim the enquiry was saved. No lead database is kept. Resend idempotency keys reduce duplicate delivery during its supported retry window; there is no durable retry queue. Per-instance throttling is best-effort and resets on cold starts; configure platform rate limits for stronger abuse protection.
 
-Historical database migrations and Sites packaging metadata are retained only as history. They are not used by this application. Mailbox retention and final business disclosures still need confirmation. Search indexing remains disabled for review.
+Historical database migrations and Sites packaging metadata are retained only as history. They are not used by this application. Mailbox retention and final business disclosures still need confirmation.
+
+In Vercel, open the project that serves `bettercallsim.co.uk`, select Analytics and enable Web Analytics before deploying. After deployment, select Production in that dashboard and verify that a page view arrives. The website measures page views only, removes URL queries and fragments, and lets visitors switch off analytics from the Cookies & Analytics page.
+
+Production exposes `https://bettercallsim.co.uk/sitemap.xml` and allows search indexing. Vercel previews remain excluded. Use a verified Google Search Console property for `bettercallsim.co.uk` to submit the sitemap and inspect indexing and Search performance. For URL-prefix property verification by HTML tag, set the tag's content value in the production `GOOGLE_SITE_VERIFICATION` variable and redeploy.

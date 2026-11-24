@@ -27,7 +27,7 @@ const fixed: Page[] = [
   {
     path: '',
     label: 'Home',
-    title: 'Estate & Financial Planning Across the UK',
+    title: 'Estate Planning & Financial Advice in the UK',
     description:
       'UK-wide estate planning, financial advice and property finance with Better Call Sim. Connect your wealth, family and legacy with a Financial & Estate Review.',
     kind: 'page',
@@ -43,7 +43,7 @@ const fixed: Page[] = [
   {
     path: 'meet-sim',
     label: 'Meet Sim',
-    title: 'Meet Simran Singh Sahota | Founder of Better Call Sim',
+    title: 'Meet Simran Singh Sahota',
     description:
       'Meet Simran Singh Sahota, founder of Better Call Sim. Discover his decade in financial services and personal approach to financial and estate planning.',
     kind: 'about',
@@ -59,7 +59,7 @@ const fixed: Page[] = [
   {
     path: 'family-wealth-check',
     label: 'Family Wealth Check',
-    title: 'Family Wealth Check | Better Call Sim',
+    title: 'Family Wealth Check for UK Homeowners',
     description: 'Six short questions about your family, home and existing plans, with discussion prompts and an optional initial review.',
     kind: 'page',
   },
@@ -74,9 +74,9 @@ const fixed: Page[] = [
   {
     path: 'iht-calculator',
     label: 'Inheritance Tax Calculator',
-    title: 'Inheritance Tax Calculator & Report',
+    title: 'UK Inheritance Tax Calculator & Report',
     description:
-      'Explore an illustrative UK inheritance tax estimate for supported 2026/27 scenarios. Request a report with your inputs, allowances and assumptions.',
+      'Estimate UK inheritance tax for an individual or married couple. Check allowances and download a free illustrative report with your inputs and assumptions.',
     kind: 'page',
     updated: CONTENT_UPDATED,
   },
@@ -105,6 +105,10 @@ const hubDescriptions: Record<string, string> = {
   'property-finance':
     'Explore mortgages, remortgages, buy-to-let, bridging, second charges and equity release. Understand the questions for your property finance review.',
 };
+const searchServiceTitles: Record<string, string> = {
+  wills: 'Will Writing & Will Reviews',
+  'lasting-powers-of-attorney': 'Lasting Powers of Attorney (LPAs)',
+};
 export const pageCatalog: Page[] = [
   ...fixed,
   ...pillars.map((p) => ({
@@ -118,7 +122,7 @@ export const pageCatalog: Page[] = [
   ...services.map((s) => ({
     path: s.pillar + '/' + s.slug,
     label: s.title,
-    title: s.title === 'Wills' ? 'Wills & Will Planning' : s.title,
+    title: searchServiceTitles[s.slug] ?? s.title,
     description: s.description,
     kind: 'service' as const,
     parent: s.pillar,
@@ -327,7 +331,8 @@ export function pageStructuredData(path: string) {
       url,
       description: 'Founder of Better Call Sim, with more than a decade in financial services.',
       jobTitle: 'Founder',
-      sameAs: [site.instagram, site.tiktok],
+      image: canonicalUrl(site.adviserPortrait.slice(1)),
+      sameAs: [site.instagram, site.tiktok, site.linkedin],
       knowsAbout: [
         'Estate Planning',
         'Inheritance Tax Planning',
