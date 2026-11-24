@@ -13,7 +13,10 @@ test('direct email preserves reply-to and idempotency and distinguishes provider
       calls++;
       throw new Error('Unexpected network call');
     };
-    assert.equal(await emailMessage('id', 'sim@example.com', 'Enquiry', 'Hello'), 'not-configured');
+    assert.equal(
+      await emailMessage('id', 'sim@example.com', 'Enquiry', 'Hello'),
+      'not-configured',
+    );
     assert.equal(calls, 0);
     process.env.RESEND_API_KEY = 'test-only';
     process.env.REPORT_FROM_EMAIL = 'website@example.com';
@@ -27,15 +30,56 @@ test('direct email preserves reply-to and idempotency and distinguishes provider
       return new Response('{}', { status: 200 });
     };
     assert.equal(
-      await emailMessage('stable-id', 'sim@example.com', 'Enquiry', 'Hello', 'visitor@example.com'),
+      await emailMessage(
+        'stable-id',
+        'sim@example.com',
+        'Enquiry',
+        'Hello',
+        'visitor@example.com',
+      ),
       'sent',
     );
     globalThis.fetch = async () => new Response('{}', { status: 429 });
-    assert.equal(await emailMessage('id', 'sim@example.com', 'Enquiry', 'Hello'), 'failed');
+    assert.equal(
+      await emailMessage('id', 'sim@example.com', 'Enquiry', 'Hello'),
+      'failed',
+    );
+    const originalWarn = console.warn;
+    const warnings = [];
+    console.warn = (...args) => warnings.push(args);
+    try {
+      globalThis.fetch = async () =>
+        Response.json(
+          {
+            name: 'validation_error',
+            message: 'The private.example domain is not verified.',
+          },
+          { status: 403 },
+        );
+      assert.equal(
+        await emailMessage('id', 'sim@example.com', 'Enquiry', 'Hello'),
+        'failed',
+      );
+      assert.deepEqual(warnings, [
+        [
+          '[enquiry-email] Resend rejected request',
+          {
+            status: 403,
+            code: 'validation_error',
+            reason: 'unverified-sender-domain',
+          },
+        ],
+      ]);
+    } finally {
+      console.warn = originalWarn;
+    }
     globalThis.fetch = async () => {
       throw new Error('Offline');
     };
-    assert.equal(await emailMessage('id', 'sim@example.com', 'Enquiry', 'Hello'), 'failed');
+    assert.equal(
+      await emailMessage('id', 'sim@example.com', 'Enquiry', 'Hello'),
+      'failed',
+    );
   } finally {
     globalThis.fetch = originalFetch;
     if (originalKey === undefined) delete process.env.RESEND_API_KEY;
