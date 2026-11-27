@@ -74,6 +74,66 @@ test('desktop and mobile homepage render without overflow and primary paths work
   await page.screenshot({ path: 'artifacts/calculator-mobile-start.png', fullPage: true });
   expect(errors).toEqual([]);
 });
+test('homepage review form sends the selected topic and keeps details after a failure', async ({
+  page,
+}) => {
+  const submissions: Array<Record<string, unknown>> = [];
+  await page.route('**/api/enquiry', async (route) => {
+    submissions.push(route.request().postDataJSON());
+    const firstAttempt = submissions.length === 1;
+    await route.fulfill({
+      status: firstAttempt ? 503 : 200,
+      json: firstAttempt
+        ? { error: 'Please retry your request.' }
+        : { delivery: 'sent', reference: 'home-test' },
+    });
+  });
+
+  await page.goto('/');
+  await page
+    .getByRole('link', {
+      name: 'Request Your Financial & Estate Review',
+      exact: true,
+    })
+    .first()
+    .click();
+  await expect(page).toHaveURL(/#request-review$/);
+  const review = page.locator('#request-review');
+  await review
+    .getByRole('combobox', { name: 'What would you like to talk about?' })
+    .click();
+  await page
+    .getByRole('option', { name: 'Estate Planning', exact: true })
+    .click();
+  await review.getByLabel('Your name', { exact: true }).fill('Preview Visitor');
+  await review
+    .getByLabel('Email address', { exact: true })
+    .fill('preview@example.com');
+  const submit = review.getByRole('button', {
+    name: 'Request Your Financial & Estate Review',
+  });
+  await submit.click();
+  await expect(review.getByRole('alert')).toContainText(
+    'Please retry your request.',
+  );
+  await expect(review.getByLabel('Email address', { exact: true })).toHaveValue(
+    'preview@example.com',
+  );
+  await submit.click();
+
+  await expect(review.getByRole('status')).toContainText('home-test');
+  expect(submissions).toHaveLength(2);
+  expect(submissions[0]).toMatchObject({
+    name: 'Preview Visitor',
+    email: 'preview@example.com',
+    phone: '',
+    interest: 'Estate Planning',
+    contactMethod: 'email',
+    marketingEmail: false,
+    reviewFollowUps: false,
+  });
+  expect(submissions[1]).toEqual(submissions[0]);
+});
 test('all service routes and requested content pages respond with meaningful headings', async ({
   request,
 }) => {

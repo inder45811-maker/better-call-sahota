@@ -17,16 +17,29 @@ import { identifySubmission } from '@/lib/submission';
 import { ReviewCheck, ReviewPrompts } from './review-check';
 import { captureCampaign } from '@/lib/attribution';
 import type { ReviewAudience, validateReview } from '@/lib/review';
-import { site } from '@/lib/site';
+import { REVIEW_CTA, site } from '@/lib/site';
+
+const reviewInterests = [
+  'Financial & Estate Review',
+  'Estate Planning',
+  'Financial Advice',
+  'Property Finance',
+  'Footballers & Sports Professionals',
+  'Not sure yet',
+].map((value) => ({ value, label: value }));
+
 export function EnquiryForm({
   initialInterest = 'Financial & Estate Review',
-  submitLabel = 'Request Your Financial & Estate Review',
+  submitLabel = REVIEW_CTA,
   audience,
+  variant = 'full',
 }: {
   initialInterest?: string;
   submitLabel?: string;
   audience?: ReviewAudience;
+  variant?: 'full' | 'homepage';
 }) {
+  const homepage = variant === 'homepage';
   const id = useId();
   const [review, setReview] = useState<ReturnType<
     typeof validateReview
@@ -165,13 +178,22 @@ export function EnquiryForm({
       {review && (
         <ReviewPrompts review={review} edit={() => setEditing(true)} />
       )}
-      <form onSubmit={submit} className="enquiry-form">
+      <form
+        onSubmit={submit}
+        className={homepage ? 'enquiry-form homepage-enquiry' : 'enquiry-form'}
+      >
         <div className="form-heading">
-          <span>LET’S START WITH YOU</span>
+          <span>
+            {homepage ? 'COMPLIMENTARY INITIAL REVIEW' : 'LET’S START WITH YOU'}
+          </span>
           <h2 ref={heading} tabIndex={-1}>
-            {review ? 'Request a review' : 'What’s on your mind?'}
+            {homepage || review ? 'Request a review' : 'What’s on your mind?'}
           </h2>
-          <p>Share a few details. There’s no need to have all the answers.</p>
+          <p>
+            {homepage
+              ? 'Tell me what’s on your mind and I’ll email you to arrange a conversation.'
+              : 'Share a few details. There’s no need to have all the answers.'}
+          </p>
         </div>
         {site.preview && (
           <p className="notice">
@@ -192,6 +214,15 @@ export function EnquiryForm({
             </>
           )}
         </div>
+        {homepage && (
+          <Choice
+            id={id + '-interest'}
+            label="What would you like to talk about?"
+            value={interest}
+            onChange={setInterest}
+            options={reviewInterests}
+          />
+        )}
         <div className="form-grid">
           <div className="field">
             <label htmlFor={id + '-name'}>Your name</label>
@@ -219,78 +250,75 @@ export function EnquiryForm({
             />
           </div>
         </div>
-        {!audience && (
+        {!homepage && !audience && (
           <Choice
             id={id + '-interest'}
             label="What would you like to explore?"
             value={interest}
             onChange={setInterest}
-            options={[
-              'Financial & Estate Review',
-              'Estate Planning',
-              'Financial Advice',
-              'Property Finance',
-              'Footballers & Sports Professionals',
-              'Not sure yet',
-            ].map((v) => ({ value: v, label: v }))}
+            options={reviewInterests}
           />
         )}
-        <div className="form-grid">
-          <Choice
-            id={id + '-contact-method'}
-            label="How would you prefer to hear back?"
-            value={method}
-            onChange={setMethod}
-            options={[
-              { value: 'email', label: 'Email' },
-              { value: 'phone', label: 'Telephone' },
-              { value: 'whatsapp', label: 'WhatsApp' },
-            ]}
-          />
-          <div className="field">
-            <label htmlFor={id + '-phone'}>
-              Telephone {method === 'email' ? '(optional)' : ''}
-            </label>
-            <input
-              className="field-input"
-              id={id + '-phone'}
-              name="phone"
-              type="tel"
-              autoComplete="tel"
-              required={method !== 'email'}
-              maxLength={30}
-              placeholder="Your contact number"
-            />
-          </div>
-        </div>
-        <div className="field">
-          <label htmlFor={id + '-message'}>
-            Anything you’d like to add? <span>(optional)</span>
-          </label>
-          <textarea
-            className="field-input"
-            id={id + '-message'}
-            name="message"
-            rows={4}
-            maxLength={1000}
-            placeholder="A little about what you’d like to discuss…"
-          />
-          <p className="field-hint">
-            Please leave out account numbers, health details, contracts and
-            other confidential information.
-          </p>
-        </div>
-        <div className="field">
-          <label htmlFor={id + '-referral'}>
-            How did you hear about me? <span>(optional)</span>
-          </label>
-          <input
-            className="field-input"
-            id={id + '-referral'}
-            name="referral"
-            maxLength={120}
-          />
-        </div>
+        {!homepage && (
+          <>
+            <div className="form-grid">
+              <Choice
+                id={id + '-contact-method'}
+                label="How would you prefer to hear back?"
+                value={method}
+                onChange={setMethod}
+                options={[
+                  { value: 'email', label: 'Email' },
+                  { value: 'phone', label: 'Telephone' },
+                  { value: 'whatsapp', label: 'WhatsApp' },
+                ]}
+              />
+              <div className="field">
+                <label htmlFor={id + '-phone'}>
+                  Telephone {method === 'email' ? '(optional)' : ''}
+                </label>
+                <input
+                  className="field-input"
+                  id={id + '-phone'}
+                  name="phone"
+                  type="tel"
+                  autoComplete="tel"
+                  required={method !== 'email'}
+                  maxLength={30}
+                  placeholder="Your contact number"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label htmlFor={id + '-message'}>
+                Anything you’d like to add? <span>(optional)</span>
+              </label>
+              <textarea
+                className="field-input"
+                id={id + '-message'}
+                name="message"
+                rows={4}
+                maxLength={1000}
+                placeholder="A little about what you’d like to discuss…"
+              />
+              <p className="field-hint">
+                Please leave out account numbers, health details, contracts and
+                other confidential information.
+              </p>
+            </div>
+            <div className="field">
+              <label htmlFor={id + '-referral'}>
+                How did you hear about me? <span>(optional)</span>
+              </label>
+              <input
+                className="field-input"
+                id={id + '-referral'}
+                name="referral"
+                maxLength={120}
+              />
+            </div>
+          </>
+        )}
         <div className="honeypot" aria-hidden="true">
           <label htmlFor={id + '-website'}>Website</label>
           <input
@@ -300,21 +328,25 @@ export function EnquiryForm({
             autoComplete="off"
           />
         </div>
-        <CheckField
-          id={id + '-review-follow-ups'}
-          label={REVIEW_FOLLOW_UP_COPY}
-          checked={reviewFollowUps}
-          onChange={setReviewFollowUps}
-        />
-        <CheckField
-          id={id + '-marketing-email'}
-          label={MARKETING_COPY}
-          checked={marketing}
-          onChange={setMarketing}
-        />
+        {!homepage && (
+          <>
+            <CheckField
+              id={id + '-review-follow-ups'}
+              label={REVIEW_FOLLOW_UP_COPY}
+              checked={reviewFollowUps}
+              onChange={setReviewFollowUps}
+            />
+            <CheckField
+              id={id + '-marketing-email'}
+              label={MARKETING_COPY}
+              checked={marketing}
+              onChange={setMarketing}
+            />
+          </>
+        )}
         <p className="privacy-copy">
           <LockKeyhole size={14} /> Your details are used to handle this
-          request. Marketing is optional.{' '}
+          request. {!homepage && 'Marketing is optional. '}
           <Link href="/privacy">Privacy notice</Link>
         </p>
         <button disabled={busy} className="button form-submit" type="submit">
@@ -322,13 +354,19 @@ export function EnquiryForm({
           {busy ? (
             <LoaderCircle className="spin" size={17} />
           ) : (
-            <ArrowUpRight size={17} />
+            !homepage && <ArrowUpRight size={17} />
           )}
         </button>
-        <p className="field-hint">
-          The appointment format, scope and any fee will be agreed before you
-          proceed.
-        </p>
+        {homepage ? (
+          <p className="field-hint">
+            <Link href="/book-review">Prefer a call or WhatsApp reply?</Link>
+          </p>
+        ) : (
+          <p className="field-hint">
+            The appointment format, scope and any fee will be agreed before you
+            proceed.
+          </p>
+        )}
       </form>
     </>
   );

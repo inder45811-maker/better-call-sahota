@@ -67,6 +67,8 @@ export function ContactLink({
 }
 export function SiteHeader() {
   const pathname = usePathname();
+  const homepage = pathname === '/';
+  const reviewHref = homepage ? '#request-review' : '/book-review';
   useEffect(() => {
     captureCampaign();
   }, [pathname]);
@@ -85,7 +87,9 @@ export function SiteHeader() {
           </div>
         </div>
       </div>
-      <header className="site-header container">
+      <header
+        className={homepage ? 'site-header container site-header-home' : 'site-header container'}
+      >
         <Brand />
         <nav aria-label="Main navigation">
           <DropdownMenu>
@@ -127,7 +131,7 @@ export function SiteHeader() {
           </DropdownMenu>
         </nav>
         <div className="header-actions">
-          <Link className="button button-small" href="/book-review">
+          <Link className="button button-small" href={reviewHref}>
             Request a review <ArrowUpRight size={16} />
           </Link>
           <Sheet open={open} onOpenChange={setOpen}>
@@ -155,7 +159,7 @@ export function SiteHeader() {
                   </Link>
                 ))}
               </nav>
-              <Link className="button" onClick={() => setOpen(false)} href="/book-review">
+              <Link className="button" onClick={() => setOpen(false)} href={reviewHref}>
                 {REVIEW_CTA}
               </Link>
             </SheetContent>
@@ -166,30 +170,34 @@ export function SiteHeader() {
   );
 }
 export function SiteFooter() {
+  const homepage = usePathname() === '/';
+  const reviewHref = homepage ? '#request-review' : '/book-review';
   return (
     <>
-      <section className="final-cta">
-        <div className="container final-cta-inner">
-          <div>
-            <p className="eyebrow">YOUR NEXT CHAPTER STARTS WITH A CONVERSATION</p>
-            <h2>
-              Let’s make a plan.
-              <br />
-              <em>For what matters to you.</em>
-            </h2>
-          </div>
-          <div>
-            <Link href="/book-review" className="button button-light">
-              {REVIEW_CTA}
-              <ArrowUpRight size={18} />
-            </Link>
-            <div className="contact-row">
-              <ContactLink type="phone" />
-              <ContactLink type="whatsapp" />
+      {!homepage && (
+        <section className="final-cta">
+          <div className="container final-cta-inner">
+            <div>
+              <p className="eyebrow">YOUR NEXT CHAPTER STARTS WITH A CONVERSATION</p>
+              <h2>
+                Let’s make a plan.
+                <br />
+                <em>For what matters to you.</em>
+              </h2>
+            </div>
+            <div>
+              <Link href="/book-review" className="button button-light">
+                {REVIEW_CTA}
+                <ArrowUpRight size={18} />
+              </Link>
+              <div className="contact-row">
+                <ContactLink type="phone" />
+                <ContactLink type="whatsapp" />
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
       <footer className="footer">
         <div className="container">
           <div className="footer-main">
@@ -214,7 +222,7 @@ export function SiteFooter() {
             </div>
             <div>
               <h3>Let’s talk</h3>
-              <Link href="/book-review">Request a review</Link>
+              <Link href={reviewHref}>Request a review</Link>
               <Link href="/family-wealth-check">Family Wealth Check</Link>
               <Link href="/contact">Contact</Link>
               <ContactLink type="phone" />
@@ -287,7 +295,7 @@ export function SiteFooter() {
         </div>
       </footer>
       <nav className="mobile-contact-bar" aria-label="Quick contact">
-        <Link href="/book-review" className="mobile-bar-primary">
+        <Link href={reviewHref} className="mobile-bar-primary">
           <span>Request a review</span>
           <ArrowUpRight size={15} />
         </Link>
